@@ -1,6 +1,5 @@
 using UnityEngine;
 using DG.Tweening;
-using System.Collections.Generic;
 
 public class PanelManager : MonoBehaviour
 {
@@ -12,13 +11,13 @@ public class PanelManager : MonoBehaviour
     public Ease easeType = Ease.InOutCubic;
 
     private int currentPanelIndex = 0;
+    private int previousPanelIndex = 0;  // ← YENİ EKLENEN
     private float screenWidth;
 
     void Start()
     {
         screenWidth = ((RectTransform)transform).rect.width;
 
-        // Başlangıçta sadece ilk panel ekranda, diğerleri sağda bekliyor
         for (int i = 0; i < panels.Length; i++)
         {
             if (i == 0)
@@ -33,29 +32,33 @@ public class PanelManager : MonoBehaviour
         if (targetIndex == currentPanelIndex) return;
         if (targetIndex < 0 || targetIndex >= panels.Length) return;
 
+        // Önceki paneli kaydet (geri dönüş için)
+        previousPanelIndex = currentPanelIndex;
+
         RectTransform currentPanel = panels[currentPanelIndex];
         RectTransform targetPanel = panels[targetIndex];
 
-        // İleri mi gidiyoruz, geri mi?
         bool goingForward = targetIndex > currentPanelIndex;
 
         if (goingForward)
         {
-            // Mevcut panel sola gider, hedef panel sağdan gelir
             currentPanel.DOAnchorPos(new Vector2(-screenWidth, 0), transitionDuration).SetEase(easeType);
-
             targetPanel.anchoredPosition = new Vector2(screenWidth, 0);
             targetPanel.DOAnchorPos(Vector2.zero, transitionDuration).SetEase(easeType);
         }
         else
         {
-            // Mevcut panel sağa gider, hedef panel soldan gelir
             currentPanel.DOAnchorPos(new Vector2(screenWidth, 0), transitionDuration).SetEase(easeType);
-
             targetPanel.anchoredPosition = new Vector2(-screenWidth, 0);
             targetPanel.DOAnchorPos(Vector2.zero, transitionDuration).SetEase(easeType);
         }
 
         currentPanelIndex = targetIndex;
+    }
+
+    // YENİ METOD: Önceki panele dön
+    public void GoToPreviousPanel()
+    {
+        GoToPanel(previousPanelIndex);
     }
 }
