@@ -78,7 +78,7 @@ public class BoardGenerator : MonoBehaviour
         TileInfo info = boardLayout.tiles[index];
         tileObj.name = $"Tile_{index:D2}_{info.tileName}";
 
-        Tile tile = tileObj.GetComponent<Tile>();
+        Tile tile = tileObj.AddComponent<Tile>();
         if (tile != null)
         {
             tile.tileName = info.tileName;
@@ -87,6 +87,7 @@ public class BoardGenerator : MonoBehaviour
             tile.basePrice = info.basePrice;
             tile.groupColor = info.groupColor;
         }
+      
 
         Renderer renderer = tileObj.GetComponent<Renderer>();
         if (renderer != null)
@@ -104,6 +105,7 @@ public class BoardGenerator : MonoBehaviour
             // Hangi kenarda olduğuna göre yazıyı döndür
             float yRotation = GetLabelRotation(index);
             label.transform.parent.rotation = Quaternion.Euler(90, yRotation, -90);
+
         }
 
         allTiles.Add(tile);
