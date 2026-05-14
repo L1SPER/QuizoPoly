@@ -1,67 +1,123 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using TMPro;
 public class BoardGenerator : MonoBehaviour
 {
+    [Header("Prefab")]
     public GameObject tilePrefab;
-    public int tilesPerSide = 10;      // Her kenarda 10 kare (köşeler dahil)
-    public float tileSize = 1f;        // Kare boyutu
-    public Transform tilesParent;       // Tile'ların altına gireceği obje
+
+    [Header("Tahta Verisi")]
+    public BoardLayout boardLayout;
+
+    [Header("Tahta Ayarları")]
+    public int tilesPerSide = 11;
+    public Transform tilesParent;
+
+    [Header("Otomatik Hesaplanır")]
+    [SerializeField] private float tileSize;  // Tile prefab'ından otomatik okunur
 
     private List<Tile> allTiles = new List<Tile>();
 
     void Start()
     {
+        // Tile prefab'ının boyutunu otomatik al (X eksenindeki scale)
+        if (tilePrefab != null)
+        {
+            tileSize = tilePrefab.transform.localScale.x;
+        }
+
         GenerateBoard();
     }
 
     void GenerateBoard()
     {
-        int totalTiles = (tilesPerSide - 1) * 4;  // 36 kenar + 4 köşe = 40
-        float halfBoard = (tilesPerSide - 1) * tileSize / 2f;
+        if (boardLayout == null || boardLayout.tiles.Length < 40)
+        {
+            Debug.LogError("BoardLayout atanmamış veya 40 kare yok!");
+            return;
+        }
 
+        float halfBoard = (tilesPerSide - 1) * tileSize / 2f;
         int tileIndex = 0;
 
-        // Alt kenar (soldan sağa)
+        // SOL KENAR (aşağıdan yukarı)
         for (int i = 0; i < tilesPerSide - 1; i++)
         {
-            Vector3 pos = new Vector3(-halfBoard + i * tileSize, 0, -halfBoard);
+            Vector3 pos = new Vector3(-halfBoard, 0, -halfBoard + i * tileSize);
             SpawnTile(pos, tileIndex++);
         }
 
-        // Sağ kenar (aşağıdan yukarı)
+        // ÜST KENAR (soldan sağa)
         for (int i = 0; i < tilesPerSide - 1; i++)
         {
-            Vector3 pos = new Vector3(halfBoard, 0, -halfBoard + i * tileSize);
+            Vector3 pos = new Vector3(-halfBoard + i * tileSize, 0, halfBoard);
             SpawnTile(pos, tileIndex++);
         }
 
-        // Üst kenar (sağdan sola)
+        // SAĞ KENAR (yukarıdan aşağı)
         for (int i = 0; i < tilesPerSide - 1; i++)
         {
-            Vector3 pos = new Vector3(halfBoard - i * tileSize, 0, halfBoard);
+            Vector3 pos = new Vector3(halfBoard, 0, halfBoard - i * tileSize);
             SpawnTile(pos, tileIndex++);
         }
 
-        // Sol kenar (yukarıdan aşağı)
+        // ALT KENAR (sağdan sola)
         for (int i = 0; i < tilesPerSide - 1; i++)
         {
-            Vector3 pos = new Vector3(-halfBoard, 0, halfBoard - i * tileSize);
+            Vector3 pos = new Vector3(halfBoard - i * tileSize, 0, -halfBoard);
             SpawnTile(pos, tileIndex++);
         }
+
+        Debug.Log($"Tahta oluşturuldu — Toplam kare: {allTiles.Count}, Tile boyutu: {tileSize}");
     }
 
     void SpawnTile(Vector3 position, int index)
     {
         GameObject tileObj = Instantiate(tilePrefab, position, Quaternion.identity, tilesParent);
-        tileObj.name = $"Tile_{index:D2}";
+
+        TileInfo info = boardLayout.tiles[index];
+        tileObj.name = $"Tile_{index:D2}_{info.tileName}";
 
         Tile tile = tileObj.GetComponent<Tile>();
         if (tile != null)
         {
-            // İlerideki adımda burada TileData atayacağız
+            tile.tileName = info.tileName;
+            tile.tileType = info.tileType;
+            tile.category = info.category;
+            tile.basePrice = info.basePrice;
+            tile.groupColor = info.groupColor;
+        }
+
+        Renderer renderer = tileObj.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material = new Material(renderer.material);
+            renderer.material.color = info.groupColor;
+        }
+
+        // Tile üzerindeki yazıyı güncelle ve döndür
+        TextMeshProUGUI label = tileObj.GetComponentInChildren<TextMeshProUGUI>();
+        if (label != null)
+        {
+            label.text = info.tileName;
+
+            // Hangi kenarda olduğuna göre yazıyı döndür
+            float yRotation = GetLabelRotation(index);
+            label.transform.parent.rotation = Quaternion.Euler(90, yRotation, -90);
         }
 
         allTiles.Add(tile);
+    }
+
+    // Index'e göre yazının Y dönüşünü belirler
+    float GetLabelRotation(int index)
+    {
+        // Kenarlar
+        if (index >= 0 && index <= 9) return 0f;     // Sol kenar
+        if (index >= 10 && index <= 19) return 90f;  // Üst kenar
+        if (index >= 20 && index <= 29) return 180f;  // Sağ kenar
+        if (index >= 30 && index <= 39) return 270f;    // Alt kenar
+
+        return 0f;
     }
 }

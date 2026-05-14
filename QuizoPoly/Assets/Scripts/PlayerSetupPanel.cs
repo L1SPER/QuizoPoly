@@ -51,4 +51,30 @@ public class PlayerSetupPanel : MonoBehaviour
 
         nextButton.interactable = true;
     }
+
+    public PlayerSetupInfo[] GetPlayerInfos()
+    {
+        PlayerSetupInfo[] infos = new PlayerSetupInfo[playerCards.Length];
+
+        for (int i = 0; i < playerCards.Length; i++)
+        {
+            infos[i] = new PlayerSetupInfo
+            {
+                playerName = playerCards[i].GetPlayerName(),
+                playerColor = playerCards[i].GetSelectedColor(),
+                teamId = 0  // varsayılan, 2v2'de düzeltilecek
+            };
+        }
+
+        // Eğer 2v2 modu ise takımları ata
+        if (GameSetupData.IsTeamMode() && infos.Length == 4)
+        {
+            infos[0].teamId = 1;
+            infos[1].teamId = 1;
+            infos[2].teamId = 2;
+            infos[3].teamId = 2;
+        }
+
+        return infos;
+    }
 }

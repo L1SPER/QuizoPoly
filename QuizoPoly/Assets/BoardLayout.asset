@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca47f339ea2bbbc4284addc9d93b734c, type: 3}
+  m_Name: BoardLayout
+  m_EditorClassIdentifier: Assembly-CSharp::BoardLayout
+  tiles:
+  - tileName: "Ba\u015Flang\u0131\xE7"
+    tileType: 2
+    category: 0
+    basePrice: 0
+    groupColor: {r: 0.97885394, g: 1, b: 0, a: 1}
+  - tileName: Konya
+    tileType: 0
+    category: 1
+    basePrice: 60000
+    groupColor: {r: 0.54509807, g: 0.27058825, b: 0.07450981, a: 1}
+  - tileName: Vergi
+    tileType: 5
+    category: 0
+    basePrice: 0
+    groupColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
+  - tileName: "\xC7anakkale"
+    tileType: 0
+    category: 1
+    basePrice: 80000
+    groupColor: {r: 0.54509807, g: 0.27058825, b: 0.07450981, a: 1}
+  - tileName: Edirne
+    tileType: 0
+    category: 1
+    basePrice: 100000
+    groupColor: {r: 0.54509807, g: 0.27058825, b: 0.07450981, a: 1}
+  - tileName: Kapadokya
+    tileType: 1
+    category: 0
+    basePrice: 700000
+    groupColor: {r: 0.13333334, g: 0.54509807, b: 0.13333334, a: 1}
+  - tileName: Trabzon
+    tileType: 0
+    category: 2
+    basePrice: 120000
+    groupColor: {r: 0.11764706, g: 0.5647059, b: 1, a: 1}
+  - tileName: Rize
+    tileType: 0
+    category: 2
+    basePrice: 140000
+    groupColor: {r: 0.11764706, g: 0.5647059, b: 1, a: 1}
+  - tileName: "\u015Eans"
+    tileType: 4
+    category: 0
+    basePrice: 0
+    groupColor: {r: 0.5989194, g: 0, b: 1, a: 1}
+  - tileName: Artvin
+    tileType: 0
+    category: 2
+    basePrice: 160000
+    groupColor: {r: 0.11764706, g: 0.5647059, b: 1, a: 1}
+  - tileName: Silivri Hapishanesi
+    tileType: 3
+    category: 0
+    basePrice: 0
+    groupColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
+  - tileName: "Eski\u015Fehir"
+    tileType: 0
+    category: 3
+    basePrice: 180000
+    groupColor: {r: 1, g: 0.4117647, b: 0.7058824, a: 1}
+  - tileName: Bonus
+    tileType: 6
+    category: 0
+    basePrice: 0
+    groupColor: {r: 0, g: 0.9999995, b: 1, a: 1}
+  - tileName: "K\xFCtahya"
+    tileType: 0
+    category: 3
+    basePrice: 200000
+    groupColor: {r: 1, g: 0.4117647, b: 0.7058824, a: 1}
+  - tileName: "\u0130znik"
+    tileType: 0
+    category: 3
+    basePrice: 220000
+    groupColor: {r: 1, g: 0.4117647, b: 0.7058824, a: 1}
+  - tileName: Bodrum
+    tileType: 1
+    category: 0
+    basePrice: 750000
+    groupColor: {r: 0.13333334, g: 0.54509807, b: 0.13333334, a: 1}
+  - tileName: Erzurum
+    tileType: 0
+    category: 4
+    basePrice: 240000
+    groupColor: {r: 1, g: 0.54901963, b: 0, a: 1}
+  - tileName: Bolu
+    tileType: 0
+    category: 4
+    basePrice: 260000
+    groupColor: {r: 1, g: 0.54901963, b: 0, a: 1}
+  - tileName: "Ba\u015Flang\u0131ca D\xF6n"
+    tileType: 7
+    category: 0
+    basePrice: 0
+    groupColor: {r: 0, g: 0.031219006, b: 1, a: 1}
+  - tileName: Kayseri
+    tileType: 0
+    category: 4
+    basePrice: 280000
+    groupColor: {r: 1, g: 0.54901963, b: 0, a: 1}
+  - tileName: Bonus
+    tileType: 6
+    category: 0
+    basePrice: 0
+    groupColor: {r: 0, g: 1, b: 1, a: 1}
+  - tileName: Gebze
+    tileType: 0
+    category: 5
+    basePrice: 300000
+    groupColor: {r: 0.8627451, g: 0.078431375, b: 0.23529412, a: 1}
+  - tileName: Kocaeli
+    tileType: 0
+    category: 5
+    basePrice: 320000
+    groupColor: {r: 0.8627451, g: 0.078431375, b: 0.23529412, a: 1}
+  - tileName: "\u015Eans"
+    tileType: 4
+    category: 0
+    basePrice: 0
+    groupColor: {r: 0.6, g: 0, b: 1, a: 1}
+  - tileName: Sakarya
+    tileType: 0
+    category: 5
+    basePrice: 340000
+    groupColor: {r: 0.8627451, g: 0.078431375, b: 0.23529412, a: 1}
+  - tileName: "\xC7e\u015Fme"
+    tileType: 1
+    category: 0
+    basePrice: 800000
+    groupColor: {r: 0.13333334, g: 0.54509807, b: 0.13333334, a: 1}
+  - tileName: Sivas
+    tileType: 0
+    category: 6
+    basePrice: 360000
+    groupColor: {r: 1, g: 0.84313726, b: 0, a: 1}
+  - tileName: Urfa
+    tileType: 0
+    category: 6
+    basePrice: 380000
+    groupColor: {r: 1, g: 0.84313726, b: 0, a: 1}
+  - tileName: Vergi
+    tileType: 5
+    category: 0
+    basePrice: 0
+    groupColor: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 1}
+  - tileName: "Diyarbak\u0131r"
+    tileType: 0
+    category: 6
+    basePrice: 400000
+    groupColor: {r: 1, g: 0.84313726, b: 0, a: 1}
+  - tileName: "\u015Eans"
+    tileType: 4
+    category: 0
+    basePrice: 0
+    groupColor: {r: 0.6, g: 0, b: 1, a: 1}
+  - tileName: Tokat
+    tileType: 0
+    category: 7
+    basePrice: 420000
+    groupColor: {r: 0.5764706, g: 0.4392157, b: 0.85882354, a: 1}
+  - tileName: Bursa
+    tileType: 0
+    category: 7
+    basePrice: 440000
+    groupColor: {r: 0.5764706, g: 0.4392157, b: 0.85882354, a: 1}
+  - tileName: Go To Start
+    tileType: 7
+    category: 0
+    basePrice: 0
+    groupColor: {r: 0, g: 0.03137255, b: 1, a: 1}
+  - tileName: Manisa
+    tileType: 0
+    category: 7
+    basePrice: 460000
+    groupColor: {r: 0.5764706, g: 0.4392157, b: 0.85882354, a: 1}
+  - tileName: Fethiye
+    tileType: 1
+    category: 0
+    basePrice: 850000
+    groupColor: {r: 0.13333334, g: 0.54509807, b: 0.13333334, a: 1}
+  - tileName: "\u0130zmir"
+    tileType: 0
+    category: 0
+    basePrice: 480000
+    groupColor: {r: 0, g: 0.39215687, b: 0, a: 1}
+  - tileName: Bonus
+    tileType: 6
+    category: 0
+    basePrice: 0
+    groupColor: {r: 0, g: 1, b: 1, a: 1}
+  - tileName: Ankara
+    tileType: 0
+    category: 0
+    basePrice: 500000
+    groupColor: {r: 0, g: 0.39215687, b: 0, a: 1}
+  - tileName: "\u0130stanbul"
+    tileType: 0
+    category: 0
+    basePrice: 540000
+    groupColor: {r: 0, g: 0.39215687, b: 0, a: 1}

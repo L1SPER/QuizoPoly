@@ -99,4 +99,14 @@ public class PlayerCard : MonoBehaviour
 
         OnReadyStateChanged?.Invoke();
     }
+
+    public string GetPlayerName()
+    {
+        return string.IsNullOrWhiteSpace(nameInput.text) ? defaultName : nameInput.text;
+    }
+
+    public Color GetSelectedColor()
+    {
+        return selectedColorIndex >= 0 ? selectedColor : Color.white;
+    }
 }

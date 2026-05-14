@@ -10,8 +10,12 @@ public class PanelManager : MonoBehaviour
     public float transitionDuration = 0.5f;
     public Ease easeType = Ease.InOutCubic;
 
+    [Header("Özel Referanslar")]
+    public int settingsPanelIndex = 5;  // Settings paneli kaçıncı index
+    public SettingsPanel settingsPanel;  // SettingsPanel script referansı
+
     private int currentPanelIndex = 0;
-    private int previousPanelIndex = 0;  // ← YENİ EKLENEN
+    private int previousPanelIndex = 0;
     private float screenWidth;
 
     void Start()
@@ -32,7 +36,6 @@ public class PanelManager : MonoBehaviour
         if (targetIndex == currentPanelIndex) return;
         if (targetIndex < 0 || targetIndex >= panels.Length) return;
 
-        // Önceki paneli kaydet (geri dönüş için)
         previousPanelIndex = currentPanelIndex;
 
         RectTransform currentPanel = panels[currentPanelIndex];
@@ -54,9 +57,14 @@ public class PanelManager : MonoBehaviour
         }
 
         currentPanelIndex = targetIndex;
+
+        // YENİ: Settings paneline geçildiyse default'a sıfırla
+        if (targetIndex == settingsPanelIndex && settingsPanel != null)
+        {
+            settingsPanel.ResetAllToDefaults();
+        }
     }
 
-    // YENİ METOD: Önceki panele dön
     public void GoToPreviousPanel()
     {
         GoToPanel(previousPanelIndex);
