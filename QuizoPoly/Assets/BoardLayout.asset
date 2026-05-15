@@ -17,7 +17,7 @@ MonoBehaviour:
     tileType: 2
     category: 0
     basePrice: 0
-    groupColor: {r: 0.97885394, g: 1, b: 0, a: 1}
+    groupColor: {r: 0.13769174, g: 0.051041294, b: 0.2924528, a: 1}
   - tileName: Konya
     tileType: 0
     category: 1
