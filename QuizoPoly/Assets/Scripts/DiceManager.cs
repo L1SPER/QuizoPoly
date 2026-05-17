@@ -50,4 +50,13 @@ public class DiceManager : MonoBehaviour
 
         Debug.Log($"Zar 1: {v1}, Zar 2: {v2}, Toplam: {total}");
     }
+    public bool IsRolling()
+    {
+        return dice1.IsRolling() || dice2.IsRolling();
+    }
+
+    public int GetTotal()
+    {
+        return dice1.currentValue + dice2.currentValue;
+    }
 }

@@ -3,19 +3,22 @@ using System.Collections;
 
 public class DiceRoller : MonoBehaviour
 {
+    [Header("Başlangıç Pozisyonu (Inspector'dan ayarla)")]
+    public Vector3 startPosition;
+
     [Header("Atış Ayarları")]
     public float throwForce = 5f;
     public float torqueForce = 10f;
     public Vector3 throwDirection = new Vector3(0, 0.5f, 1f);
+    public float delayBeforeThrow = 1f;  // Atış öncesi bekleme
 
-    [Header("Yüzey Değerleri (Inspector'dan ayarla)")]
-    [Tooltip("Zar (0,0,0) rotasyonda iken hangi yönde hangi sayı var")]
-    public int upFaceValue = 2;        // transform.up yönündeki yüzeyde yazan sayı
-    public int downFaceValue = 5;      // -transform.up
-    public int forwardFaceValue = 1;   // transform.forward
-    public int backFaceValue = 6;      // -transform.forward
-    public int rightFaceValue = 3;     // transform.right
-    public int leftFaceValue = 4;      // -transform.right
+    [Header("Yüzey Değerleri")]
+    public int upFaceValue = 2;
+    public int downFaceValue = 5;
+    public int forwardFaceValue = 1;
+    public int backFaceValue = 6;
+    public int rightFaceValue = 4;
+    public int leftFaceValue = 3;
 
     [Header("Sonuç")]
     public int currentValue = 0;
@@ -23,19 +26,41 @@ public class DiceRoller : MonoBehaviour
     private Rigidbody rb;
     private bool isRolling = false;
 
-    void Awake()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
+        MoveToStartPosition();
+    }
+
+    void MoveToStartPosition()
+    {
+        rb.isKinematic = true;
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        transform.position = startPosition;
+        transform.rotation = Random.rotation;
     }
 
     public void RollDice()
     {
         if (isRolling) return;
 
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
+        StartCoroutine(RollSequence());
+    }
 
-        transform.rotation = Random.rotation;
+    IEnumerator RollSequence()
+    {
+        isRolling = true;
+
+        // 1. Adım: Başlangıç pozisyonuna git
+        MoveToStartPosition();
+
+        // 2. Adım: 1 saniye bekle (oyuncu zarın yerleştiğini görsün)
+        yield return new WaitForSeconds(delayBeforeThrow);
+
+        // 3. Adım: Fiziği aç ve kuvvet uygula
+        rb.isKinematic = false;
 
         rb.AddForce(throwDirection.normalized * throwForce, ForceMode.Impulse);
 
@@ -47,19 +72,19 @@ public class DiceRoller : MonoBehaviour
 
         rb.AddTorque(randomTorque, ForceMode.Impulse);
 
-        StartCoroutine(WaitForDiceToStop());
-    }
+        // 4. Adım: Zar durana kadar bekle
+        yield return new WaitForSeconds(0.5f);  // En az 0.5sn dönsün
 
-    IEnumerator WaitForDiceToStop()
-    {
-        isRolling = true;
-        yield return new WaitForSeconds(0.5f);
+        float timeout = 5f;
+        float elapsed = 0f;
 
-        while (rb.linearVelocity.magnitude > 0.05f || rb.angularVelocity.magnitude > 0.05f)
+        while ((rb.linearVelocity.magnitude > 0.05f || rb.angularVelocity.magnitude > 0.05f) && elapsed < timeout)
         {
+            elapsed += Time.deltaTime;
             yield return null;
         }
 
+        // 5. Adım: Sonucu oku
         currentValue = GetTopFaceValue();
         Debug.Log($"Zar sonucu: {currentValue}");
 
@@ -70,7 +95,6 @@ public class DiceRoller : MonoBehaviour
     {
         Vector3 up = Vector3.up;
 
-        // Hangi yön yukarı bakıyor, en yakın olanı bul
         float topDot = Vector3.Dot(transform.up, up);
         float bottomDot = Vector3.Dot(-transform.up, up);
         float frontDot = Vector3.Dot(transform.forward, up);
@@ -93,5 +117,11 @@ public class DiceRoller : MonoBehaviour
     public bool IsRolling()
     {
         return isRolling;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(startPosition, 0.3f);
     }
 }

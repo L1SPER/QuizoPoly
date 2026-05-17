@@ -122,4 +122,22 @@ public class BoardGenerator : MonoBehaviour
 
         return 0f;
     }
+    public Tile GetTile(int index)
+    {
+        if (index < 0 || index >= allTiles.Count)
+            return null;
+        return allTiles[index];
+    }
+
+    public int GetTileCount()
+    {
+        return allTiles.Count;
+    }
+
+    public Vector3 GetTileWorldPosition(int index)
+    {
+        Tile tile = GetTile(index);
+        if (tile == null) return Vector3.zero;
+        return tile.transform.position;
+    }
 }
