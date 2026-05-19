@@ -28,6 +28,19 @@ public class GameManager : MonoBehaviour
 
     private bool gameStarted = false;
 
+    // Vacation kareler için rastgele kategori seçiminde kullanılır
+    private static readonly Category[] AllPlayableCategories = new Category[]
+    {
+        Category.Tarih,
+        Category.Cografya,
+        Category.Sanat,
+        Category.Spor,
+        Category.Bilim,
+        Category.Muzik,
+        Category.Edebiyat,
+        Category.GenelKultur
+    };
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -127,9 +140,13 @@ public class GameManager : MonoBehaviour
         Tile landedTile = boardGenerator.GetTile(token.currentTileIndex);
         Debug.Log($"{token.playerName} → {landedTile.tileName} ({landedTile.tileType})");
 
-        // İleride: kare etkileşimi (boş arazi paneli vs.)
+        // InfoPanel'i göster (oyuncuya nereye geldiğini söyle)
+        UIManager.Instance.ShowInfoPanel(landedTile);
+        yield return new WaitForSeconds(2f);  // 2 saniye göster
+        UIManager.Instance.HideInfoPanel();
 
-        yield return new WaitForSeconds(1f);
+        // Kare etkileşimi
+        yield return StartCoroutine(HandleTileLanding(token, landedTile));
 
         EndTurn();
     }
@@ -153,6 +170,198 @@ public class GameManager : MonoBehaviour
         token.transform.position = tilePos + new Vector3(offsetX, tokenHeight, 0);
 
         UpdateMoneyDisplay();
+    }
+
+    IEnumerator HandleTileLanding(PlayerToken token, Tile tile)
+    {
+        // Property veya Vacation — ikisi de satın alınabilir
+        if (tile.tileType == TileType.Property || tile.tileType == TileType.Vacation)
+        {
+            if (tile.ownerId == -1)
+            {
+                // Boş arazi
+                yield return StartCoroutine(HandleEmptyProperty(token, tile));
+            }
+            else if (tile.ownerId == token.playerId)
+            {
+                // Kendi arazisi - bina dik
+                yield return StartCoroutine(HandleOwnProperty(token, tile));
+            }
+            else
+            {
+                // Başkasının arazisi - kira (sonraki parça)
+                Debug.Log($"{token.playerName} başkasının arazisine düştü: {tile.tileName} (sahibi player {tile.ownerId})");
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else
+        {
+            Debug.Log($"Özel kare: {tile.tileType}");
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    IEnumerator HandleEmptyProperty(PlayerToken token, Tile tile)
+    {
+        bool decisionMade = false;
+        bool wantsToBuy = false;
+
+        UIManager.Instance.ShowPurchasePanel(
+            tile,
+            buyCallback: () => { wantsToBuy = true; decisionMade = true; },
+            passCallback: () => { wantsToBuy = false; decisionMade = true; }
+        );
+
+        while (!decisionMade)
+            yield return null;
+
+        if (!wantsToBuy)
+        {
+            Debug.Log($"{token.playerName} pas geçti: {tile.tileName}");
+            yield break;
+        }
+
+        if (token.money < tile.basePrice)
+        {
+            Debug.Log($"{token.playerName} parası yetmiyor!");
+            yield break;
+        }
+
+        // Tatil bölgesi mi Property mi? Zorluk ve kategori belirle
+        int difficulty;
+        Category questionCategory;
+
+        if (tile.tileType == TileType.Vacation)
+        {
+            difficulty = 5;  // Impossible
+            questionCategory = AllPlayableCategories[Random.Range(0, AllPlayableCategories.Length)];
+            Debug.Log($"Tatil bölgesi sorusu — rastgele kategori: {questionCategory}, zorluk: Impossible");
+        }
+        else
+        {
+            difficulty = 2;  // Easy
+            questionCategory = tile.category;
+        }
+
+        bool answeredCorrectly = false;
+        bool answered = false;
+
+        UIManager.Instance.ShowQuestionPanel(
+            questionCategory,
+            difficulty,
+            answerCallback: (correct) => {
+                answeredCorrectly = correct;
+                answered = true;
+            }
+        );
+
+        while (!answered)
+            yield return null;
+
+        if (answeredCorrectly)
+        {
+            token.money -= tile.basePrice;
+            tile.ownerId = token.playerId;
+
+            // Tatil bölgesi alındıysa sayacı artır
+            if (tile.tileType == TileType.Vacation)
+            {
+                token.vacationCount++;
+                Debug.Log($"{token.playerName} tatil bölgesi aldı! Toplam: {token.vacationCount}");
+            }
+
+            UpdateMoneyDisplay();
+            Debug.Log($"{token.playerName} {tile.tileName}'yi satın aldı! (-{tile.basePrice} ₺)");
+        }
+        else
+        {
+            Debug.Log($"{token.playerName} soruyu bilemedi, arazi alamadı");
+        }
+    }
+
+    IEnumerator HandleOwnProperty(PlayerToken token, Tile tile)
+    {
+        // Otel varsa daha fazla yükseltilemez
+        if (tile.buildingLevel >= 5)
+        {
+            Debug.Log($"{tile.tileName} otel seviyesinde, daha fazla bina dikilemez");
+            yield return new WaitForSeconds(1f);
+            yield break;
+        }
+
+        bool decisionMade = false;
+        int chosenLevel = 0;
+
+        UIManager.Instance.ShowBuildingPanel(
+            tile,
+            token.money,
+            buildCallback: (level) => { chosenLevel = level; decisionMade = true; },
+            passCallback: () => { chosenLevel = 0; decisionMade = true; }
+        );
+
+        while (!decisionMade)
+            yield return null;
+
+        if (chosenLevel == 0)
+        {
+            Debug.Log($"{token.playerName} bina dikmeyi pas geçti");
+            yield break;
+        }
+
+        // Maliyet hesapla (BuildingPanelUI ile aynı formül)
+        int costPerLevel = tile.basePrice / 2;
+        int totalCost = chosenLevel == 5 ? costPerLevel * 6 : costPerLevel * chosenLevel;
+
+        if (token.money < totalCost)
+        {
+            Debug.Log($"{token.playerName} parası yetmiyor!");
+            yield break;
+        }
+
+        // Zorluk ve kategori — tatil bölgesi farklı muamele
+        int difficulty;
+        Category questionCategory;
+
+        if (tile.tileType == TileType.Vacation)
+        {
+            difficulty = 5;  // Impossible
+            questionCategory = AllPlayableCategories[Random.Range(0, AllPlayableCategories.Length)];
+            Debug.Log($"Tatil bölgesinde bina dikme — rastgele kategori: {questionCategory}, zorluk: Impossible");
+        }
+        else
+        {
+            difficulty = chosenLevel;  // 1=Beginner, 5=Impossible
+            questionCategory = tile.category;
+        }
+
+        bool answeredCorrectly = false;
+        bool answered = false;
+
+        UIManager.Instance.ShowQuestionPanel(
+            questionCategory,
+            difficulty,
+            answerCallback: (correct) => {
+                answeredCorrectly = correct;
+                answered = true;
+            }
+        );
+
+        while (!answered)
+            yield return null;
+
+        if (answeredCorrectly)
+        {
+            token.money -= totalCost;
+            tile.buildingLevel = chosenLevel;
+            UpdateMoneyDisplay();
+
+            string levelName = chosenLevel == 5 ? "Otel" : $"{chosenLevel} Kat";
+            Debug.Log($"{token.playerName} {tile.tileName}'de {levelName} dikti! (-{totalCost} ₺)");
+        }
+        else
+        {
+            Debug.Log($"{token.playerName} soruyu bilemedi, bina dikilemedi");
+        }
     }
 
     void EndTurn()

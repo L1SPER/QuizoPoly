@@ -4,6 +4,7 @@ public class PlayerToken : MonoBehaviour
 {
     public int playerId;
     public string playerName;
+    public int vacationCount = 0;
     public Color playerColor;
     public int teamId;
     public int currentTileIndex = 0;

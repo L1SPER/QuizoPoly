@@ -87,7 +87,7 @@ public class BoardGenerator : MonoBehaviour
             tile.basePrice = info.basePrice;
             tile.groupColor = info.groupColor;
         }
-      
+
 
         Renderer renderer = tileObj.GetComponent<Renderer>();
         if (renderer != null)
