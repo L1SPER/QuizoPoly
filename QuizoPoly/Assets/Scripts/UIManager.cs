@@ -16,6 +16,20 @@ public class UIManager : MonoBehaviour
     public Button purchaseBuyButton;
     public Button purchasePassButton;
 
+    // ============= RENT PANEL =============
+    [Header("RENT PANEL (Başkasının arazisi)")]
+    public GameObject rentPanel;
+    public Image rentColorImage;
+    public TMP_Text rentNameText;
+    public TMP_Text rentBuyPriceText;
+    public TMP_Text rentRentPriceText;
+    public Button rentBuyButton;
+    public Button payRentButton;
+
+    private Action onRentBuyClicked;
+    private Action onRentPassClicked;
+    private Action onPayRentClicked;
+
     // ============= BUILDING PANEL =============
     [Header("BUILDING PANEL")]
     public GameObject buildingPanel;
@@ -69,7 +83,8 @@ public class UIManager : MonoBehaviour
         if (purchasePanel != null) purchasePanel.SetActive(false);
         if (buildingPanel != null) buildingPanel.SetActive(false);
         if (questionPanel != null) questionPanel.SetActive(false);
-        if (infoPanel != null) infoPanel.SetActive(false);  
+        if (infoPanel != null) infoPanel.SetActive(false);
+        if (rentPanel != null) rentPanel.SetActive(false); 
     }
 
     void Start()
@@ -77,6 +92,7 @@ public class UIManager : MonoBehaviour
         SetupPurchaseButtons();
         SetupBuildingButtons();
         SetupQuestionButtons();
+        SetupRentButtons();  
     }
 
     // ============= PURCHASE =============
@@ -133,7 +149,20 @@ public class UIManager : MonoBehaviour
             onBuildingPassClicked?.Invoke();
         });
     }
+    void SetupRentButtons()
+    {
+        rentBuyButton.onClick.RemoveAllListeners();
+        rentBuyButton.onClick.AddListener(() => {
+            rentPanel.SetActive(false);
+            onRentBuyClicked?.Invoke();
+        });
 
+        payRentButton.onClick.RemoveAllListeners();
+        payRentButton.onClick.AddListener(() => {
+            rentPanel.SetActive(false);
+            onPayRentClicked?.Invoke();
+        });
+    }
     void SelectBuildLevel(int level)
     {
         buildingPanel.SetActive(false);
@@ -257,5 +286,20 @@ public class UIManager : MonoBehaviour
     string FormatMoney(int amount)
     {
         return $"{amount.ToString("N0", new System.Globalization.CultureInfo("tr-TR"))} ₺";
+    }
+    public void ShowRentPanel(Tile tile, int buyPrice, int rentPrice,
+    Action buyCallback, Action payRentCallback)
+    {
+        if (tile == null) return;
+
+        rentPanel.SetActive(true);
+
+        rentNameText.text = tile.tileName;          // ← BU SATIRI EKLE
+        rentColorImage.color = tile.groupColor;
+        rentBuyPriceText.text = FormatMoney(buyPrice);
+        rentRentPriceText.text = FormatMoney(rentPrice);
+
+        onRentBuyClicked = buyCallback;
+        onPayRentClicked = payRentCallback;
     }
 }

@@ -10,6 +10,11 @@ public class PlayerToken : MonoBehaviour
     public int currentTileIndex = 0;
     public int money;
 
+    [Header("Oyun Durumu")]
+    public bool isInJail = false;
+    public int jailTurnsLeft = 0;
+    public int consecutiveDoubles = 0;  // ← YENİ: art arda kaç kez çift attı
+
     public void Initialize(int id, PlayerSetupInfo info, int startMoney)
     {
         playerId = id;

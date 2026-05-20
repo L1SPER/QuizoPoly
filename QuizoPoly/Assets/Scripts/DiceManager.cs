@@ -59,4 +59,19 @@ public class DiceManager : MonoBehaviour
     {
         return dice1.currentValue + dice2.currentValue;
     }
+    public bool IsDouble()
+    {
+        if (dice1 == null || dice2 == null) return false;
+        return dice1.currentValue == dice2.currentValue;
+    }
+
+    public int GetDice1Value()
+    {
+        return dice1 != null ? dice1.currentValue : 0;
+    }
+
+    public int GetDice2Value()
+    {
+        return dice2 != null ? dice2.currentValue : 0;
+    }
 }
