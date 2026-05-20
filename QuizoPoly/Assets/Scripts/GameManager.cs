@@ -28,6 +28,17 @@ public class GameManager : MonoBehaviour
 
     private bool gameStarted = false;
 
+    [Header("Bina Prefab'ları")]
+    public GameObject ownershipMarkerPrefab;  // Sadece alındı belirtisi
+    public GameObject building1Prefab;        // 1 Kat
+    public GameObject building2Prefab;        // 2 Kat
+    public GameObject building3Prefab;        // 3 Kat
+    public GameObject building4Prefab;        // 4 Kat
+    public GameObject hotelPrefab;            // Otel
+
+    [Header("Bina Yerleştirme")]
+    public float buildingHeightOffset = 0.2f;  // Tile üstünden ne kadar yukarıda
+
     // Vacation kareler için rastgele kategori seçiminde kullanılır
     private static readonly Category[] AllPlayableCategories = new Category[]
     {
@@ -263,7 +274,9 @@ public class GameManager : MonoBehaviour
             token.money -= tile.basePrice;
             tile.ownerId = token.playerId;
 
-            // Tatil bölgesi alındıysa sayacı artır
+            // Görsel güncelle: arazi alındı belirtisi koy
+            UpdateTileVisual(tile, token.playerColor);
+
             if (tile.tileType == TileType.Vacation)
             {
                 token.vacationCount++;
@@ -355,6 +368,9 @@ public class GameManager : MonoBehaviour
             tile.buildingLevel = chosenLevel;
             UpdateMoneyDisplay();
 
+            // Görsel güncelle: yeni bina yerleştir
+            UpdateTileVisual(tile, token.playerColor);
+
             string levelName = chosenLevel == 5 ? "Otel" : $"{chosenLevel} Kat";
             Debug.Log($"{token.playerName} {tile.tileName}'de {levelName} dikti! (-{totalCost} ₺)");
         }
@@ -368,5 +384,62 @@ public class GameManager : MonoBehaviour
     {
         currentPlayerIndex = (currentPlayerIndex + 1) % playerTokens.Count;
         StartNextTurn();
+    }
+    void UpdateTileVisual(Tile tile, Color ownerColor)
+    {
+        // Önce mevcut binayı sil (varsa)
+        if (tile.currentBuilding != null)
+        {
+            Destroy(tile.currentBuilding);
+            tile.currentBuilding = null;
+        }
+
+        // Sahip yoksa hiçbir şey koyma
+        if (tile.ownerId == -1)
+            return;
+
+        // Hangi prefab kullanılacak?
+        GameObject prefabToUse = GetBuildingPrefab(tile.buildingLevel);
+        if (prefabToUse == null) return;
+
+        // Tile üzerine yerleştir
+        Vector3 buildingPos = tile.transform.position + new Vector3(0, buildingHeightOffset, 0);
+        GameObject building = Instantiate(prefabToUse, buildingPos, Quaternion.identity);
+        building.transform.SetParent(tile.transform);
+        building.name = $"Building_{tile.tileName}_Level{tile.buildingLevel}";
+
+        // Oyuncunun rengine boya
+        Renderer renderer = building.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material = new Material(renderer.material);
+            renderer.material.color = ownerColor;
+        }
+
+        tile.currentBuilding = building;
+    }
+
+    GameObject GetBuildingPrefab(int buildingLevel)
+    {
+        switch (buildingLevel)
+        {
+            case 0: return ownershipMarkerPrefab;  // Sahip ama bina yok
+            case 1: return building1Prefab;
+            case 2: return building2Prefab;
+            case 3: return building3Prefab;
+            case 4: return building4Prefab;
+            case 5: return hotelPrefab;
+            default: return null;
+        }
+    }
+
+    Color GetPlayerColor(int playerId)
+    {
+        foreach (var token in playerTokens)
+        {
+            if (token.playerId == playerId)
+                return token.playerColor;
+        }
+        return Color.white;
     }
 }

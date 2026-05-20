@@ -463,17 +463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58b22493c922a344902765f14b4f8da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestionPanelUI
-  panel: {fileID: 21436286}
-  questionText: {fileID: 102007080}
-  buttonA: {fileID: 1496791613}
-  buttonB: {fileID: 894254431}
-  buttonC: {fileID: 2005641324}
-  buttonD: {fileID: 1018245725}
-  textA: {fileID: 1943344341}
-  textB: {fileID: 6022377}
-  textC: {fileID: 1079038408}
-  textD: {fileID: 172993819}
-  correctAnswerIndex: 0
 --- !u!114 &21436289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3521,11 +3510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 040f356bf6acc1c4e9b2da5b42075235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PurchasePanelUI
-  panel: {fileID: 841200939}
-  tileColorImage: {fileID: 2023739640}
-  tilePriceText: {fileID: 57618088}
-  buyButton: {fileID: 1309707476}
-  passButton: {fileID: 1599540309}
 --- !u!1 &846996208
 GameObject:
   m_ObjectHideFlags: 0
@@ -5977,6 +5961,13 @@ MonoBehaviour:
   tokenHeight: 0.5
   playerTokens: []
   currentPlayerIndex: 0
+  ownershipMarkerPrefab: {fileID: 2496601228627271645, guid: 2303a6955f0f7044f849fe78b7e93c7b, type: 3}
+  building1Prefab: {fileID: 8455652407973634397, guid: 8add1c1fa88402e4a9b6d33ccabb1599, type: 3}
+  building2Prefab: {fileID: 7258786097665940564, guid: 1acf10f18392d22459a57bd7883d3954, type: 3}
+  building3Prefab: {fileID: 7470642880340238087, guid: e8c04ce9192cf974ebf2b0c56e5ff77c, type: 3}
+  building4Prefab: {fileID: 201704792542841215, guid: f14ef0d2ee0e5684b9b0b195b4733b91, type: 3}
+  hotelPrefab: {fileID: 6160228147442452398, guid: f227bbaca96d3474db9b2ffd2bad401b, type: 3}
+  buildingHeightOffset: 0.2
 --- !u!4 &1528413693
 Transform:
   m_ObjectHideFlags: 0
@@ -7038,25 +7029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de9e74c4c776df4bb5fcb6392c03484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildingPanelUI
-  panel: {fileID: 1742251954}
-  categoryColorImage: {fileID: 432936201}
-  categoryText: {fileID: 410218280}
-  floor1Button: {fileID: 1940684078}
-  floor2Button: {fileID: 1887031718}
-  floor3Button: {fileID: 645127203}
-  floor4Button: {fileID: 698021621}
-  hotelButton: {fileID: 9417903}
-  passButton: {fileID: 1140765474}
-  floor1PriceText: {fileID: 1605800025}
-  floor2PriceText: {fileID: 1605800025}
-  floor3PriceText: {fileID: 2021920420}
-  floor4PriceText: {fileID: 475636418}
-  hotelPriceText: {fileID: 1722764466}
-  floor1Label: {fileID: 0}
-  floor2Label: {fileID: 0}
-  floor3Label: {fileID: 0}
-  floor4Label: {fileID: 0}
-  hotelLabel: {fileID: 0}
 --- !u!114 &1742251957
 MonoBehaviour:
   m_ObjectHideFlags: 0

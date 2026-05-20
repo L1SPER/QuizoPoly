@@ -10,8 +10,11 @@ public class Tile : MonoBehaviour
     public Color groupColor;
 
     [Header("Oyun Durumu")]
-    public int ownerId = -1;        // -1 = sahipsiz
-    public int buildingLevel = 0;   // 0 = boş, 1-5 binalar
+    public int ownerId = -1;
+    public int buildingLevel = 0;
+
+    [Header("Görsel")]
+    public GameObject currentBuilding;  // Şu an dikilmiş bina (referans)
 
     public void OnPlayerLanded(Player player)
     {
