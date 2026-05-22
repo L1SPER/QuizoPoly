@@ -5382,7 +5382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingDropdown
   dropdown: {fileID: 654656553}
-  defaultIndex: 0
+  defaultIndex: 1
 --- !u!224 &381529045
 RectTransform:
   m_ObjectHideFlags: 0
