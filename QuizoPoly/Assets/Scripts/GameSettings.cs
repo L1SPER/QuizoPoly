@@ -17,11 +17,11 @@ public class GameSettings : ScriptableObject
     public float buyFromOpponentMultiplier = 2f;
 
     [Header("Time")]
-    public int beginnerQuestionTime = 90;
-    public int easyQuestionTime = 60;
-    public int mediumQuestionTime = 45;
-    public int hardQuestionTime = 30;
-    public int impossibleQuestionTime = 20;
+    public int beginnerQuestionTime = 60;
+    public int easyQuestionTime = 55;
+    public int mediumQuestionTime = 50;
+    public int hardQuestionTime = 45;
+    public int impossibleQuestionTime = 40;
 
     [Header("Jail")]
     public int jailDuration = 3;

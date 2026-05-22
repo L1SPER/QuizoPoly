@@ -1,0 +1,244 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "category": "Tarih",
+      "difficulty": 1,
+      "text": "Türkiye Cumhuriyeti hangi yıl kuruldu?",
+      "choices": ["1920", "1923", "1925", "1930"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 2,
+      "category": "Tarih",
+      "difficulty": 2,
+      "text": "İstanbul'un fethi hangi yılda gerçekleşti?",
+      "choices": ["1450", "1453", "1456", "1460"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 3,
+      "category": "Tarih",
+      "difficulty": 3,
+      "text": "Çanakkale Savaşı hangi yılda yapıldı?",
+      "choices": ["1914", "1915", "1916", "1917"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 4,
+      "category": "Tarih",
+      "difficulty": 4,
+      "text": "Tanzimat Fermanı hangi yılda ilan edildi?",
+      "choices": ["1839", "1841", "1856", "1876"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 5,
+      "category": "Tarih",
+      "difficulty": 5,
+      "text": "Karlofça Antlaşması hangi yılda imzalandı?",
+      "choices": ["1683", "1699", "1718", "1739"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 6,
+      "category": "Cografya",
+      "difficulty": 1,
+      "text": "Türkiye'nin başkenti neresidir?",
+      "choices": ["İstanbul", "Ankara", "İzmir", "Bursa"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 7,
+      "category": "Cografya",
+      "difficulty": 2,
+      "text": "Türkiye'nin en uzun nehri hangisidir?",
+      "choices": ["Sakarya", "Kızılırmak", "Fırat", "Yeşilırmak"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 8,
+      "category": "Cografya",
+      "difficulty": 3,
+      "text": "Türkiye'nin en yüksek dağı hangisidir?",
+      "choices": ["Erciyes", "Ağrı Dağı", "Süphan", "Kaçkar"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 9,
+      "category": "Cografya",
+      "difficulty": 4,
+      "text": "Hangi göl Türkiye'nin en büyük gölüdür?",
+      "choices": ["Tuz Gölü", "Van Gölü", "Beyşehir", "Eğirdir"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 10,
+      "category": "Cografya",
+      "difficulty": 5,
+      "text": "Köyceğiz Gölü hangi ilimizdedir?",
+      "choices": ["Antalya", "Muğla", "Aydın", "İzmir"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 11,
+      "category": "Sanat",
+      "difficulty": 1,
+      "text": "Mona Lisa tablosunu kim yaptı?",
+      "choices": ["Van Gogh", "Da Vinci", "Picasso", "Monet"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 12,
+      "category": "Sanat",
+      "difficulty": 3,
+      "text": "Empresyonizmin öncüsü kabul edilen ressam kimdir?",
+      "choices": ["Renoir", "Monet", "Cezanne", "Manet"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 13,
+      "category": "Sanat",
+      "difficulty": 5,
+      "text": "Sürrealizm akımının önde gelen ressamı kimdir?",
+      "choices": ["Dalí", "Magritte", "Ernst", "Hepsi"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 14,
+      "category": "Spor",
+      "difficulty": 1,
+      "text": "Bir futbol takımında kaç oyuncu sahaya çıkar?",
+      "choices": ["10", "11", "12", "9"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 15,
+      "category": "Spor",
+      "difficulty": 2,
+      "text": "Türkiye hangi yıl Dünya Kupası üçüncüsü oldu?",
+      "choices": ["2000", "2002", "2004", "2006"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 16,
+      "category": "Spor",
+      "difficulty": 4,
+      "text": "NBA'de en çok şampiyonluk kazanan takım hangisidir?",
+      "choices": ["LA Lakers", "Boston Celtics", "Chicago Bulls", "Golden State"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 17,
+      "category": "Bilim",
+      "difficulty": 1,
+      "text": "Suyun kimyasal formülü nedir?",
+      "choices": ["H2O", "CO2", "O2", "H2"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 18,
+      "category": "Bilim",
+      "difficulty": 2,
+      "text": "Güneş sisteminde kaç gezegen vardır?",
+      "choices": ["7", "8", "9", "10"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 19,
+      "category": "Bilim",
+      "difficulty": 3,
+      "text": "DNA'nın yapısını çözen bilim adamı kimdir?",
+      "choices": ["Einstein", "Watson ve Crick", "Newton", "Darwin"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 20,
+      "category": "Bilim",
+      "difficulty": 5,
+      "text": "Bohr atom modelinde elektronlar hangi şekilde hareket eder?",
+      "choices": ["Düz çizgide", "Belirli enerji seviyelerinde", "Rastgele", "Helisel"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 21,
+      "category": "Muzik",
+      "difficulty": 1,
+      "text": "Müziğin yedi temel notası kaç tanedir?",
+      "choices": ["6", "7", "8", "9"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 22,
+      "category": "Muzik",
+      "difficulty": 3,
+      "text": "9. Senfoni'yi besteleyen kimdir?",
+      "choices": ["Mozart", "Beethoven", "Bach", "Chopin"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 23,
+      "category": "Muzik",
+      "difficulty": 5,
+      "text": "Türk Beşleri'nden olmayan bestecimiz hangisidir?",
+      "choices": ["Cemal Reşit Rey", "Ulvi Cemal Erkin", "Adnan Saygun", "Selim Atakan"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 24,
+      "category": "Edebiyat",
+      "difficulty": 1,
+      "text": "Çalıkuşu'nun yazarı kimdir?",
+      "choices": ["Yaşar Kemal", "Reşat Nuri Güntekin", "Orhan Pamuk", "Halit Ziya"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 25,
+      "category": "Edebiyat",
+      "difficulty": 3,
+      "text": "Sefiller romanını kim yazdı?",
+      "choices": ["Hugo", "Dumas", "Balzac", "Zola"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 26,
+      "category": "Edebiyat",
+      "difficulty": 5,
+      "text": "Servet-i Fünun döneminin önemli şairlerinden değildir?",
+      "choices": ["Tevfik Fikret", "Cenap Şahabettin", "Halit Ziya", "Mehmet Akif"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 27,
+      "category": "GenelKultur",
+      "difficulty": 1,
+      "text": "Bir yılda kaç ay vardır?",
+      "choices": ["10", "11", "12", "13"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 28,
+      "category": "GenelKultur",
+      "difficulty": 2,
+      "text": "Olimpiyat oyunları kaç yılda bir yapılır?",
+      "choices": ["2", "3", "4", "5"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 29,
+      "category": "GenelKultur",
+      "difficulty": 3,
+      "text": "Nobel Ödülü'nü kim verir?",
+      "choices": ["BM", "UNESCO", "Nobel Vakfı", "Hollanda Hükümeti"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 30,
+      "category": "GenelKultur",
+      "difficulty": 5,
+      "text": "Mona Lisa'nın orijinal adı nedir?",
+      "choices": ["La Joconde", "La Gioconda", "La Donna", "La Bella"],
+      "correctAnswer": 1
+    }
+  ]
+}

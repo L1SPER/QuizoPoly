@@ -2,10 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
+
+    // ============= IN GAME PANEL =============
+    [Header("IN GAME PANEL (Arkaplan - soru sırasında gizlenecek)")]
+    public GameObject inGamePanel;
 
     // ============= INFO PANEL =============
     [Header("INFO PANEL")]
@@ -52,6 +57,14 @@ public class UIManager : MonoBehaviour
     public TMP_Text textB;
     public TMP_Text textC;
     public TMP_Text textD;
+    public TMP_Text questionTimerText;
+    public TMP_Text questionCategoryText;
+    public TMP_Text questionDifficultyText;
+
+    [Header("QUESTION FEEDBACK RENGİ")]
+    public Color correctColor = new Color(0.2f, 0.8f, 0.2f);  // Yeşil
+    public Color wrongColor = new Color(0.9f, 0.2f, 0.2f);    // Kırmızı
+    public float feedbackDuration = 1.5f;  // Renk gösterim süresi
 
     // ============= RENT PANEL =============
     [Header("RENT PANEL")]
@@ -86,6 +99,16 @@ public class UIManager : MonoBehaviour
     private Action onPayExitClicked;
     private Action onWaitClicked;
 
+    // Süre sayacı ve feedback için
+    private Coroutine questionTimerCoroutine;
+    private bool questionAnswered = false;
+
+    // Original buton renkleri (feedback sonrası geri yüklemek için)
+    private Color originalButtonColorA;
+    private Color originalButtonColorB;
+    private Color originalButtonColorC;
+    private Color originalButtonColorD;
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -101,11 +124,30 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        // Orijinal buton renklerini kaydet (feedback sonrası geri yüklemek için)
+        if (buttonA != null) originalButtonColorA = GetButtonColor(buttonA);
+        if (buttonB != null) originalButtonColorB = GetButtonColor(buttonB);
+        if (buttonC != null) originalButtonColorC = GetButtonColor(buttonC);
+        if (buttonD != null) originalButtonColorD = GetButtonColor(buttonD);
+
         SetupPurchaseButtons();
         SetupBuildingButtons();
         SetupQuestionButtons();
         SetupRentButtons();
         SetupExitJailButtons();
+    }
+
+    Color GetButtonColor(Button btn)
+    {
+        Image img = btn.GetComponent<Image>();
+        if (img != null) return img.color;
+        return Color.white;
+    }
+
+    void SetButtonColor(Button btn, Color color)
+    {
+        Image img = btn.GetComponent<Image>();
+        if (img != null) img.color = color;
     }
 
     // ============= INFO PANEL =============
@@ -280,27 +322,208 @@ public class UIManager : MonoBehaviour
         buttonD.onClick.AddListener(() => OnAnswerClicked(3));
     }
 
+    Button GetButtonByIndex(int index)
+    {
+        switch (index)
+        {
+            case 0: return buttonA;
+            case 1: return buttonB;
+            case 2: return buttonC;
+            case 3: return buttonD;
+            default: return null;
+        }
+    }
+
     void OnAnswerClicked(int answerIndex)
     {
+        if (questionAnswered) return;
+        questionAnswered = true;
+
+        if (questionTimerCoroutine != null)
+        {
+            StopCoroutine(questionTimerCoroutine);
+            questionTimerCoroutine = null;
+        }
+
         bool correct = (answerIndex == correctAnswerIndex);
+
+        // Feedback başlat: butonları renklendir, kısa bekle, sonra kapat
+        StartCoroutine(ShowAnswerFeedback(answerIndex, correct));
+    }
+
+    IEnumerator ShowAnswerFeedback(int clickedIndex, bool correct)
+    {
+        // Tüm butonları pasif yap (oyuncu tekrar basamasın)
+        buttonA.interactable = false;
+        buttonB.interactable = false;
+        buttonC.interactable = false;
+        buttonD.interactable = false;
+
+        // Tıklanan butonun rengini ayarla
+        Button clickedButton = GetButtonByIndex(clickedIndex);
+        if (clickedButton != null)
+        {
+            SetButtonColor(clickedButton, correct ? correctColor : wrongColor);
+        }
+
+        // Eğer yanlış cevap verildiyse, doğru cevabı da yeşil göster
+        if (!correct)
+        {
+            Button correctButton = GetButtonByIndex(correctAnswerIndex);
+            if (correctButton != null)
+            {
+                SetButtonColor(correctButton, correctColor);
+            }
+        }
+
+        // Feedback süresince bekle
+        yield return new WaitForSeconds(feedbackDuration);
+
+        // Butonları orijinal renge döndür ve aktif yap
+        SetButtonColor(buttonA, originalButtonColorA);
+        SetButtonColor(buttonB, originalButtonColorB);
+        SetButtonColor(buttonC, originalButtonColorC);
+        SetButtonColor(buttonD, originalButtonColorD);
+
+        buttonA.interactable = true;
+        buttonB.interactable = true;
+        buttonC.interactable = true;
+        buttonD.interactable = true;
+
+        // Soru paneli kapanır, InGamePanel geri açılır
         questionPanel.SetActive(false);
+        if (inGamePanel != null) inGamePanel.SetActive(true);
+
         onQuestionAnswered?.Invoke(correct);
     }
 
     public void ShowQuestionPanel(Category category, int difficulty, Action<bool> answerCallback)
     {
+        if (inGamePanel != null) inGamePanel.SetActive(false);
+
         questionPanel.SetActive(true);
+        questionAnswered = false;
 
-        string difficultyName = GetDifficultyName(difficulty);
-        questionText.text = $"[{category} - {difficultyName}] Test sorusu. Dogru cevap: A";
+        // Butonları başlangıç durumuna döndür (önceki sorunun renkleri kalmasın)
+        SetButtonColor(buttonA, originalButtonColorA);
+        SetButtonColor(buttonB, originalButtonColorB);
+        SetButtonColor(buttonC, originalButtonColorC);
+        SetButtonColor(buttonD, originalButtonColorD);
+        buttonA.interactable = true;
+        buttonB.interactable = true;
+        buttonC.interactable = true;
+        buttonD.interactable = true;
 
-        textA.text = "A) Dogru cevap";
-        textB.text = "B) Yanlis 1";
-        textC.text = "C) Yanlis 2";
-        textD.text = "D) Yanlis 3";
+        Question q = null;
+        if (QuestionManager.Instance != null)
+        {
+            q = QuestionManager.Instance.GetRandomQuestion(category, difficulty);
+        }
 
-        correctAnswerIndex = 0;
+        if (q == null)
+        {
+            questionText.text = $"[{category} - {GetDifficultyName(difficulty)}] Test sorusu. Dogru cevap: A";
+            textA.text = "A) Dogru cevap";
+            textB.text = "B) Yanlis 1";
+            textC.text = "C) Yanlis 2";
+            textD.text = "D) Yanlis 3";
+            correctAnswerIndex = 0;
+        }
+        else
+        {
+            questionText.text = q.text;
+            textA.text = $"A) {q.choices[0]}";
+            textB.text = $"B) {q.choices[1]}";
+            textC.text = $"C) {q.choices[2]}";
+            textD.text = $"D) {q.choices[3]}";
+            correctAnswerIndex = q.correctAnswer;
+        }
+
+        if (questionCategoryText != null)
+            questionCategoryText.text = category.ToString().ToUpper();
+
+        if (questionDifficultyText != null)
+            questionDifficultyText.text = GetDifficultyName(difficulty).ToUpper();
+
         onQuestionAnswered = answerCallback;
+
+        int duration = GetDurationForDifficulty(difficulty);
+        if (questionTimerCoroutine != null)
+            StopCoroutine(questionTimerCoroutine);
+        questionTimerCoroutine = StartCoroutine(QuestionTimerCoroutine(duration));
+    }
+
+    int GetDurationForDifficulty(int difficulty)
+    {
+        if (GameManager.Instance == null || GameManager.Instance.gameSettings == null)
+            return 30;
+
+        var settings = GameManager.Instance.gameSettings;
+        switch (difficulty)
+        {
+            case 1: return settings.beginnerQuestionTime;
+            case 2: return settings.easyQuestionTime;
+            case 3: return settings.mediumQuestionTime;
+            case 4: return settings.hardQuestionTime;
+            case 5: return settings.impossibleQuestionTime;
+            default: return 60;
+        }
+    }
+
+    IEnumerator QuestionTimerCoroutine(int totalSeconds)
+    {
+        float remaining = totalSeconds;
+
+        while (remaining > 0 && !questionAnswered)
+        {
+            if (questionTimerText != null)
+                questionTimerText.text = Mathf.CeilToInt(remaining).ToString();
+
+            remaining -= Time.deltaTime;
+            yield return null;
+        }
+
+        if (!questionAnswered)
+        {
+            Debug.Log("Sure doldu! Yanlis sayiliyor.");
+            questionAnswered = true;
+
+            // Süre dolduğunda doğru cevabı yeşil göster, sonra kapat
+            StartCoroutine(ShowTimeoutFeedback());
+        }
+    }
+
+    IEnumerator ShowTimeoutFeedback()
+    {
+        // Butonları pasif yap
+        buttonA.interactable = false;
+        buttonB.interactable = false;
+        buttonC.interactable = false;
+        buttonD.interactable = false;
+
+        // Doğru cevabı yeşil göster
+        Button correctButton = GetButtonByIndex(correctAnswerIndex);
+        if (correctButton != null)
+        {
+            SetButtonColor(correctButton, correctColor);
+        }
+
+        yield return new WaitForSeconds(feedbackDuration);
+
+        // Butonları orijinal renge döndür
+        SetButtonColor(buttonA, originalButtonColorA);
+        SetButtonColor(buttonB, originalButtonColorB);
+        SetButtonColor(buttonC, originalButtonColorC);
+        SetButtonColor(buttonD, originalButtonColorD);
+        buttonA.interactable = true;
+        buttonB.interactable = true;
+        buttonC.interactable = true;
+        buttonD.interactable = true;
+
+        questionPanel.SetActive(false);
+        if (inGamePanel != null) inGamePanel.SetActive(true);
+
+        onQuestionAnswered?.Invoke(false);
     }
 
     string GetDifficultyName(int difficulty)
@@ -381,8 +604,6 @@ public class UIManager : MonoBehaviour
         exitJailNameText.text = jailTile.tileName;
         exitJailPriceText.text = FormatMoney(exitFee);
 
-        // Wait butonu HER ZAMAN aktif - turnsLeft > 0 ise oyuncu bekleyebilir
-        // jailTurnsLeft 0 olunca zaten zorunlu çıkış olur, panel açılmaz
         waitButton.interactable = turnsLeft > 0;
 
         onRollDicesClicked = rollDicesCallback;
