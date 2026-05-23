@@ -5,239 +5,5199 @@
       "category": "Tarih",
       "difficulty": 1,
       "text": "Türkiye Cumhuriyeti hangi yıl kuruldu?",
-      "choices": ["1920", "1923", "1925", "1930"],
+      "choices": [
+        "1920",
+        "1923",
+        "1925",
+        "1930"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 2,
       "category": "Tarih",
-      "difficulty": 2,
-      "text": "İstanbul'un fethi hangi yılda gerçekleşti?",
-      "choices": ["1450", "1453", "1456", "1460"],
+      "difficulty": 1,
+      "text": "Türkiye Cumhuriyeti'nin kurucusu kimdir?",
+      "choices": [
+        "İsmet İnönü",
+        "Mustafa Kemal Atatürk",
+        "Fevzi Çakmak",
+        "Celal Bayar"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 3,
       "category": "Tarih",
-      "difficulty": 3,
-      "text": "Çanakkale Savaşı hangi yılda yapıldı?",
-      "choices": ["1914", "1915", "1916", "1917"],
+      "difficulty": 1,
+      "text": "Çanakkale Zaferi hangi yıl kazanıldı?",
+      "choices": [
+        "1914",
+        "1915",
+        "1916",
+        "1918"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 4,
       "category": "Tarih",
-      "difficulty": 4,
-      "text": "Tanzimat Fermanı hangi yılda ilan edildi?",
-      "choices": ["1839", "1841", "1856", "1876"],
+      "difficulty": 1,
+      "text": "İstanbul hangi yıl fethedildi?",
+      "choices": [
+        "1453",
+        "1453",
+        "1463",
+        "1473"
+      ],
       "correctAnswer": 0
     },
     {
       "id": 5,
       "category": "Tarih",
-      "difficulty": 5,
-      "text": "Karlofça Antlaşması hangi yılda imzalandı?",
-      "choices": ["1683", "1699", "1718", "1739"],
+      "difficulty": 1,
+      "text": "Atatürk hangi yıl vefat etti?",
+      "choices": [
+        "1936",
+        "1938",
+        "1940",
+        "1945"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 6,
-      "category": "Cografya",
+      "category": "Tarih",
       "difficulty": 1,
-      "text": "Türkiye'nin başkenti neresidir?",
-      "choices": ["İstanbul", "Ankara", "İzmir", "Bursa"],
+      "text": "Türkiye Cumhuriyeti'nin ilk başkenti neresidir?",
+      "choices": [
+        "İstanbul",
+        "Ankara",
+        "İzmir",
+        "Bursa"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 7,
-      "category": "Cografya",
-      "difficulty": 2,
-      "text": "Türkiye'nin en uzun nehri hangisidir?",
-      "choices": ["Sakarya", "Kızılırmak", "Fırat", "Yeşilırmak"],
+      "category": "Tarih",
+      "difficulty": 1,
+      "text": "Cumhuriyet hangi ayda ilan edildi?",
+      "choices": [
+        "Eylül",
+        "Ekim",
+        "Kasım",
+        "Aralık"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 8,
-      "category": "Cografya",
-      "difficulty": 3,
-      "text": "Türkiye'nin en yüksek dağı hangisidir?",
-      "choices": ["Erciyes", "Ağrı Dağı", "Süphan", "Kaçkar"],
-      "correctAnswer": 1
+      "category": "Tarih",
+      "difficulty": 1,
+      "text": "Osmanlı Devleti'nin kurucusu kimdir?",
+      "choices": [
+        "Osman Bey",
+        "Orhan Bey",
+        "Murad Hüdavendigâr",
+        "Fatih Sultan Mehmet"
+      ],
+      "correctAnswer": 0
     },
     {
       "id": 9,
-      "category": "Cografya",
-      "difficulty": 4,
-      "text": "Hangi göl Türkiye'nin en büyük gölüdür?",
-      "choices": ["Tuz Gölü", "Van Gölü", "Beyşehir", "Eğirdir"],
-      "correctAnswer": 1
+      "category": "Tarih",
+      "difficulty": 1,
+      "text": "Cumhuriyet Bayramı hangi gün kutlanır?",
+      "choices": [
+        "29 Ekim",
+        "23 Nisan",
+        "19 Mayıs",
+        "30 Ağustos"
+      ],
+      "correctAnswer": 0
     },
     {
       "id": 10,
-      "category": "Cografya",
-      "difficulty": 5,
-      "text": "Köyceğiz Gölü hangi ilimizdedir?",
-      "choices": ["Antalya", "Muğla", "Aydın", "İzmir"],
+      "category": "Tarih",
+      "difficulty": 1,
+      "text": "Atatürk nerede doğmuştur?",
+      "choices": [
+        "İstanbul",
+        "Selanik",
+        "Manastır",
+        "İzmir"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 11,
-      "category": "Sanat",
-      "difficulty": 1,
-      "text": "Mona Lisa tablosunu kim yaptı?",
-      "choices": ["Van Gogh", "Da Vinci", "Picasso", "Monet"],
-      "correctAnswer": 1
+      "category": "Tarih",
+      "difficulty": 2,
+      "text": "Lozan Antlaşması hangi yıl imzalandı?",
+      "choices": [
+        "1920",
+        "1922",
+        "1923",
+        "1925"
+      ],
+      "correctAnswer": 2
     },
     {
       "id": 12,
-      "category": "Sanat",
-      "difficulty": 3,
-      "text": "Empresyonizmin öncüsü kabul edilen ressam kimdir?",
-      "choices": ["Renoir", "Monet", "Cezanne", "Manet"],
+      "category": "Tarih",
+      "difficulty": 2,
+      "text": "Saltanat hangi yıl kaldırıldı?",
+      "choices": [
+        "1920",
+        "1922",
+        "1923",
+        "1924"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 13,
-      "category": "Sanat",
-      "difficulty": 5,
-      "text": "Sürrealizm akımının önde gelen ressamı kimdir?",
-      "choices": ["Dalí", "Magritte", "Ernst", "Hepsi"],
-      "correctAnswer": 3
+      "category": "Tarih",
+      "difficulty": 2,
+      "text": "Halifelik hangi yıl kaldırıldı?",
+      "choices": [
+        "1922",
+        "1923",
+        "1924",
+        "1925"
+      ],
+      "correctAnswer": 2
     },
     {
       "id": 14,
-      "category": "Spor",
-      "difficulty": 1,
-      "text": "Bir futbol takımında kaç oyuncu sahaya çıkar?",
-      "choices": ["10", "11", "12", "9"],
+      "category": "Tarih",
+      "difficulty": 2,
+      "text": "İstiklal Marşı hangi yıl kabul edildi?",
+      "choices": [
+        "1920",
+        "1921",
+        "1922",
+        "1923"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 15,
-      "category": "Spor",
+      "category": "Tarih",
       "difficulty": 2,
-      "text": "Türkiye hangi yıl Dünya Kupası üçüncüsü oldu?",
-      "choices": ["2000", "2002", "2004", "2006"],
+      "text": "Sakarya Meydan Muharebesi hangi yıl yapıldı?",
+      "choices": [
+        "1920",
+        "1921",
+        "1922",
+        "1923"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 16,
-      "category": "Spor",
-      "difficulty": 4,
-      "text": "NBA'de en çok şampiyonluk kazanan takım hangisidir?",
-      "choices": ["LA Lakers", "Boston Celtics", "Chicago Bulls", "Golden State"],
+      "category": "Tarih",
+      "difficulty": 2,
+      "text": "Türk Harf İnkılabı hangi yıl yapıldı?",
+      "choices": [
+        "1925",
+        "1928",
+        "1930",
+        "1932"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 17,
-      "category": "Bilim",
-      "difficulty": 1,
-      "text": "Suyun kimyasal formülü nedir?",
-      "choices": ["H2O", "CO2", "O2", "H2"],
-      "correctAnswer": 0
-    },
-    {
-      "id": 18,
-      "category": "Bilim",
+      "category": "Tarih",
       "difficulty": 2,
-      "text": "Güneş sisteminde kaç gezegen vardır?",
-      "choices": ["7", "8", "9", "10"],
+      "text": "Kadınlara seçme ve seçilme hakkı hangi yıl verildi?",
+      "choices": [
+        "1930",
+        "1934",
+        "1938",
+        "1945"
+      ],
       "correctAnswer": 1
     },
     {
+      "id": 18,
+      "category": "Tarih",
+      "difficulty": 2,
+      "text": "Osmanlı'nın son padişahı kimdir?",
+      "choices": [
+        "Abdülhamid II",
+        "Mehmed V",
+        "Mehmed VI Vahdettin",
+        "Abdülmecid II"
+      ],
+      "correctAnswer": 2
+    },
+    {
       "id": 19,
-      "category": "Bilim",
-      "difficulty": 3,
-      "text": "DNA'nın yapısını çözen bilim adamı kimdir?",
-      "choices": ["Einstein", "Watson ve Crick", "Newton", "Darwin"],
+      "category": "Tarih",
+      "difficulty": 2,
+      "text": "Birinci Dünya Savaşı hangi yıllarda gerçekleşti?",
+      "choices": [
+        "1912-1918",
+        "1914-1918",
+        "1914-1920",
+        "1918-1923"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 20,
-      "category": "Bilim",
-      "difficulty": 5,
-      "text": "Bohr atom modelinde elektronlar hangi şekilde hareket eder?",
-      "choices": ["Düz çizgide", "Belirli enerji seviyelerinde", "Rastgele", "Helisel"],
+      "category": "Tarih",
+      "difficulty": 2,
+      "text": "İnkılap Tarihi'nde 'Erzurum Kongresi' hangi yıl yapıldı?",
+      "choices": [
+        "1918",
+        "1919",
+        "1920",
+        "1921"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 21,
-      "category": "Muzik",
-      "difficulty": 1,
-      "text": "Müziğin yedi temel notası kaç tanedir?",
-      "choices": ["6", "7", "8", "9"],
-      "correctAnswer": 1
+      "category": "Tarih",
+      "difficulty": 3,
+      "text": "Tanzimat Fermanı hangi yılda ilan edildi?",
+      "choices": [
+        "1839",
+        "1841",
+        "1856",
+        "1876"
+      ],
+      "correctAnswer": 0
     },
     {
       "id": 22,
-      "category": "Muzik",
+      "category": "Tarih",
       "difficulty": 3,
-      "text": "9. Senfoni'yi besteleyen kimdir?",
-      "choices": ["Mozart", "Beethoven", "Bach", "Chopin"],
+      "text": "Birinci Meşrutiyet hangi yıl ilan edildi?",
+      "choices": [
+        "1856",
+        "1876",
+        "1908",
+        "1923"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 23,
-      "category": "Muzik",
-      "difficulty": 5,
-      "text": "Türk Beşleri'nden olmayan bestecimiz hangisidir?",
-      "choices": ["Cemal Reşit Rey", "Ulvi Cemal Erkin", "Adnan Saygun", "Selim Atakan"],
-      "correctAnswer": 3
-    },
-    {
-      "id": 24,
-      "category": "Edebiyat",
-      "difficulty": 1,
-      "text": "Çalıkuşu'nun yazarı kimdir?",
-      "choices": ["Yaşar Kemal", "Reşat Nuri Güntekin", "Orhan Pamuk", "Halit Ziya"],
+      "category": "Tarih",
+      "difficulty": 3,
+      "text": "İkinci Meşrutiyet hangi yıl ilan edildi?",
+      "choices": [
+        "1876",
+        "1908",
+        "1918",
+        "1920"
+      ],
       "correctAnswer": 1
     },
     {
-      "id": 25,
-      "category": "Edebiyat",
+      "id": 24,
+      "category": "Tarih",
       "difficulty": 3,
-      "text": "Sefiller romanını kim yazdı?",
-      "choices": ["Hugo", "Dumas", "Balzac", "Zola"],
-      "correctAnswer": 0
-    },
-    {
-      "id": 26,
-      "category": "Edebiyat",
-      "difficulty": 5,
-      "text": "Servet-i Fünun döneminin önemli şairlerinden değildir?",
-      "choices": ["Tevfik Fikret", "Cenap Şahabettin", "Halit Ziya", "Mehmet Akif"],
-      "correctAnswer": 3
-    },
-    {
-      "id": 27,
-      "category": "GenelKultur",
-      "difficulty": 1,
-      "text": "Bir yılda kaç ay vardır?",
-      "choices": ["10", "11", "12", "13"],
+      "text": "Sevr Antlaşması hangi yıl imzalandı?",
+      "choices": [
+        "1918",
+        "1919",
+        "1920",
+        "1923"
+      ],
       "correctAnswer": 2
     },
     {
+      "id": 25,
+      "category": "Tarih",
+      "difficulty": 3,
+      "text": "İnönü Muharebeleri hangi cephede yapılmıştır?",
+      "choices": [
+        "Doğu Cephesi",
+        "Batı Cephesi",
+        "Güney Cephesi",
+        "Kafkas Cephesi"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 26,
+      "category": "Tarih",
+      "difficulty": 3,
+      "text": "Niğbolu Savaşı kim ile yapılmıştır?",
+      "choices": [
+        "Bizans",
+        "Haçlılar",
+        "Memlükler",
+        "Macarlar"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 27,
+      "category": "Tarih",
+      "difficulty": 3,
+      "text": "Hangi padişah döneminde matbaa Osmanlı'ya geldi?",
+      "choices": [
+        "II. Mustafa",
+        "III. Ahmed",
+        "I. Mahmud",
+        "III. Selim"
+      ],
+      "correctAnswer": 1
+    },
+    {
       "id": 28,
-      "category": "GenelKultur",
-      "difficulty": 2,
-      "text": "Olimpiyat oyunları kaç yılda bir yapılır?",
-      "choices": ["2", "3", "4", "5"],
+      "category": "Tarih",
+      "difficulty": 3,
+      "text": "Anadolu Selçuklu Devleti'nin kurucusu kimdir?",
+      "choices": [
+        "Tuğrul Bey",
+        "Alparslan",
+        "Süleyman Şah",
+        "Melikşah"
+      ],
       "correctAnswer": 2
     },
     {
       "id": 29,
-      "category": "GenelKultur",
+      "category": "Tarih",
       "difficulty": 3,
-      "text": "Nobel Ödülü'nü kim verir?",
-      "choices": ["BM", "UNESCO", "Nobel Vakfı", "Hollanda Hükümeti"],
-      "correctAnswer": 2
+      "text": "İlk Türk denizci-amiral kimdir?",
+      "choices": [
+        "Çaka Bey",
+        "Piri Reis",
+        "Barbaros",
+        "Turgut Reis"
+      ],
+      "correctAnswer": 0
     },
     {
       "id": 30,
+      "category": "Tarih",
+      "difficulty": 3,
+      "text": "İlk Türk-İslam devleti hangisidir?",
+      "choices": [
+        "Selçuklular",
+        "Karahanlılar",
+        "Gazneliler",
+        "Tolunoğulları"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 31,
+      "category": "Tarih",
+      "difficulty": 4,
+      "text": "Karlofça Antlaşması hangi yıl imzalandı?",
+      "choices": [
+        "1683",
+        "1699",
+        "1718",
+        "1739"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 32,
+      "category": "Tarih",
+      "difficulty": 4,
+      "text": "Pasarofça Antlaşması hangi yıl imzalandı?",
+      "choices": [
+        "1699",
+        "1718",
+        "1739",
+        "1774"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 33,
+      "category": "Tarih",
+      "difficulty": 4,
+      "text": "Küçük Kaynarca Antlaşması hangi devletle imzalandı?",
+      "choices": [
+        "Avusturya",
+        "Rusya",
+        "İran",
+        "Lehistan"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 34,
+      "category": "Tarih",
+      "difficulty": 4,
+      "text": "Mohaç Meydan Muharebesi hangi padişah döneminde yapıldı?",
+      "choices": [
+        "II. Bayezid",
+        "Yavuz Sultan Selim",
+        "Kanuni Sultan Süleyman",
+        "II. Selim"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 35,
+      "category": "Tarih",
+      "difficulty": 4,
+      "text": "Ridaniye Savaşı kim ile yapıldı?",
+      "choices": [
+        "Safeviler",
+        "Memlükler",
+        "Haçlılar",
+        "Akkoyunlular"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 36,
+      "category": "Tarih",
+      "difficulty": 4,
+      "text": "Çaldıran Savaşı hangi yıl yapıldı?",
+      "choices": [
+        "1473",
+        "1492",
+        "1514",
+        "1517"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 37,
+      "category": "Tarih",
+      "difficulty": 4,
+      "text": "Lale Devri hangi padişah döneminde yaşandı?",
+      "choices": [
+        "II. Mustafa",
+        "III. Ahmed",
+        "I. Mahmud",
+        "I. Abdülhamid"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 38,
+      "category": "Tarih",
+      "difficulty": 4,
+      "text": "Magna Carta hangi yıl ilan edildi?",
+      "choices": [
+        "1066",
+        "1215",
+        "1453",
+        "1492"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 39,
+      "category": "Tarih",
+      "difficulty": 4,
+      "text": "Fransız İhtilali hangi yılda gerçekleşti?",
+      "choices": [
+        "1776",
+        "1789",
+        "1830",
+        "1848"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 40,
+      "category": "Tarih",
+      "difficulty": 4,
+      "text": "Sanayi Devrimi ilk hangi ülkede başladı?",
+      "choices": [
+        "Almanya",
+        "Fransa",
+        "İngiltere",
+        "ABD"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 41,
+      "category": "Tarih",
+      "difficulty": 5,
+      "text": "Vestfalya Antlaşması hangi yılda imzalandı?",
+      "choices": [
+        "1618",
+        "1648",
+        "1715",
+        "1763"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 42,
+      "category": "Tarih",
+      "difficulty": 5,
+      "text": "Kanuni'nin sefer yapmadığı yer hangisidir?",
+      "choices": [
+        "Belgrad",
+        "Rodos",
+        "Malta",
+        "Viyana"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 43,
+      "category": "Tarih",
+      "difficulty": 5,
+      "text": "İnebahtı Deniz Savaşı hangi yıl yapıldı?",
+      "choices": [
+        "1538",
+        "1571",
+        "1645",
+        "1683"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 44,
+      "category": "Tarih",
+      "difficulty": 5,
+      "text": "Otlukbeli Savaşı kim ile yapıldı?",
+      "choices": [
+        "Memlükler",
+        "Akkoyunlular",
+        "Karakoyunlular",
+        "Safeviler"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 45,
+      "category": "Tarih",
+      "difficulty": 5,
+      "text": "Köprülü Mehmet Paşa hangi padişah döneminde sadrazam oldu?",
+      "choices": [
+        "IV. Murad",
+        "İbrahim",
+        "IV. Mehmed",
+        "II. Süleyman"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 46,
+      "category": "Tarih",
+      "difficulty": 5,
+      "text": "Yedi Yıl Savaşları hangi yıllar arasında yapıldı?",
+      "choices": [
+        "1740-1748",
+        "1756-1763",
+        "1789-1799",
+        "1803-1815"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 47,
+      "category": "Tarih",
+      "difficulty": 5,
+      "text": "Babür Devleti'nin kurucusu kimdir?",
+      "choices": [
+        "Timur",
+        "Babür Şah",
+        "Ekber Şah",
+        "Hümayun"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 48,
+      "category": "Tarih",
+      "difficulty": 5,
+      "text": "Hangi Bizans imparatoru Latin işgali sonrası İstanbul'u geri aldı?",
+      "choices": [
+        "I. Aleksios",
+        "II. Manuel",
+        "VIII. Mikhail",
+        "XI. Konstantinos"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 49,
+      "category": "Tarih",
+      "difficulty": 5,
+      "text": "Hangi padişah 'Kanun Koyucu' lakabıyla anılır?",
+      "choices": [
+        "Fatih Sultan Mehmet",
+        "Yavuz Sultan Selim",
+        "Kanuni Sultan Süleyman",
+        "II. Selim"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 50,
+      "category": "Tarih",
+      "difficulty": 5,
+      "text": "Türklerin Anadolu'ya kapı açtığı savaş hangisidir?",
+      "choices": [
+        "Pasinler",
+        "Dandanakan",
+        "Malazgirt",
+        "Kösedağ"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 51,
+      "category": "Cografya",
+      "difficulty": 1,
+      "text": "Türkiye'nin başkenti neresidir?",
+      "choices": [
+        "İstanbul",
+        "Ankara",
+        "İzmir",
+        "Bursa"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 52,
+      "category": "Cografya",
+      "difficulty": 1,
+      "text": "Türkiye'nin en kalabalık şehri hangisidir?",
+      "choices": [
+        "Ankara",
+        "İzmir",
+        "İstanbul",
+        "Bursa"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 53,
+      "category": "Cografya",
+      "difficulty": 1,
+      "text": "Dünyanın en büyük okyanusu hangisidir?",
+      "choices": [
+        "Atlantik",
+        "Pasifik",
+        "Hint",
+        "Arktik"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 54,
+      "category": "Cografya",
+      "difficulty": 1,
+      "text": "Hangi kıta dünyanın en büyük kıtasıdır?",
+      "choices": [
+        "Afrika",
+        "Asya",
+        "Avrupa",
+        "Amerika"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 55,
+      "category": "Cografya",
+      "difficulty": 1,
+      "text": "Türkiye hangi yarımkürede yer alır?",
+      "choices": [
+        "Güney",
+        "Kuzey",
+        "Hem kuzey hem güney",
+        "Hiçbiri"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 56,
+      "category": "Cografya",
+      "difficulty": 1,
+      "text": "Türkiye kaç bölgeden oluşur?",
+      "choices": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 57,
+      "category": "Cografya",
+      "difficulty": 1,
+      "text": "Karadeniz Türkiye'nin hangi bölgesindedir?",
+      "choices": [
+        "Kuzey",
+        "Güney",
+        "Doğu",
+        "Batı"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 58,
+      "category": "Cografya",
+      "difficulty": 1,
+      "text": "Hangi şehir İç Anadolu'da değildir?",
+      "choices": [
+        "Ankara",
+        "Konya",
+        "İzmir",
+        "Kayseri"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 59,
+      "category": "Cografya",
+      "difficulty": 1,
+      "text": "Türkiye'nin en büyük gölü hangisidir?",
+      "choices": [
+        "Tuz Gölü",
+        "Van Gölü",
+        "Beyşehir",
+        "Eğirdir"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 60,
+      "category": "Cografya",
+      "difficulty": 1,
+      "text": "İstanbul hangi iki kıtayı birleştirir?",
+      "choices": [
+        "Asya-Afrika",
+        "Avrupa-Asya",
+        "Avrupa-Afrika",
+        "Amerika-Asya"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 61,
+      "category": "Cografya",
+      "difficulty": 2,
+      "text": "Türkiye'nin en uzun nehri hangisidir?",
+      "choices": [
+        "Sakarya",
+        "Kızılırmak",
+        "Fırat",
+        "Yeşilırmak"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 62,
+      "category": "Cografya",
+      "difficulty": 2,
+      "text": "Türkiye'nin en yüksek dağı hangisidir?",
+      "choices": [
+        "Erciyes",
+        "Ağrı Dağı",
+        "Süphan",
+        "Kaçkar"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 63,
+      "category": "Cografya",
+      "difficulty": 2,
+      "text": "Boğaziçi Köprüsü ne zaman açıldı?",
+      "choices": [
+        "1970",
+        "1973",
+        "1976",
+        "1980"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 64,
+      "category": "Cografya",
+      "difficulty": 2,
+      "text": "Dünyanın en büyük gölü hangisidir?",
+      "choices": [
+        "Hazar Denizi",
+        "Superior Gölü",
+        "Victoria Gölü",
+        "Baykal Gölü"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 65,
+      "category": "Cografya",
+      "difficulty": 2,
+      "text": "Pamukkale hangi ilimizdedir?",
+      "choices": [
+        "Antalya",
+        "Aydın",
+        "Denizli",
+        "Muğla"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 66,
+      "category": "Cografya",
+      "difficulty": 2,
+      "text": "Türkiye'nin en uzun kıyısı hangi denize bakar?",
+      "choices": [
+        "Karadeniz",
+        "Akdeniz",
+        "Ege",
+        "Marmara"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 67,
+      "category": "Cografya",
+      "difficulty": 2,
+      "text": "Kapadokya hangi ilimizdedir?",
+      "choices": [
+        "Kayseri",
+        "Nevşehir",
+        "Niğde",
+        "Aksaray"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 68,
+      "category": "Cografya",
+      "difficulty": 2,
+      "text": "Mısır'ın başkenti neresidir?",
+      "choices": [
+        "Kahire",
+        "İskenderiye",
+        "Aswan",
+        "Luxor"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 69,
+      "category": "Cografya",
+      "difficulty": 2,
+      "text": "Hangi ülke Akdeniz'e kıyısı olmayan tek balkan ülkesidir?",
+      "choices": [
+        "Yunanistan",
+        "Sırbistan",
+        "Arnavutluk",
+        "Karadağ"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 70,
+      "category": "Cografya",
+      "difficulty": 2,
+      "text": "Türkiye'nin doğusundaki komşu ülke hangisidir?",
+      "choices": [
+        "Suriye",
+        "İran",
+        "Irak",
+        "Azerbaycan"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 71,
+      "category": "Cografya",
+      "difficulty": 3,
+      "text": "Hangi göl Türkiye'nin en büyük gölüdür?",
+      "choices": [
+        "Tuz Gölü",
+        "Van Gölü",
+        "Beyşehir",
+        "Eğirdir"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 72,
+      "category": "Cografya",
+      "difficulty": 3,
+      "text": "Türkiye'nin en güneyinde bulunan il hangisidir?",
+      "choices": [
+        "Mersin",
+        "Antalya",
+        "Hatay",
+        "Adana"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 73,
+      "category": "Cografya",
+      "difficulty": 3,
+      "text": "Sahra Çölü hangi kıtadadır?",
+      "choices": [
+        "Asya",
+        "Afrika",
+        "Avustralya",
+        "Amerika"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 74,
+      "category": "Cografya",
+      "difficulty": 3,
+      "text": "Dünyanın en uzun nehri hangisidir?",
+      "choices": [
+        "Amazon",
+        "Nil",
+        "Mississippi",
+        "Yangtze"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 75,
+      "category": "Cografya",
+      "difficulty": 3,
+      "text": "Everest Dağı hangi sıradağda yer alır?",
+      "choices": [
+        "Andlar",
+        "Alpler",
+        "Kayalık Dağları",
+        "Himalayalar"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 76,
+      "category": "Cografya",
+      "difficulty": 3,
+      "text": "Türkiye'nin yüzölçümü yaklaşık kaç km²'dir?",
+      "choices": [
+        "650 bin",
+        "780 bin",
+        "900 bin",
+        "1 milyon"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 77,
+      "category": "Cografya",
+      "difficulty": 3,
+      "text": "Norveç'in başkenti neresidir?",
+      "choices": [
+        "Stockholm",
+        "Helsinki",
+        "Oslo",
+        "Kopenhag"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 78,
+      "category": "Cografya",
+      "difficulty": 3,
+      "text": "Hangi denizimiz tektonik kökenli değildir?",
+      "choices": [
+        "Karadeniz",
+        "Marmara",
+        "Akdeniz",
+        "Ege"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 79,
+      "category": "Cografya",
+      "difficulty": 3,
+      "text": "Aral Gölü hangi iki ülke arasında yer alır?",
+      "choices": [
+        "Rusya-Çin",
+        "Kazakistan-Özbekistan",
+        "İran-Türkmenistan",
+        "Pakistan-Hindistan"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 80,
+      "category": "Cografya",
+      "difficulty": 3,
+      "text": "Türkiye'nin en doğusundaki il hangisidir?",
+      "choices": [
+        "Ağrı",
+        "Iğdır",
+        "Hakkari",
+        "Van"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 81,
+      "category": "Cografya",
+      "difficulty": 4,
+      "text": "Köyceğiz Gölü hangi ilimizdedir?",
+      "choices": [
+        "Antalya",
+        "Muğla",
+        "Aydın",
+        "İzmir"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 82,
+      "category": "Cografya",
+      "difficulty": 4,
+      "text": "Dünyanın en derin gölü hangisidir?",
+      "choices": [
+        "Hazar",
+        "Superior",
+        "Baykal",
+        "Tanganika"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 83,
+      "category": "Cografya",
+      "difficulty": 4,
+      "text": "Türkiye'nin yeryüzü şekilleri açısından en engebeli bölgesi hangisidir?",
+      "choices": [
+        "Karadeniz",
+        "Doğu Anadolu",
+        "Marmara",
+        "Ege"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 84,
+      "category": "Cografya",
+      "difficulty": 4,
+      "text": "Demirkapı Yaylası hangi sıradağdadır?",
+      "choices": [
+        "Toroslar",
+        "Karadeniz Dağları",
+        "Beydağları",
+        "Yıldız Dağları"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 85,
+      "category": "Cografya",
+      "difficulty": 4,
+      "text": "Türkiye'nin en yağışlı yeri neresidir?",
+      "choices": [
+        "Rize",
+        "Trabzon",
+        "Hopa",
+        "Artvin"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 86,
+      "category": "Cografya",
+      "difficulty": 4,
+      "text": "Hangi bölge fındık üretiminde lider?",
+      "choices": [
+        "Marmara",
+        "Karadeniz",
+        "Ege",
+        "Akdeniz"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 87,
+      "category": "Cografya",
+      "difficulty": 4,
+      "text": "Mariana Çukuru hangi okyanustadır?",
+      "choices": [
+        "Atlantik",
+        "Pasifik",
+        "Hint",
+        "Arktik"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 88,
+      "category": "Cografya",
+      "difficulty": 4,
+      "text": "Gediz Nehri hangi denize dökülür?",
+      "choices": [
+        "Karadeniz",
+        "Ege",
+        "Akdeniz",
+        "Marmara"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 89,
+      "category": "Cografya",
+      "difficulty": 4,
+      "text": "Türkiye'nin yer aldığı plaka hangisidir?",
+      "choices": [
+        "Avrasya",
+        "Anadolu",
+        "Arabistan",
+        "Afrika"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 90,
+      "category": "Cografya",
+      "difficulty": 4,
+      "text": "Dünyanın en alçak kara parçası neresidir?",
+      "choices": [
+        "Karadağ",
+        "Ölü Deniz Çukuru",
+        "Lut Çölü",
+        "Vadi-i Sina"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 91,
+      "category": "Cografya",
+      "difficulty": 5,
+      "text": "Türkiye'nin en yüksek volkanik dağı hangisidir?",
+      "choices": [
+        "Erciyes",
+        "Süphan",
+        "Ağrı Dağı",
+        "Hasan Dağı"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 92,
+      "category": "Cografya",
+      "difficulty": 5,
+      "text": "Konya Ovası'nda hangi göl bulunmaz?",
+      "choices": [
+        "Akşehir",
+        "Beyşehir",
+        "Tuz Gölü",
+        "Burdur"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 93,
+      "category": "Cografya",
+      "difficulty": 5,
+      "text": "Dünyanın en geniş yarımadası hangisidir?",
+      "choices": [
+        "Arabistan",
+        "Hindistan",
+        "Skandinavya",
+        "Anadolu"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 94,
+      "category": "Cografya",
+      "difficulty": 5,
+      "text": "Hangi nehir Karadeniz'e dökülür?",
+      "choices": [
+        "Gediz",
+        "Aras",
+        "Çoruh",
+        "Asi"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 95,
+      "category": "Cografya",
+      "difficulty": 5,
+      "text": "Sof Dağı hangi ilimizde yer alır?",
+      "choices": [
+        "Gaziantep",
+        "Şanlıurfa",
+        "Mardin",
+        "Adıyaman"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 96,
+      "category": "Cografya",
+      "difficulty": 5,
+      "text": "Sundra Adaları hangi ülkededir?",
+      "choices": [
+        "Filipinler",
+        "Endonezya",
+        "Malezya",
+        "Tayland"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 97,
+      "category": "Cografya",
+      "difficulty": 5,
+      "text": "Karpat Dağları hangi ülkede yer almaz?",
+      "choices": [
+        "Romanya",
+        "Slovakya",
+        "Polonya",
+        "Bulgaristan"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 98,
+      "category": "Cografya",
+      "difficulty": 5,
+      "text": "Hangi okyanus akıntısı İngiltere ikliminde etkilidir?",
+      "choices": [
+        "Labrador",
+        "Gulf Stream",
+        "Kuroshio",
+        "Humboldt"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 99,
+      "category": "Cografya",
+      "difficulty": 5,
+      "text": "Türkiye'nin en küçük il hangisidir?",
+      "choices": [
+        "Kilis",
+        "Yalova",
+        "Bartın",
+        "Düzce"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 100,
+      "category": "Cografya",
+      "difficulty": 5,
+      "text": "Hangi şehir 'Yedi Tepeler' şehri olarak bilinir?",
+      "choices": [
+        "Roma",
+        "İstanbul",
+        "Atina",
+        "Hepsi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 101,
+      "category": "Sanat",
+      "difficulty": 1,
+      "text": "Mona Lisa tablosunu kim yaptı?",
+      "choices": [
+        "Van Gogh",
+        "Da Vinci",
+        "Picasso",
+        "Monet"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 102,
+      "category": "Sanat",
+      "difficulty": 1,
+      "text": "Eiffel Kulesi nerede bulunur?",
+      "choices": [
+        "Roma",
+        "Londra",
+        "Paris",
+        "Berlin"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 103,
+      "category": "Sanat",
+      "difficulty": 1,
+      "text": "'Yıldızlı Gece' adlı ünlü tablo kime aittir?",
+      "choices": [
+        "Picasso",
+        "Monet",
+        "Van Gogh",
+        "Dali"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 104,
+      "category": "Sanat",
+      "difficulty": 1,
+      "text": "Tiyatroda 'monolog' ne demektir?",
+      "choices": [
+        "İki kişilik konuşma",
+        "Tek kişilik konuşma",
+        "Üç kişilik konuşma",
+        "Toplu konuşma"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 105,
+      "category": "Sanat",
+      "difficulty": 1,
+      "text": "Rönesans hangi ülkede başladı?",
+      "choices": [
+        "Fransa",
+        "İtalya",
+        "İspanya",
+        "Almanya"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 106,
+      "category": "Sanat",
+      "difficulty": 1,
+      "text": "Heykel sanatında 'David' heykeli kime aittir?",
+      "choices": [
+        "Da Vinci",
+        "Michelangelo",
+        "Donatello",
+        "Rafael"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 107,
+      "category": "Sanat",
+      "difficulty": 1,
+      "text": "Renkleri birleştirerek yeni renk elde etme sanatına ne denir?",
+      "choices": [
+        "Karışım",
+        "Palet",
+        "Tonlama",
+        "Renk teorisi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 108,
+      "category": "Sanat",
+      "difficulty": 1,
+      "text": "'Çığlık' tablosu kime aittir?",
+      "choices": [
+        "Munch",
+        "Van Gogh",
+        "Dali",
+        "Picasso"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 109,
+      "category": "Sanat",
+      "difficulty": 1,
+      "text": "Topkapı Sarayı hangi şehirdedir?",
+      "choices": [
+        "Ankara",
+        "İstanbul",
+        "Bursa",
+        "Edirne"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 110,
+      "category": "Sanat",
+      "difficulty": 1,
+      "text": "Renkler hangi ilkelere göre düzenlenir?",
+      "choices": [
+        "Renk çemberi",
+        "Ölçek",
+        "Perspektif",
+        "Hepsi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 111,
+      "category": "Sanat",
+      "difficulty": 2,
+      "text": "Picasso hangi sanat akımının öncüsüdür?",
+      "choices": [
+        "Empresyonizm",
+        "Kübizm",
+        "Fovizm",
+        "Sürrealizm"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 112,
+      "category": "Sanat",
+      "difficulty": 2,
+      "text": "Selimiye Camii'nin mimarı kimdir?",
+      "choices": [
+        "Sinan",
+        "Davut Ağa",
+        "Mimar Hayreddin",
+        "Sedefkar Mehmed Ağa"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 113,
+      "category": "Sanat",
+      "difficulty": 2,
+      "text": "Sistine Şapeli tavanını kim resmetmiştir?",
+      "choices": [
+        "Da Vinci",
+        "Rafael",
+        "Michelangelo",
+        "Botticelli"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 114,
+      "category": "Sanat",
+      "difficulty": 2,
+      "text": "'Son Akşam Yemeği' tablosu kime aittir?",
+      "choices": [
+        "Da Vinci",
+        "Michelangelo",
+        "Rafael",
+        "Caravaggio"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 115,
+      "category": "Sanat",
+      "difficulty": 2,
+      "text": "Türk hat sanatında 'celi' ne demektir?",
+      "choices": [
+        "Küçük yazı",
+        "Büyük yazı",
+        "Süslü yazı",
+        "İnce yazı"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 116,
+      "category": "Sanat",
+      "difficulty": 2,
+      "text": "Empresyonizmin başlatıcısı kabul edilen tablo hangisidir?",
+      "choices": [
+        "İzlenim, Gün Doğumu",
+        "Yıldızlı Gece",
+        "Mona Lisa",
+        "Çığlık"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 117,
+      "category": "Sanat",
+      "difficulty": 2,
+      "text": "Hangi sanatçı kulağını kesmiştir?",
+      "choices": [
+        "Monet",
+        "Van Gogh",
+        "Picasso",
+        "Dali"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 118,
+      "category": "Sanat",
+      "difficulty": 2,
+      "text": "Heykel hangi malzemeyle yapılmaz?",
+      "choices": [
+        "Mermer",
+        "Bronz",
+        "Ahşap",
+        "Hepsi yapılır"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 119,
+      "category": "Sanat",
+      "difficulty": 2,
+      "text": "Türk minyatür sanatının en önemli ustası kimdir?",
+      "choices": [
+        "Levni",
+        "Matrakçı Nasuh",
+        "Nakkaş Osman",
+        "Hepsi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 120,
+      "category": "Sanat",
+      "difficulty": 2,
+      "text": "'Sanat sanat içindir' ilkesi hangi akıma aittir?",
+      "choices": [
+        "Romantizm",
+        "Klasisizm",
+        "Realizm",
+        "Parnasizm"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 121,
+      "category": "Sanat",
+      "difficulty": 3,
+      "text": "Empresyonizmin öncüsü kabul edilen ressam kimdir?",
+      "choices": [
+        "Renoir",
+        "Monet",
+        "Cezanne",
+        "Manet"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 122,
+      "category": "Sanat",
+      "difficulty": 3,
+      "text": "Sultanahmet Camii kim tarafından yapılmıştır?",
+      "choices": [
+        "Mimar Sinan",
+        "Sedefkar Mehmed Ağa",
+        "Davut Ağa",
+        "Mehmed Ağa"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 123,
+      "category": "Sanat",
+      "difficulty": 3,
+      "text": "Pop Art akımının öncüsü kimdir?",
+      "choices": [
+        "Andy Warhol",
+        "Jackson Pollock",
+        "Mark Rothko",
+        "Roy Lichtenstein"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 124,
+      "category": "Sanat",
+      "difficulty": 3,
+      "text": "Türk Beşleri'nden hangisi mimar değildir?",
+      "choices": [
+        "Vedat Tek",
+        "Kemalettin Bey",
+        "Sedad Hakkı Eldem",
+        "Mimar Kemaleddin"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 125,
+      "category": "Sanat",
+      "difficulty": 3,
+      "text": "Bauhaus okulu hangi ülkede kurulmuştur?",
+      "choices": [
+        "Fransa",
+        "Almanya",
+        "İtalya",
+        "İngiltere"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 126,
+      "category": "Sanat",
+      "difficulty": 3,
+      "text": "'Guernica' tablosu kime aittir?",
+      "choices": [
+        "Dali",
+        "Picasso",
+        "Miró",
+        "Goya"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 127,
+      "category": "Sanat",
+      "difficulty": 3,
+      "text": "Pera Müzesi hangi şehirdedir?",
+      "choices": [
+        "Ankara",
+        "İstanbul",
+        "İzmir",
+        "Bursa"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 128,
+      "category": "Sanat",
+      "difficulty": 3,
+      "text": "Hangi sanatçı 'absurd tiyatro' örnekleri vermiştir?",
+      "choices": [
+        "Brecht",
+        "Ionesco",
+        "Çehov",
+        "Shakespeare"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 129,
+      "category": "Sanat",
+      "difficulty": 3,
+      "text": "Anadolu'da ilk müze hangi şehirde kurulmuştur?",
+      "choices": [
+        "İstanbul",
+        "İzmir",
+        "Bursa",
+        "Ankara"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 130,
+      "category": "Sanat",
+      "difficulty": 3,
+      "text": "Türkiye'de ilk resim sergisi hangi yıl açılmıştır?",
+      "choices": [
+        "1873",
+        "1893",
+        "1901",
+        "1923"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 131,
+      "category": "Sanat",
+      "difficulty": 4,
+      "text": "Türk resim sanatında 'Çallı Kuşağı'nın lideri kimdir?",
+      "choices": [
+        "İbrahim Çallı",
+        "Hikmet Onat",
+        "Avni Lifij",
+        "Namık İsmail"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 132,
+      "category": "Sanat",
+      "difficulty": 4,
+      "text": "Dadaizm akımı nerede başlamıştır?",
+      "choices": [
+        "Paris",
+        "Berlin",
+        "Zürih",
+        "Milano"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 133,
+      "category": "Sanat",
+      "difficulty": 4,
+      "text": "Türk resminde 'Müstakil Ressamlar' grubu hangi yıl kurulmuştur?",
+      "choices": [
+        "1909",
+        "1923",
+        "1929",
+        "1933"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 134,
+      "category": "Sanat",
+      "difficulty": 4,
+      "text": "Hangi mimar 'Az çoktur' (Less is more) sözünün sahibidir?",
+      "choices": [
+        "Le Corbusier",
+        "Mies van der Rohe",
+        "Frank Lloyd Wright",
+        "Gropius"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 135,
+      "category": "Sanat",
+      "difficulty": 4,
+      "text": "Türk minyatür sanatında 'Sürname' kimin eseridir?",
+      "choices": [
+        "Levni",
+        "Nakkaş Osman",
+        "Matrakçı Nasuh",
+        "Şehname-i Selim Han"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 136,
+      "category": "Sanat",
+      "difficulty": 4,
+      "text": "Renoir hangi sanat akımına dahildir?",
+      "choices": [
+        "Empresyonizm",
+        "Post-Empresyonizm",
+        "Realizm",
+        "Romantizm"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 137,
+      "category": "Sanat",
+      "difficulty": 4,
+      "text": "Türk resminde 'D Grubu' hangi yıl kuruldu?",
+      "choices": [
+        "1923",
+        "1929",
+        "1933",
+        "1939"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 138,
+      "category": "Sanat",
+      "difficulty": 4,
+      "text": "Vincent Van Gogh hangi ülke vatandaşıdır?",
+      "choices": [
+        "Fransa",
+        "Belçika",
+        "Hollanda",
+        "Almanya"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 139,
+      "category": "Sanat",
+      "difficulty": 4,
+      "text": "Bizans sanatında 'pantokrator' ne ifade eder?",
+      "choices": [
+        "Aziz",
+        "Tüm güçlü İsa",
+        "Meryem",
+        "Havari"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 140,
+      "category": "Sanat",
+      "difficulty": 4,
+      "text": "Mimar Sinan'ın en olgun eseri kabul edilen yapı hangisidir?",
+      "choices": [
+        "Süleymaniye Camii",
+        "Selimiye Camii",
+        "Şehzade Camii",
+        "Mihrimah Sultan Camii"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 141,
+      "category": "Sanat",
+      "difficulty": 5,
+      "text": "Sürrealizm akımının önde gelen ressamı kimdir?",
+      "choices": [
+        "Dalí",
+        "Magritte",
+        "Ernst",
+        "Hepsi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 142,
+      "category": "Sanat",
+      "difficulty": 5,
+      "text": "Türk seramik sanatının en ünlü merkezi neresidir?",
+      "choices": [
+        "Kütahya",
+        "İznik",
+        "Avanos",
+        "Hepsi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 143,
+      "category": "Sanat",
+      "difficulty": 5,
+      "text": "'Görme Biçimleri' kitabının yazarı kimdir?",
+      "choices": [
+        "John Berger",
+        "Ernst Gombrich",
+        "Walter Benjamin",
+        "Susan Sontag"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 144,
+      "category": "Sanat",
+      "difficulty": 5,
+      "text": "Hangi mimar 'Dans Eden Ev'i tasarlamıştır?",
+      "choices": [
+        "Frank Gehry",
+        "Vlado Milunić",
+        "Hepsi",
+        "Antoni Gaudí"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 145,
+      "category": "Sanat",
+      "difficulty": 5,
+      "text": "Türk hat sanatında 'Şeyh Hamdullah ekolü' hangi yazı türündedir?",
+      "choices": [
+        "Sülüs",
+        "Nesih",
+        "Aklam-ı Sitte",
+        "Talik"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 146,
+      "category": "Sanat",
+      "difficulty": 5,
+      "text": "Bauhaus okulu kim tarafından kurulmuştur?",
+      "choices": [
+        "Walter Gropius",
+        "Mies van der Rohe",
+        "Le Corbusier",
+        "Marcel Breuer"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 147,
+      "category": "Sanat",
+      "difficulty": 5,
+      "text": "Hangi tablo Louvre'da değildir?",
+      "choices": [
+        "Mona Lisa",
+        "Venüs Doğuyor",
+        "Özgürlük Halkı Yönetiyor",
+        "Medusa'nın Salı"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 148,
+      "category": "Sanat",
+      "difficulty": 5,
+      "text": "Türk modern resminde 'Soyut' sanatın ilk temsilcisi kimdir?",
+      "choices": [
+        "Nuri İyem",
+        "Adnan Çoker",
+        "Sabri Berkel",
+        "Cemal Tollu"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 149,
+      "category": "Sanat",
+      "difficulty": 5,
+      "text": "Antik Yunan tiyatrosunda 'koros' nedir?",
+      "choices": [
+        "Solist",
+        "Topluluk şarkıcılar",
+        "Yönetmen",
+        "Sahne tasarımcısı"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 150,
+      "category": "Sanat",
+      "difficulty": 5,
+      "text": "Hangi sanatçı 'sanatın ölümü' iddiasının sahibidir?",
+      "choices": [
+        "Andy Warhol",
+        "Joseph Beuys",
+        "Marcel Duchamp",
+        "Hegel"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 151,
+      "category": "Spor",
+      "difficulty": 1,
+      "text": "Bir futbol takımında kaç oyuncu sahaya çıkar?",
+      "choices": [
+        "10",
+        "11",
+        "12",
+        "9"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 152,
+      "category": "Spor",
+      "difficulty": 1,
+      "text": "Olimpiyat halkaları kaç tanedir?",
+      "choices": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 153,
+      "category": "Spor",
+      "difficulty": 1,
+      "text": "Basketbolda bir takımda kaç oyuncu sahada bulunur?",
+      "choices": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 154,
+      "category": "Spor",
+      "difficulty": 1,
+      "text": "Voleybolda bir takım kaç oyuncu ile oynar?",
+      "choices": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 155,
+      "category": "Spor",
+      "difficulty": 1,
+      "text": "Türkiye'nin en büyük spor kulüpleri arasında olmayan hangisidir?",
+      "choices": [
+        "Fenerbahçe",
+        "Galatasaray",
+        "Beşiktaş",
+        "Real Madrid"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 156,
+      "category": "Spor",
+      "difficulty": 1,
+      "text": "Bir tenis maçında kaç set oynanır (genelde)?",
+      "choices": [
+        "2-3",
+        "3-5",
+        "5-7",
+        "7"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 157,
+      "category": "Spor",
+      "difficulty": 1,
+      "text": "Dünya Kupası kaç yılda bir yapılır?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 158,
+      "category": "Spor",
+      "difficulty": 1,
+      "text": "Yüzme hangi olimpiyat sporudur?",
+      "choices": [
+        "Yaz",
+        "Kış",
+        "Hem yaz hem kış",
+        "Olimpiyatta yok"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 159,
+      "category": "Spor",
+      "difficulty": 1,
+      "text": "Türkiye'nin yağmacı olarak adlandırılan futbol takımı hangisidir?",
+      "choices": [
+        "Galatasaray",
+        "Beşiktaş",
+        "Fenerbahçe",
+        "Trabzonspor"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 160,
+      "category": "Spor",
+      "difficulty": 1,
+      "text": "Boks ringi hangi şekildedir?",
+      "choices": [
+        "Yuvarlak",
+        "Kare",
+        "Üçgen",
+        "Sekizgen"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 161,
+      "category": "Spor",
+      "difficulty": 2,
+      "text": "Türkiye hangi yıl Dünya Kupası üçüncüsü oldu?",
+      "choices": [
+        "2000",
+        "2002",
+        "2004",
+        "2006"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 162,
+      "category": "Spor",
+      "difficulty": 2,
+      "text": "FIFA Dünya Kupası'nı en çok hangi ülke kazanmıştır?",
+      "choices": [
+        "Almanya",
+        "Arjantin",
+        "Brezilya",
+        "İtalya"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 163,
+      "category": "Spor",
+      "difficulty": 2,
+      "text": "Tour de France hangi sporda bir yarışmadır?",
+      "choices": [
+        "Atletizm",
+        "Bisiklet",
+        "Maraton",
+        "Yelken"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 164,
+      "category": "Spor",
+      "difficulty": 2,
+      "text": "Naim Süleymanoğlu hangi sporda dünya şampiyonudur?",
+      "choices": [
+        "Güreş",
+        "Halter",
+        "Atletizm",
+        "Boks"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 165,
+      "category": "Spor",
+      "difficulty": 2,
+      "text": "Galatasaray UEFA Kupası'nı hangi yıl kazandı?",
+      "choices": [
+        "1998",
+        "2000",
+        "2001",
+        "2003"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 166,
+      "category": "Spor",
+      "difficulty": 2,
+      "text": "Bir golf sahasında genelde kaç hole bulunur?",
+      "choices": [
+        "9",
+        "12",
+        "18",
+        "24"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 167,
+      "category": "Spor",
+      "difficulty": 2,
+      "text": "İlk modern olimpiyatlar hangi yıl yapıldı?",
+      "choices": [
+        "1892",
+        "1896",
+        "1900",
+        "1904"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 168,
+      "category": "Spor",
+      "difficulty": 2,
+      "text": "Hangi spor 'beyaz oyun' olarak da bilinir?",
+      "choices": [
+        "Tenis",
+        "Golf",
+        "Kriket",
+        "Voleybol"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 169,
+      "category": "Spor",
+      "difficulty": 2,
+      "text": "Wimbledon hangi sporun en prestijli turnuvasıdır?",
+      "choices": [
+        "Golf",
+        "Tenis",
+        "Kriket",
+        "Badminton"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 170,
+      "category": "Spor",
+      "difficulty": 2,
+      "text": "Bir basketbol maçı kaç çeyrekten oluşur?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 171,
+      "category": "Spor",
+      "difficulty": 3,
+      "text": "Hangi futbolcu Galatasaray formasıyla en çok gol attı?",
+      "choices": [
+        "Hakan Şükür",
+        "Metin Oktay",
+        "Tanju Çolak",
+        "Tugay Kerimoğlu"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 172,
+      "category": "Spor",
+      "difficulty": 3,
+      "text": "Kıbrıslı Süreyya Ayhan hangi sporda Avrupa şampiyonu oldu?",
+      "choices": [
+        "100m",
+        "1500m",
+        "Maraton",
+        "Yüksek atlama"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 173,
+      "category": "Spor",
+      "difficulty": 3,
+      "text": "Hangi tenis grand slam'i kort yüzeyi topraktır?",
+      "choices": [
+        "Wimbledon",
+        "Avustralya Açık",
+        "Fransa Açık",
+        "ABD Açık"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 174,
+      "category": "Spor",
+      "difficulty": 3,
+      "text": "Galatasaray'ın UEFA Kupası finalindeki rakibi kimdi?",
+      "choices": [
+        "Arsenal",
+        "Real Madrid",
+        "Liverpool",
+        "Chelsea"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 175,
+      "category": "Spor",
+      "difficulty": 3,
+      "text": "Hangi yıl FIFA Dünya Kupası ev sahibi Brezilya idi (en son)?",
+      "choices": [
+        "2010",
+        "2014",
+        "2018",
+        "2022"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 176,
+      "category": "Spor",
+      "difficulty": 3,
+      "text": "Cep Herkülü lakaplı sporcumuz kimdir?",
+      "choices": [
+        "Halil Mutlu",
+        "Naim Süleymanoğlu",
+        "Süreyya Ayhan",
+        "Hamza Yerlikaya"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 177,
+      "category": "Spor",
+      "difficulty": 3,
+      "text": "Tour de France ne kadar sürer?",
+      "choices": [
+        "2 hafta",
+        "3 hafta",
+        "1 ay",
+        "6 hafta"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 178,
+      "category": "Spor",
+      "difficulty": 3,
+      "text": "Türkiye Süper Lig'i ne zaman kuruldu?",
+      "choices": [
+        "1959",
+        "1971",
+        "1980",
+        "1985"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 179,
+      "category": "Spor",
+      "difficulty": 3,
+      "text": "Hangi futbolcu 'Kral' lakabıyla anılır?",
+      "choices": [
+        "Pele",
+        "Maradona",
+        "Cristiano Ronaldo",
+        "Messi"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 180,
+      "category": "Spor",
+      "difficulty": 3,
+      "text": "Türkiye'nin ilk olimpiyat şampiyonu kimdir?",
+      "choices": [
+        "Yaşar Erkan",
+        "Yaşar Doğu",
+        "Celal Atik",
+        "Naim Süleymanoğlu"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 181,
+      "category": "Spor",
+      "difficulty": 4,
+      "text": "NBA'de en çok şampiyonluk kazanan takım hangisidir?",
+      "choices": [
+        "LA Lakers",
+        "Boston Celtics",
+        "Chicago Bulls",
+        "Golden State"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 182,
+      "category": "Spor",
+      "difficulty": 4,
+      "text": "Süleyman Atlı hangi sporda dünya şampiyonu olmuştur?",
+      "choices": [
+        "Güreş",
+        "Halter",
+        "Atletizm",
+        "Karate"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 183,
+      "category": "Spor",
+      "difficulty": 4,
+      "text": "Hangi futbolcu Ballon d'Or'u en çok kazanmıştır?",
+      "choices": [
+        "Pele",
+        "Maradona",
+        "Messi",
+        "Cristiano Ronaldo"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 184,
+      "category": "Spor",
+      "difficulty": 4,
+      "text": "İlk Türk olimpiyat madalyası hangi yıl alındı?",
+      "choices": [
+        "1928",
+        "1936",
+        "1948",
+        "1952"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 185,
+      "category": "Spor",
+      "difficulty": 4,
+      "text": "Eski Türk antik sporu hangisidir?",
+      "choices": [
+        "Cirit",
+        "Yağlı güreş",
+        "Okçuluk",
+        "Hepsi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 186,
+      "category": "Spor",
+      "difficulty": 4,
+      "text": "Hangi golf turnuvası 'Major' değildir?",
+      "choices": [
+        "Masters",
+        "PGA",
+        "Ryder Cup",
+        "British Open"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 187,
+      "category": "Spor",
+      "difficulty": 4,
+      "text": "Cricket sporunda 'Test Maç' kaç gün sürer?",
+      "choices": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 188,
+      "category": "Spor",
+      "difficulty": 4,
+      "text": "Hangi yıl ilk Türk takımı Şampiyonlar Ligi final oynadı?",
+      "choices": [
+        "Hiç oynamadı",
+        "1998",
+        "2000",
+        "Galatasaray finale çıkmadı"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 189,
+      "category": "Spor",
+      "difficulty": 4,
+      "text": "Kürek sporunda 'sweep' ne anlama gelir?",
+      "choices": [
+        "İki kürek",
+        "Tek kürek",
+        "Yarış başlangıcı",
+        "Su pozisyonu"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 190,
+      "category": "Spor",
+      "difficulty": 4,
+      "text": "Türkiye'nin ilk şampiyonlar ligi yarı finalcisi hangi takımdır?",
+      "choices": [
+        "Galatasaray",
+        "Fenerbahçe",
+        "Beşiktaş",
+        "Hiçbiri"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 191,
+      "category": "Spor",
+      "difficulty": 5,
+      "text": "Hangi sporcu en uzun süre dünya 1 numarası olmuştur (Tenis)?",
+      "choices": [
+        "Roger Federer",
+        "Rafael Nadal",
+        "Novak Djokovic",
+        "Pete Sampras"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 192,
+      "category": "Spor",
+      "difficulty": 5,
+      "text": "İlk modern olimpiyatlar hangi şehirde yapıldı?",
+      "choices": [
+        "Roma",
+        "Paris",
+        "Atina",
+        "Londra"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 193,
+      "category": "Spor",
+      "difficulty": 5,
+      "text": "Tahsin Karkındır hangi sporda ünlüdür?",
+      "choices": [
+        "Halter",
+        "Boks",
+        "Güreş",
+        "Atletizm"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 194,
+      "category": "Spor",
+      "difficulty": 5,
+      "text": "'Pankreasyon' nedir?",
+      "choices": [
+        "Antik Yunan sporu",
+        "Modern halter",
+        "Boks dövüş türü",
+        "Olimpiyat madalyası"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 195,
+      "category": "Spor",
+      "difficulty": 5,
+      "text": "Kayıp olimpiyatlar nedir?",
+      "choices": [
+        "İptal edilen 1916 Berlin",
+        "1940 ve 1944 İptalleri",
+        "Hepsi",
+        "Sadece II. Dünya Savaşı"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 196,
+      "category": "Spor",
+      "difficulty": 5,
+      "text": "Filiz Çankaya hangi sporda ünlüdür?",
+      "choices": [
+        "Voleybol",
+        "Basketbol",
+        "Atletizm",
+        "Yüzme"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 197,
+      "category": "Spor",
+      "difficulty": 5,
+      "text": "Hangi yıl ilk Türk olimpiyat altın madalyası kazanıldı (güreş)?",
+      "choices": [
+        "1936",
+        "1948",
+        "1952",
+        "1968"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 198,
+      "category": "Spor",
+      "difficulty": 5,
+      "text": "Hamza Yerlikaya kaç olimpiyat altını kazandı?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 199,
+      "category": "Spor",
+      "difficulty": 5,
+      "text": "Mahmut Atalay hangi olimpiyatta altın madalya aldı?",
+      "choices": [
+        "1948 Londra",
+        "1956 Melbourne",
+        "1968 Meksika",
+        "1972 Münih"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 200,
+      "category": "Spor",
+      "difficulty": 5,
+      "text": "İlk Wimbledon turnuvası hangi yıl yapıldı?",
+      "choices": [
+        "1875",
+        "1877",
+        "1882",
+        "1896"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 201,
+      "category": "Bilim",
+      "difficulty": 1,
+      "text": "Suyun kimyasal formülü nedir?",
+      "choices": [
+        "H2O",
+        "CO2",
+        "O2",
+        "H2"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 202,
+      "category": "Bilim",
+      "difficulty": 1,
+      "text": "Güneş sisteminde kaç gezegen vardır?",
+      "choices": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 203,
+      "category": "Bilim",
+      "difficulty": 1,
+      "text": "İnsan vücudunda kaç kemik vardır?",
+      "choices": [
+        "206",
+        "300",
+        "150",
+        "250"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 204,
+      "category": "Bilim",
+      "difficulty": 1,
+      "text": "Güneş'in en yakın yıldız komşumuz olduğu doğru mu?",
+      "choices": [
+        "Evet",
+        "Hayır",
+        "Bilinmiyor",
+        "Sadece kısmen"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 205,
+      "category": "Bilim",
+      "difficulty": 1,
+      "text": "Dünya hangi gezegende yaşam tespit edilmiştir?",
+      "choices": [
+        "Mars",
+        "Venüs",
+        "Sadece Dünya",
+        "Jüpiter"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 206,
+      "category": "Bilim",
+      "difficulty": 1,
+      "text": "Bir dakikada kaç saniye vardır?",
+      "choices": [
+        "30",
+        "60",
+        "90",
+        "100"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 207,
+      "category": "Bilim",
+      "difficulty": 1,
+      "text": "İnsan kalbi yaklaşık kaç odacıktan oluşur?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 208,
+      "category": "Bilim",
+      "difficulty": 1,
+      "text": "Hangi gaz oksijen değildir?",
+      "choices": [
+        "O2",
+        "CO2",
+        "O3",
+        "Hepsi oksijen içerir"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 209,
+      "category": "Bilim",
+      "difficulty": 1,
+      "text": "Bir saatte kaç dakika vardır?",
+      "choices": [
+        "30",
+        "60",
+        "100",
+        "120"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 210,
+      "category": "Bilim",
+      "difficulty": 1,
+      "text": "Buz hangi haldedir?",
+      "choices": [
+        "Sıvı",
+        "Katı",
+        "Gaz",
+        "Plazma"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 211,
+      "category": "Bilim",
+      "difficulty": 2,
+      "text": "DNA'nın yapısını çözen bilim adamı kimdir?",
+      "choices": [
+        "Einstein",
+        "Watson ve Crick",
+        "Newton",
+        "Darwin"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 212,
+      "category": "Bilim",
+      "difficulty": 2,
+      "text": "Hangi element periyodik tablonun 1. sırasındadır?",
+      "choices": [
+        "Helyum",
+        "Hidrojen",
+        "Oksijen",
+        "Karbon"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 213,
+      "category": "Bilim",
+      "difficulty": 2,
+      "text": "Newton'un kaç tane hareket yasası vardır?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 214,
+      "category": "Bilim",
+      "difficulty": 2,
+      "text": "İnsan vücudunun yaklaşık yüzde kaçı sudur?",
+      "choices": [
+        "%40",
+        "%60",
+        "%80",
+        "%90"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 215,
+      "category": "Bilim",
+      "difficulty": 2,
+      "text": "Görme duyumuzun gerçekleştiği organ hangisidir?",
+      "choices": [
+        "Beyin",
+        "Göz",
+        "Kulak",
+        "Cilt"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 216,
+      "category": "Bilim",
+      "difficulty": 2,
+      "text": "Yer çekimini keşfeden bilim adamı kimdir?",
+      "choices": [
+        "Galileo",
+        "Newton",
+        "Einstein",
+        "Kopernik"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 217,
+      "category": "Bilim",
+      "difficulty": 2,
+      "text": "Bir asit-baz reaksiyonu sonucunda ne oluşur?",
+      "choices": [
+        "Tuz ve su",
+        "Sadece su",
+        "Sadece tuz",
+        "Gaz"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 218,
+      "category": "Bilim",
+      "difficulty": 2,
+      "text": "İnsan vücudunun en büyük organı hangisidir?",
+      "choices": [
+        "Karaciğer",
+        "Cilt",
+        "Beyin",
+        "Akciğer"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 219,
+      "category": "Bilim",
+      "difficulty": 2,
+      "text": "Termometrede en yaygın kullanılan sıvı nedir?",
+      "choices": [
+        "Su",
+        "Alkol",
+        "Cıva",
+        "Hepsi"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 220,
+      "category": "Bilim",
+      "difficulty": 2,
+      "text": "Fotosentez nerede gerçekleşir?",
+      "choices": [
+        "Mitokondri",
+        "Kloroplast",
+        "Çekirdek",
+        "Sitoplazma"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 221,
+      "category": "Bilim",
+      "difficulty": 3,
+      "text": "Bir atomun çekirdeğinde hangi parçacıklar bulunur?",
+      "choices": [
+        "Proton ve elektron",
+        "Proton ve nötron",
+        "Nötron ve elektron",
+        "Sadece elektron"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 222,
+      "category": "Bilim",
+      "difficulty": 3,
+      "text": "Hangi gez gezegen 'Mavi Gezegen' olarak bilinir?",
+      "choices": [
+        "Mars",
+        "Dünya",
+        "Neptün",
+        "Uranüs"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 223,
+      "category": "Bilim",
+      "difficulty": 3,
+      "text": "Einstein'ın ünlü E=mc² formülünde 'c' neyi temsil eder?",
+      "choices": [
+        "Yer çekimi",
+        "Hava direnci",
+        "Işık hızı",
+        "Madde"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 224,
+      "category": "Bilim",
+      "difficulty": 3,
+      "text": "İnsan kromozomları kaç çiftten oluşur?",
+      "choices": [
+        "22",
+        "23",
+        "24",
+        "25"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 225,
+      "category": "Bilim",
+      "difficulty": 3,
+      "text": "Hangi vitamin Güneş ışığıyla sentezlenir?",
+      "choices": [
+        "A",
+        "C",
+        "D",
+        "K"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 226,
+      "category": "Bilim",
+      "difficulty": 3,
+      "text": "Periyodik tablodaki en hafif gaz hangisidir?",
+      "choices": [
+        "Helyum",
+        "Hidrojen",
+        "Oksijen",
+        "Azot"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 227,
+      "category": "Bilim",
+      "difficulty": 3,
+      "text": "Penisilinin keşfedicisi kimdir?",
+      "choices": [
+        "Pasteur",
+        "Fleming",
+        "Koch",
+        "Salk"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 228,
+      "category": "Bilim",
+      "difficulty": 3,
+      "text": "Hangi kan grubu evrensel verici kabul edilir?",
+      "choices": [
+        "A+",
+        "AB+",
+        "O-",
+        "B-"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 229,
+      "category": "Bilim",
+      "difficulty": 3,
+      "text": "Hangi hücre organelinde protein sentezi gerçekleşir?",
+      "choices": [
+        "Mitokondri",
+        "Ribozom",
+        "Lizozom",
+        "Golgi"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 230,
+      "category": "Bilim",
+      "difficulty": 3,
+      "text": "Yerin manyetik alanı niçin önemlidir?",
+      "choices": [
+        "Hava durumu için",
+        "Güneş rüzgarlarına karşı koruma",
+        "Yerçekimi için",
+        "Hiçbiri"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 231,
+      "category": "Bilim",
+      "difficulty": 4,
+      "text": "Heisenberg Belirsizlik İlkesi hangi alana aittir?",
+      "choices": [
+        "Klasik mekanik",
+        "Kuantum mekaniği",
+        "Termodinamik",
+        "Optik"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 232,
+      "category": "Bilim",
+      "difficulty": 4,
+      "text": "Hangi temel kuvvet en güçlü olanıdır?",
+      "choices": [
+        "Yerçekimi",
+        "Elektromanyetik",
+        "Güçlü nükleer",
+        "Zayıf nükleer"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 233,
+      "category": "Bilim",
+      "difficulty": 4,
+      "text": "Pi sayısının yaklaşık değeri nedir?",
+      "choices": [
+        "3.14",
+        "2.71",
+        "1.61",
+        "1.41"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 234,
+      "category": "Bilim",
+      "difficulty": 4,
+      "text": "ATP nedir?",
+      "choices": [
+        "Enzim",
+        "Protein",
+        "Enerji molekülü",
+        "Hormon"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 235,
+      "category": "Bilim",
+      "difficulty": 4,
+      "text": "Hangi galaksi tipi en yaygındır?",
+      "choices": [
+        "Spiral",
+        "Eliptik",
+        "Düzensiz",
+        "Lens şeklinde"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 236,
+      "category": "Bilim",
+      "difficulty": 4,
+      "text": "Dünya'nın ekvatorda dönüş hızı yaklaşık kaç km/s'dir?",
+      "choices": [
+        "1.000",
+        "1.700",
+        "3.000",
+        "5.000"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 237,
+      "category": "Bilim",
+      "difficulty": 4,
+      "text": "Hangi element 'kraliyet suyu' içinde çözünmez?",
+      "choices": [
+        "Altın",
+        "Platin",
+        "Gümüş",
+        "Tantal"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 238,
+      "category": "Bilim",
+      "difficulty": 4,
+      "text": "Mitokondri en çok hangi hücrede bulunur?",
+      "choices": [
+        "Kas hücresi",
+        "Sinir hücresi",
+        "Kan hücresi",
+        "Yağ hücresi"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 239,
+      "category": "Bilim",
+      "difficulty": 4,
+      "text": "Hangi gezegen güneşe en yakındır?",
+      "choices": [
+        "Venüs",
+        "Merkür",
+        "Dünya",
+        "Mars"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 240,
+      "category": "Bilim",
+      "difficulty": 4,
+      "text": "Genom ne anlama gelir?",
+      "choices": [
+        "Tek bir gen",
+        "Tüm genetik bilgi",
+        "Kromozom çifti",
+        "Hücre çekirdeği"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 241,
+      "category": "Bilim",
+      "difficulty": 5,
+      "text": "Bohr atom modelinde elektronlar hangi şekilde hareket eder?",
+      "choices": [
+        "Düz çizgide",
+        "Belirli enerji seviyelerinde",
+        "Rastgele",
+        "Helisel"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 242,
+      "category": "Bilim",
+      "difficulty": 5,
+      "text": "Higgs Bozonu nedir?",
+      "choices": [
+        "Bir atom modeli",
+        "Madde-enerji eşdeğeri",
+        "Maddeye kütle veren parçacık",
+        "Yıldız tipi"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 243,
+      "category": "Bilim",
+      "difficulty": 5,
+      "text": "Hangi yıldız tipi en büyüktür?",
+      "choices": [
+        "Beyaz cüce",
+        "Kırmızı dev",
+        "Hiperdev",
+        "Nötron yıldızı"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 244,
+      "category": "Bilim",
+      "difficulty": 5,
+      "text": "RNA polimeraz hangi reaksiyonu katalize eder?",
+      "choices": [
+        "Replikasyon",
+        "Transkripsiyon",
+        "Translasyon",
+        "Translokasyon"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 245,
+      "category": "Bilim",
+      "difficulty": 5,
+      "text": "Bose-Einstein yoğunlaşması maddeyi hangi halde tutar?",
+      "choices": [
+        "Plazma",
+        "Süper akışkan",
+        "5. madde hali",
+        "Süper kondansat"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 246,
+      "category": "Bilim",
+      "difficulty": 5,
+      "text": "Hangi parçacık 'tanrı parçacığı' olarak da bilinir?",
+      "choices": [
+        "Kuark",
+        "Higgs Bozonu",
+        "Foton",
+        "Müon"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 247,
+      "category": "Bilim",
+      "difficulty": 5,
+      "text": "Karadelik içindeki tekillik noktası nedir?",
+      "choices": [
+        "Sonsuz yoğunluklu nokta",
+        "Boş alan",
+        "Anti-madde",
+        "Quasar"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 248,
+      "category": "Bilim",
+      "difficulty": 5,
+      "text": "Schrödinger'in kedisi düşüncesi hangi konuyu örnekler?",
+      "choices": [
+        "Yer çekimi",
+        "Süperpozisyon",
+        "Termodinamik",
+        "Görelilik"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 249,
+      "category": "Bilim",
+      "difficulty": 5,
+      "text": "Türkiye'nin ilk yapay uydusu hangisidir?",
+      "choices": [
+        "Türksat 1B",
+        "Türksat 1A",
+        "Türksat 1C",
+        "BILSAT-1"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 250,
+      "category": "Bilim",
+      "difficulty": 5,
+      "text": "Hangi galaksimiz olan Samanyolu'nun yaklaşık yaşı kaçtır?",
+      "choices": [
+        "5 milyar yıl",
+        "10 milyar yıl",
+        "13 milyar yıl",
+        "20 milyar yıl"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 251,
+      "category": "Muzik",
+      "difficulty": 1,
+      "text": "Müziğin yedi temel notası kaç tanedir?",
+      "choices": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 252,
+      "category": "Muzik",
+      "difficulty": 1,
+      "text": "İlk nota hangisidir?",
+      "choices": [
+        "Do",
+        "Re",
+        "Mi",
+        "Fa"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 253,
+      "category": "Muzik",
+      "difficulty": 1,
+      "text": "Piyano kaç tuştan oluşur?",
+      "choices": [
+        "52",
+        "76",
+        "88",
+        "100"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 254,
+      "category": "Muzik",
+      "difficulty": 1,
+      "text": "Hangi çalgı telli değildir?",
+      "choices": [
+        "Keman",
+        "Gitar",
+        "Flüt",
+        "Piyano"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 255,
+      "category": "Muzik",
+      "difficulty": 1,
+      "text": "Davul hangi türde çalgıdır?",
+      "choices": [
+        "Telli",
+        "Üflemeli",
+        "Vurmalı",
+        "Tuşlu"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 256,
+      "category": "Muzik",
+      "difficulty": 1,
+      "text": "Notada hangisi 'sustur' anlamındadır?",
+      "choices": [
+        "Si",
+        "Sus işareti",
+        "Re",
+        "Fa"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 257,
+      "category": "Muzik",
+      "difficulty": 1,
+      "text": "Beethoven nereli besteci?",
+      "choices": [
+        "Avusturyalı",
+        "Alman",
+        "Fransız",
+        "İtalyan"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 258,
+      "category": "Muzik",
+      "difficulty": 1,
+      "text": "Türk müziğinde 'saz' nedir?",
+      "choices": [
+        "Çalgı",
+        "Şarkı",
+        "Düşünme",
+        "Müzik aleti"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 259,
+      "category": "Muzik",
+      "difficulty": 1,
+      "text": "Hangi çalgı Türklere özgüdür?",
+      "choices": [
+        "Bağlama",
+        "Piyano",
+        "Keman",
+        "Davul"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 260,
+      "category": "Muzik",
+      "difficulty": 1,
+      "text": "Klasik bir senfoni kaç bölümden oluşur (genelde)?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 261,
+      "category": "Muzik",
+      "difficulty": 2,
+      "text": "Klasik müzikte 'opera' nedir?",
+      "choices": [
+        "Şarkı türü",
+        "Müzikli tiyatro",
+        "Çalgı türü",
+        "Dans gösterisi"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 262,
+      "category": "Muzik",
+      "difficulty": 2,
+      "text": "Mozart nereli besteci?",
+      "choices": [
+        "Alman",
+        "Avusturyalı",
+        "Fransız",
+        "İtalyan"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 263,
+      "category": "Muzik",
+      "difficulty": 2,
+      "text": "'Tatlı Su' düetiyle ünlü Türk pop ikilisi kimdir?",
+      "choices": [
+        "MFÖ",
+        "Tarkan-Sezen",
+        "Sezen Aksu-İbrahim Tatlıses",
+        "Cem Karaca-Edip Akbayram"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 264,
+      "category": "Muzik",
+      "difficulty": 2,
+      "text": "Senfoni Orkestrasında en kalabalık grup hangisidir?",
+      "choices": [
+        "Üflemeli",
+        "Telli",
+        "Vurmalı",
+        "Pirinç"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 265,
+      "category": "Muzik",
+      "difficulty": 2,
+      "text": "Saksafonun mucidi kimdir?",
+      "choices": [
+        "Bach",
+        "Adolphe Sax",
+        "Mozart",
+        "Beethoven"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 266,
+      "category": "Muzik",
+      "difficulty": 2,
+      "text": "Türk Halk Müziği usulü 'aksak' hangi ölçüdür?",
+      "choices": [
+        "3/4",
+        "4/4",
+        "5/8 ve 9/8",
+        "Sadece 9/8"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 267,
+      "category": "Muzik",
+      "difficulty": 2,
+      "text": "Bir orkestrayı kim yönetir?",
+      "choices": [
+        "Başkan",
+        "Şef",
+        "Solist",
+        "Müzisyen"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 268,
+      "category": "Muzik",
+      "difficulty": 2,
+      "text": "Bach hangi dönem bestecisidir?",
+      "choices": [
+        "Barok",
+        "Klasik",
+        "Romantik",
+        "Modern"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 269,
+      "category": "Muzik",
+      "difficulty": 2,
+      "text": "Hangi enstrüman 'Türk askeri müziği' kökenlidir?",
+      "choices": [
+        "Trampet",
+        "Zurna",
+        "Bağlama",
+        "Hepsi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 270,
+      "category": "Muzik",
+      "difficulty": 2,
+      "text": "Bir tam ses kaç yarım sesden oluşur?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 271,
+      "category": "Muzik",
+      "difficulty": 3,
+      "text": "9. Senfoni'yi besteleyen kimdir?",
+      "choices": [
+        "Mozart",
+        "Beethoven",
+        "Bach",
+        "Chopin"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 272,
+      "category": "Muzik",
+      "difficulty": 3,
+      "text": "İlk Türk operası hangisidir?",
+      "choices": [
+        "Ali Baba",
+        "Özsoy",
+        "Köroğlu",
+        "Taş Bebek"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 273,
+      "category": "Muzik",
+      "difficulty": 3,
+      "text": "Hangi enstrüman 'Türk müziğinin kraliçesi' olarak bilinir?",
+      "choices": [
+        "Kanun",
+        "Ud",
+        "Tanbur",
+        "Ney"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 274,
+      "category": "Muzik",
+      "difficulty": 3,
+      "text": "'Dört Mevsim' adlı eserin bestecisi kimdir?",
+      "choices": [
+        "Vivaldi",
+        "Bach",
+        "Mozart",
+        "Beethoven"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 275,
+      "category": "Muzik",
+      "difficulty": 3,
+      "text": "Hangi makam Türk müziğinde en yaygın olarak kullanılır?",
+      "choices": [
+        "Hicaz",
+        "Rast",
+        "Hüseyni",
+        "Hepsi yaygın"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 276,
+      "category": "Muzik",
+      "difficulty": 3,
+      "text": "Chopin hangi enstrüman için en çok beste yapmıştır?",
+      "choices": [
+        "Keman",
+        "Piyano",
+        "Org",
+        "Klavsen"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 277,
+      "category": "Muzik",
+      "difficulty": 3,
+      "text": "Caz müziğinin doğduğu şehir hangisidir?",
+      "choices": [
+        "New York",
+        "Chicago",
+        "New Orleans",
+        "Memphis"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 278,
+      "category": "Muzik",
+      "difficulty": 3,
+      "text": "Beatles üyesi olmayan kimdir?",
+      "choices": [
+        "John Lennon",
+        "Paul McCartney",
+        "Mick Jagger",
+        "George Harrison"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 279,
+      "category": "Muzik",
+      "difficulty": 3,
+      "text": "Hangi enstrüman 'kuzey rüzgârı' olarak da bilinir?",
+      "choices": [
+        "Ney",
+        "Bağlama",
+        "Kemençe",
+        "Tar"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 280,
+      "category": "Muzik",
+      "difficulty": 3,
+      "text": "Türk Sanat Müziği'nin önemli bestekarı Itri hangi yüzyılda yaşamıştır?",
+      "choices": [
+        "15.",
+        "16.",
+        "17.",
+        "18."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 281,
+      "category": "Muzik",
+      "difficulty": 4,
+      "text": "Wagner'in 'Niebelung Yüzüğü' kaç operadan oluşur?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "7"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 282,
+      "category": "Muzik",
+      "difficulty": 4,
+      "text": "Türk müziğinde 'usul' nedir?",
+      "choices": [
+        "Makam",
+        "Tonalite",
+        "Ritm yapısı",
+        "Şarkı türü"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 283,
+      "category": "Muzik",
+      "difficulty": 4,
+      "text": "Şostakoviç hangi ülkenin bestecisidir?",
+      "choices": [
+        "Rusya",
+        "Polonya",
+        "Almanya",
+        "Macaristan"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 284,
+      "category": "Muzik",
+      "difficulty": 4,
+      "text": "Türk Beşleri'nden biri DEĞİL olan kimdir?",
+      "choices": [
+        "Cemal Reşit Rey",
+        "Ulvi Cemal Erkin",
+        "Adnan Saygun",
+        "Hasan Ferit Alnar"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 285,
+      "category": "Muzik",
+      "difficulty": 4,
+      "text": "Piyano'nun mucidi kimdir?",
+      "choices": [
+        "Mozart",
+        "Bartolomeo Cristofori",
+        "Bach",
+        "Haydn"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 286,
+      "category": "Muzik",
+      "difficulty": 4,
+      "text": "Hangi opera 'Türk' temasıyla yazılmıştır?",
+      "choices": [
+        "Saraydan Kız Kaçırma",
+        "Sevilla Berberi",
+        "Carmen",
+        "Don Giovanni"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 287,
+      "category": "Muzik",
+      "difficulty": 4,
+      "text": "Klasik gitarın ataları arasında hangisi yoktur?",
+      "choices": [
+        "Lüt",
+        "Ud",
+        "Vihuela",
+        "Mandolin"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 288,
+      "category": "Muzik",
+      "difficulty": 4,
+      "text": "Schubert hangi yaşta vefat etti?",
+      "choices": [
+        "28",
+        "31",
+        "35",
+        "39"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 289,
+      "category": "Muzik",
+      "difficulty": 4,
+      "text": "Hangi müzik akımı 20. yüzyıl başında atonalitenin sahibidir?",
+      "choices": [
+        "Empresyonizm",
+        "Romantizm",
+        "Ekspresyonizm",
+        "Klasisizm"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 290,
+      "category": "Muzik",
+      "difficulty": 4,
+      "text": "Türk halk müziği derlemecisi Muzaffer Sarısözen ne ile uğraşmıştır?",
+      "choices": [
+        "Türküler",
+        "Operalar",
+        "Caz",
+        "Klasik"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 291,
+      "category": "Muzik",
+      "difficulty": 5,
+      "text": "Türk Beşleri'nden olmayan bestecimiz hangisidir?",
+      "choices": [
+        "Cemal Reşit Rey",
+        "Ulvi Cemal Erkin",
+        "Adnan Saygun",
+        "Selim Atakan"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 292,
+      "category": "Muzik",
+      "difficulty": 5,
+      "text": "Schönberg hangi tekniğin geliştiricisidir?",
+      "choices": [
+        "Atonalite",
+        "On iki nota",
+        "Polifonik müzik",
+        "Modern müzik"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 293,
+      "category": "Muzik",
+      "difficulty": 5,
+      "text": "Bach'ın 'Brandenburg Konçertosu' kaç parçadan oluşur?",
+      "choices": [
+        "3",
+        "5",
+        "6",
+        "8"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 294,
+      "category": "Muzik",
+      "difficulty": 5,
+      "text": "'Boléro' adlı eserin bestecisi kimdir?",
+      "choices": [
+        "Debussy",
+        "Ravel",
+        "Stravinsky",
+        "Satie"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 295,
+      "category": "Muzik",
+      "difficulty": 5,
+      "text": "Türk müziğinde 'fasıl' formu kaç bölümden oluşur (klasik)?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 296,
+      "category": "Muzik",
+      "difficulty": 5,
+      "text": "Hangi enstrüman 'Türk müziğinin kanunu' olarak bilinir?",
+      "choices": [
+        "Ud",
+        "Kanun",
+        "Tanbur",
+        "Kemençe"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 297,
+      "category": "Muzik",
+      "difficulty": 5,
+      "text": "John Cage'in '4'33' adlı eserinde ne çalınır?",
+      "choices": [
+        "Piyano",
+        "Sessizlik",
+        "Davul",
+        "Keman"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 298,
+      "category": "Muzik",
+      "difficulty": 5,
+      "text": "Hangi besteci Türk yürüyüşünü bestelemiştir?",
+      "choices": [
+        "Mozart",
+        "Beethoven",
+        "Both Mozart and Beethoven",
+        "Bach"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 299,
+      "category": "Muzik",
+      "difficulty": 5,
+      "text": "Klasik gitarın isim babası kabul edilen bestekar kimdir?",
+      "choices": [
+        "Tárrega",
+        "Segovia",
+        "Sor",
+        "Carcassi"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 300,
+      "category": "Muzik",
+      "difficulty": 5,
+      "text": "Türk askeri bandosu kaç kişiden oluşurdu (klasik Mehter)?",
+      "choices": [
+        "9",
+        "12",
+        "16",
+        "24"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 301,
+      "category": "Edebiyat",
+      "difficulty": 1,
+      "text": "Çalıkuşu'nun yazarı kimdir?",
+      "choices": [
+        "Yaşar Kemal",
+        "Reşat Nuri Güntekin",
+        "Orhan Pamuk",
+        "Halit Ziya"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 302,
+      "category": "Edebiyat",
+      "difficulty": 1,
+      "text": "İstiklal Marşı'nın şairi kimdir?",
+      "choices": [
+        "Yahya Kemal",
+        "Mehmet Akif Ersoy",
+        "Nazım Hikmet",
+        "Necip Fazıl"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 303,
+      "category": "Edebiyat",
+      "difficulty": 1,
+      "text": "Hangi yazar 'Beyaz Diş' adlı romanı yazmıştır?",
+      "choices": [
+        "Hemingway",
+        "Jack London",
+        "Steinbeck",
+        "Mark Twain"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 304,
+      "category": "Edebiyat",
+      "difficulty": 1,
+      "text": "İnce Memed romanının yazarı kimdir?",
+      "choices": [
+        "Yaşar Kemal",
+        "Orhan Kemal",
+        "Sait Faik",
+        "Kemal Tahir"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 305,
+      "category": "Edebiyat",
+      "difficulty": 1,
+      "text": "Aşk-ı Memnu romanı kime aittir?",
+      "choices": [
+        "Halit Ziya Uşaklıgil",
+        "Hüseyin Rahmi",
+        "Reşat Nuri",
+        "Mehmet Rauf"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 306,
+      "category": "Edebiyat",
+      "difficulty": 1,
+      "text": "Hangi yazar Türk edebiyatında en çok roman yazmıştır?",
+      "choices": [
+        "Orhan Pamuk",
+        "Ahmet Hamdi Tanpınar",
+        "Hüseyin Rahmi Gürpınar",
+        "Kemal Tahir"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 307,
+      "category": "Edebiyat",
+      "difficulty": 1,
+      "text": "Köy Enstitüleri ne zaman kapatıldı?",
+      "choices": [
+        "1948",
+        "1954",
+        "1960",
+        "1965"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 308,
+      "category": "Edebiyat",
+      "difficulty": 1,
+      "text": "Yunus Emre hangi yüzyılda yaşamıştır?",
+      "choices": [
+        "12.",
+        "13.",
+        "14.",
+        "15."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 309,
+      "category": "Edebiyat",
+      "difficulty": 1,
+      "text": "Hangi tür romandır?",
+      "choices": [
+        "Şiir",
+        "Tiyatro",
+        "Anlatı",
+        "Makale"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 310,
+      "category": "Edebiyat",
+      "difficulty": 1,
+      "text": "Türk edebiyatının ilk romanı hangisidir?",
+      "choices": [
+        "İntibah",
+        "Taaşşuk-ı Talat ve Fitnat",
+        "Mai ve Siyah",
+        "Aşk-ı Memnu"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 311,
+      "category": "Edebiyat",
+      "difficulty": 2,
+      "text": "Suç ve Ceza'nın yazarı kimdir?",
+      "choices": [
+        "Tolstoy",
+        "Dostoyevski",
+        "Çehov",
+        "Gogol"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 312,
+      "category": "Edebiyat",
+      "difficulty": 2,
+      "text": "Don Kişot adlı eser kime aittir?",
+      "choices": [
+        "Cervantes",
+        "Shakespeare",
+        "Dante",
+        "Goethe"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 313,
+      "category": "Edebiyat",
+      "difficulty": 2,
+      "text": "Hangi roman Orhan Pamuk'a Nobel kazandırmıştır?",
+      "choices": [
+        "Beyaz Kale",
+        "Benim Adım Kırmızı",
+        "Nobel kazandıran kitap yok, yazara verildi",
+        "Kar"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 314,
+      "category": "Edebiyat",
+      "difficulty": 2,
+      "text": "Hangi yazar 'Saatleri Ayarlama Enstitüsü' adlı romanı yazmıştır?",
+      "choices": [
+        "Yahya Kemal",
+        "Ahmet Hamdi Tanpınar",
+        "Yaşar Kemal",
+        "Orhan Pamuk"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 315,
+      "category": "Edebiyat",
+      "difficulty": 2,
+      "text": "Tutunamayanlar romanı kimindir?",
+      "choices": [
+        "Oğuz Atay",
+        "Yusuf Atılgan",
+        "Bilge Karasu",
+        "Adalet Ağaoğlu"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 316,
+      "category": "Edebiyat",
+      "difficulty": 2,
+      "text": "Nazım Hikmet ne tür şiir yazmıştır?",
+      "choices": [
+        "Sone",
+        "Serbest",
+        "Aruz",
+        "Heceyle"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 317,
+      "category": "Edebiyat",
+      "difficulty": 2,
+      "text": "Türk edebiyatında 'Garip' akımının lideri kimdir?",
+      "choices": [
+        "Orhan Veli",
+        "Nazım Hikmet",
+        "Necip Fazıl",
+        "Cahit Sıtkı"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 318,
+      "category": "Edebiyat",
+      "difficulty": 2,
+      "text": "Hangi yazar 'Otomatik Portakal' romanını yazmıştır?",
+      "choices": [
+        "Burgess",
+        "Huxley",
+        "Orwell",
+        "Bradbury"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 319,
+      "category": "Edebiyat",
+      "difficulty": 2,
+      "text": "Türk halk şairi Pir Sultan Abdal hangi yüzyılda yaşamıştır?",
+      "choices": [
+        "14.",
+        "15.",
+        "16.",
+        "17."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 320,
+      "category": "Edebiyat",
+      "difficulty": 2,
+      "text": "1984 romanının yazarı kimdir?",
+      "choices": [
+        "Aldous Huxley",
+        "George Orwell",
+        "Ray Bradbury",
+        "Ursula Le Guin"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 321,
+      "category": "Edebiyat",
+      "difficulty": 3,
+      "text": "Sefiller romanını kim yazdı?",
+      "choices": [
+        "Hugo",
+        "Dumas",
+        "Balzac",
+        "Zola"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 322,
+      "category": "Edebiyat",
+      "difficulty": 3,
+      "text": "Tanzimat döneminin ilk şiir kitabı hangisidir?",
+      "choices": [
+        "Şinasi Divanı",
+        "Müntehabat-ı Eş'ar",
+        "Tercüme-i Manzume",
+        "Hasta Çocuk"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 323,
+      "category": "Edebiyat",
+      "difficulty": 3,
+      "text": "Hangi şair Servet-i Fünun akımına dahil değildir?",
+      "choices": [
+        "Tevfik Fikret",
+        "Cenap Şahabettin",
+        "Mehmet Akif",
+        "Süleyman Nazif"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 324,
+      "category": "Edebiyat",
+      "difficulty": 3,
+      "text": "Goethe'nin başyapıtı hangisidir?",
+      "choices": [
+        "Faust",
+        "Werther'in Acıları",
+        "Wilhelm Meister",
+        "Hepsi"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 325,
+      "category": "Edebiyat",
+      "difficulty": 3,
+      "text": "Yahya Kemal Beyatlı hangi nazım birimini kullanmıştır?",
+      "choices": [
+        "Hece",
+        "Aruz",
+        "Serbest",
+        "Hepsi"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 326,
+      "category": "Edebiyat",
+      "difficulty": 3,
+      "text": "Madame Bovary kime aittir?",
+      "choices": [
+        "Flaubert",
+        "Balzac",
+        "Hugo",
+        "Stendhal"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 327,
+      "category": "Edebiyat",
+      "difficulty": 3,
+      "text": "Hangi şair 'Sezai Karakoç'un mektup arkadaşı' olarak bilinir?",
+      "choices": [
+        "Cemal Süreya",
+        "İsmet Özel",
+        "Necip Fazıl",
+        "Hilmi Yavuz"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 328,
+      "category": "Edebiyat",
+      "difficulty": 3,
+      "text": "Türk edebiyatında 'İkinci Yeni' akımı şairi DEĞİL olan kimdir?",
+      "choices": [
+        "Cemal Süreya",
+        "Edip Cansever",
+        "Turgut Uyar",
+        "Orhan Veli"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 329,
+      "category": "Edebiyat",
+      "difficulty": 3,
+      "text": "Yaşar Kemal'in 'Dağın Öte Yüzü' üçlemesinin ilk romanı hangisidir?",
+      "choices": [
+        "Yer Demir Gök Bakır",
+        "Ortadirek",
+        "Ölmez Otu",
+        "İnce Memed"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 330,
+      "category": "Edebiyat",
+      "difficulty": 3,
+      "text": "Marcel Proust'un başyapıtı hangisidir?",
+      "choices": [
+        "Madame Bovary",
+        "Anna Karenina",
+        "Kayıp Zamanın İzinde",
+        "Ulysses"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 331,
+      "category": "Edebiyat",
+      "difficulty": 4,
+      "text": "Hangi yazar 'Yüzyıllık Yalnızlık' romanını yazmıştır?",
+      "choices": [
+        "Borges",
+        "García Márquez",
+        "Cortázar",
+        "Neruda"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 332,
+      "category": "Edebiyat",
+      "difficulty": 4,
+      "text": "Türk edebiyatında 'maniyerizm' kim için kullanılır?",
+      "choices": [
+        "Ahmet Haşim",
+        "Yahya Kemal",
+        "Necip Fazıl",
+        "Tanpınar"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 333,
+      "category": "Edebiyat",
+      "difficulty": 4,
+      "text": "Ulysses adlı modernist roman kime aittir?",
+      "choices": [
+        "Virginia Woolf",
+        "James Joyce",
+        "T.S. Eliot",
+        "Faulkner"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 334,
+      "category": "Edebiyat",
+      "difficulty": 4,
+      "text": "Hangi şair Edebiyat-ı Cedide'nin lideridir?",
+      "choices": [
+        "Tevfik Fikret",
+        "Cenap Şahabettin",
+        "Halit Ziya",
+        "Süleyman Nazif"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 335,
+      "category": "Edebiyat",
+      "difficulty": 4,
+      "text": "Türk şiirinde 'serbest nazmın' öncüsü kimdir?",
+      "choices": [
+        "Nazım Hikmet",
+        "Orhan Veli",
+        "Cemal Süreya",
+        "Atilla İlhan"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 336,
+      "category": "Edebiyat",
+      "difficulty": 4,
+      "text": "Karamazov Kardeşler romanı kime aittir?",
+      "choices": [
+        "Tolstoy",
+        "Dostoyevski",
+        "Çehov",
+        "Turgenev"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 337,
+      "category": "Edebiyat",
+      "difficulty": 4,
+      "text": "Türk edebiyatında 'sembolizm' kim ile özdeşleşir?",
+      "choices": [
+        "Ahmet Haşim",
+        "Cenap Şahabettin",
+        "Yahya Kemal",
+        "Hepsi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 338,
+      "category": "Edebiyat",
+      "difficulty": 4,
+      "text": "'Beyaz Geceler' adlı novella kime aittir?",
+      "choices": [
+        "Tolstoy",
+        "Dostoyevski",
+        "Çehov",
+        "Gogol"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 339,
+      "category": "Edebiyat",
+      "difficulty": 4,
+      "text": "Refik Halid Karay hangi grubun üyesidir?",
+      "choices": [
+        "Fecr-i Ati",
+        "Beş Hececiler",
+        "Yedi Meşaleciler",
+        "Edebiyat-ı Cedide"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 340,
+      "category": "Edebiyat",
+      "difficulty": 4,
+      "text": "Hangi yazar Nobel Edebiyat Ödülü kazanmıştır?",
+      "choices": [
+        "Orhan Pamuk",
+        "Yaşar Kemal",
+        "Aziz Nesin",
+        "Ahmet Hamdi Tanpınar"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 341,
+      "category": "Edebiyat",
+      "difficulty": 5,
+      "text": "Servet-i Fünun döneminin önemli şairlerinden değildir?",
+      "choices": [
+        "Tevfik Fikret",
+        "Cenap Şahabettin",
+        "Halit Ziya",
+        "Mehmet Akif"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 342,
+      "category": "Edebiyat",
+      "difficulty": 5,
+      "text": "Hangi yazar 'kara mizah' örnekleri vermiştir?",
+      "choices": [
+        "Aziz Nesin",
+        "Kafka",
+        "Beckett",
+        "Hepsi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 343,
+      "category": "Edebiyat",
+      "difficulty": 5,
+      "text": "T.S. Eliot'un 'Çorak Ülke' şiiri hangi yılda yayımlandı?",
+      "choices": [
+        "1915",
+        "1922",
+        "1928",
+        "1935"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 344,
+      "category": "Edebiyat",
+      "difficulty": 5,
+      "text": "Türk edebiyatında 'Hisar' dergisi etrafında toplanmış grup üyesi DEĞİL kim?",
+      "choices": [
+        "Munis Faik Ozansoy",
+        "İlhan Geçer",
+        "Mehmet Çınarlı",
+        "Atilla İlhan"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 345,
+      "category": "Edebiyat",
+      "difficulty": 5,
+      "text": "Borges hangi türde uzmanlaşmıştır?",
+      "choices": [
+        "Romanlar",
+        "Kısa öyküler",
+        "Şiirler",
+        "Hepsi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 346,
+      "category": "Edebiyat",
+      "difficulty": 5,
+      "text": "Türk şiirinde 'Maviler' grubunun en önemli üyesi kimdir?",
+      "choices": [
+        "Atilla İlhan",
+        "Orhan Veli",
+        "Edip Cansever",
+        "Behçet Necatigil"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 347,
+      "category": "Edebiyat",
+      "difficulty": 5,
+      "text": "Kafka'nın 'Dönüşüm' adlı eserindeki ana karakter ne dönüşür?",
+      "choices": [
+        "Köpek",
+        "Kuş",
+        "Böcek",
+        "Fare"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 348,
+      "category": "Edebiyat",
+      "difficulty": 5,
+      "text": "İlk Türk gazetesi hangisidir?",
+      "choices": [
+        "Tasvir-i Efkar",
+        "Tercüman-ı Ahval",
+        "Takvim-i Vakayi",
+        "Ceride-i Havadis"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 349,
+      "category": "Edebiyat",
+      "difficulty": 5,
+      "text": "'Saçaklı Saç Cinayetleri' Türk edebiyatında ilk polisiye eserlerden biridir, yazarı kimdir?",
+      "choices": [
+        "Esat Mahmut Karakurt",
+        "Peyami Safa",
+        "Ahmet Mithat",
+        "Hüseyin Rahmi"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 350,
+      "category": "Edebiyat",
+      "difficulty": 5,
+      "text": "Postmodernizmin önde gelen Türk romancısı kimdir?",
+      "choices": [
+        "Orhan Pamuk",
+        "Bilge Karasu",
+        "Latife Tekin",
+        "Hepsi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 351,
+      "category": "GenelKultur",
+      "difficulty": 1,
+      "text": "Bir yılda kaç ay vardır?",
+      "choices": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 352,
+      "category": "GenelKultur",
+      "difficulty": 1,
+      "text": "Bir günde kaç saat vardır?",
+      "choices": [
+        "12",
+        "20",
+        "24",
+        "30"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 353,
+      "category": "GenelKultur",
+      "difficulty": 1,
+      "text": "Renklerin üç temel rengi hangisidir?",
+      "choices": [
+        "Kırmızı-Sarı-Mavi",
+        "Yeşil-Sarı-Mor",
+        "Beyaz-Siyah-Gri",
+        "Pembe-Turuncu-Mor"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 354,
+      "category": "GenelKultur",
+      "difficulty": 1,
+      "text": "Hangi gün hafta sonu sayılır?",
+      "choices": [
+        "Cuma",
+        "Cumartesi",
+        "Pazar",
+        "Hem cumartesi hem pazar"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 355,
+      "category": "GenelKultur",
+      "difficulty": 1,
+      "text": "Trafik ışığında 'dur' rengi hangisidir?",
+      "choices": [
+        "Yeşil",
+        "Sarı",
+        "Kırmızı",
+        "Mavi"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 356,
+      "category": "GenelKultur",
+      "difficulty": 1,
+      "text": "Bir haftada kaç gün vardır?",
+      "choices": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 357,
+      "category": "GenelKultur",
+      "difficulty": 1,
+      "text": "İlk metroyu hangi şehir yapmıştır?",
+      "choices": [
+        "Paris",
+        "New York",
+        "Londra",
+        "Tokyo"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 358,
+      "category": "GenelKultur",
+      "difficulty": 1,
+      "text": "Türkiye'nin para birimi hangisidir?",
+      "choices": [
+        "Dolar",
+        "Euro",
+        "Türk Lirası",
+        "Pound"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 359,
+      "category": "GenelKultur",
+      "difficulty": 1,
+      "text": "Hangi gezegen bizim gezegenimizdir?",
+      "choices": [
+        "Mars",
+        "Venüs",
+        "Dünya",
+        "Jüpiter"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 360,
+      "category": "GenelKultur",
+      "difficulty": 1,
+      "text": "Yılda kaç mevsim vardır?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 361,
+      "category": "GenelKultur",
+      "difficulty": 2,
+      "text": "Olimpiyat oyunları kaç yılda bir yapılır?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 362,
+      "category": "GenelKultur",
+      "difficulty": 2,
+      "text": "BM kaç ülke üyesidir (yaklaşık)?",
+      "choices": [
+        "150",
+        "170",
+        "193",
+        "210"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 363,
+      "category": "GenelKultur",
+      "difficulty": 2,
+      "text": "Avrupa Birliği kaç ülkeye sahiptir (2024 sonrası)?",
+      "choices": [
+        "25",
+        "27",
+        "28",
+        "30"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 364,
+      "category": "GenelKultur",
+      "difficulty": 2,
+      "text": "Türkiye'nin trafik kodu (uluslararası) nedir?",
+      "choices": [
+        "TUR",
+        "TR",
+        "T",
+        "TKY"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 365,
+      "category": "GenelKultur",
+      "difficulty": 2,
+      "text": "Internet kim tarafından icat edildi?",
+      "choices": [
+        "Bill Gates",
+        "Steve Jobs",
+        "Tim Berners-Lee",
+        "Mark Zuckerberg"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 366,
+      "category": "GenelKultur",
+      "difficulty": 2,
+      "text": "Hangi şehir 'Sonsuz Şehir' olarak da bilinir?",
+      "choices": [
+        "Atina",
+        "Roma",
+        "İstanbul",
+        "Paris"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 367,
+      "category": "GenelKultur",
+      "difficulty": 2,
+      "text": "Hangi para birimi Japonya'nındır?",
+      "choices": [
+        "Yuan",
+        "Won",
+        "Yen",
+        "Rupi"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 368,
+      "category": "GenelKultur",
+      "difficulty": 2,
+      "text": "Twitter'ı kim kurdu?",
+      "choices": [
+        "Jack Dorsey",
+        "Mark Zuckerberg",
+        "Larry Page",
+        "Elon Musk"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 369,
+      "category": "GenelKultur",
+      "difficulty": 2,
+      "text": "Ay'a ilk insan ayak basışı hangi yıl gerçekleşti?",
+      "choices": [
+        "1957",
+        "1961",
+        "1969",
+        "1975"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 370,
+      "category": "GenelKultur",
+      "difficulty": 2,
+      "text": "Hangi şehir Japonya'nın başkentidir?",
+      "choices": [
+        "Osaka",
+        "Kyoto",
+        "Tokyo",
+        "Yokohama"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 371,
+      "category": "GenelKultur",
+      "difficulty": 3,
+      "text": "Nobel Ödülü'nü kim verir?",
+      "choices": [
+        "BM",
+        "UNESCO",
+        "Nobel Vakfı",
+        "Hollanda Hükümeti"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 372,
+      "category": "GenelKultur",
+      "difficulty": 3,
+      "text": "Hangi yıl Berlin Duvarı yıkıldı?",
+      "choices": [
+        "1985",
+        "1989",
+        "1991",
+        "1995"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 373,
+      "category": "GenelKultur",
+      "difficulty": 3,
+      "text": "Yapay zekanın babası kimdir?",
+      "choices": [
+        "Alan Turing",
+        "John McCarthy",
+        "Marvin Minsky",
+        "Hepsi"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 374,
+      "category": "GenelKultur",
+      "difficulty": 3,
+      "text": "Hangi dilde en çok kelime vardır?",
+      "choices": [
+        "İngilizce",
+        "Çince",
+        "Arapça",
+        "Rusça"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 375,
+      "category": "GenelKultur",
+      "difficulty": 3,
+      "text": "Microsoft'u kim kurdu?",
+      "choices": [
+        "Steve Jobs",
+        "Bill Gates ve Paul Allen",
+        "Jeff Bezos",
+        "Larry Page"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 376,
+      "category": "GenelKultur",
+      "difficulty": 3,
+      "text": "Hangi ülke 'Doğan Güneş Ülkesi' olarak bilinir?",
+      "choices": [
+        "Çin",
+        "Japonya",
+        "Kore",
+        "Tayland"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 377,
+      "category": "GenelKultur",
+      "difficulty": 3,
+      "text": "Türkiye'nin ilk cumhurbaşkanı kimdir?",
+      "choices": [
+        "İsmet İnönü",
+        "Atatürk",
+        "Celal Bayar",
+        "Cemal Gürsel"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 378,
+      "category": "GenelKultur",
+      "difficulty": 3,
+      "text": "Anadolu lisesi sınavı yıllar boyunca ne olarak değişti?",
+      "choices": [
+        "LGS-SBS-TEOG-LGS",
+        "OKS-SBS-TEOG-LGS",
+        "OKS-SBS-LGS-TEOG",
+        "Sırayla değişti"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 379,
+      "category": "GenelKultur",
+      "difficulty": 3,
+      "text": "Hangi ülke en çok futbol Dünya Kupası finali oynamıştır?",
+      "choices": [
+        "Almanya",
+        "Brezilya",
+        "İtalya",
+        "Arjantin"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 380,
+      "category": "GenelKultur",
+      "difficulty": 3,
+      "text": "Eiffel Kulesi'nin yüksekliği yaklaşık kaç metredir?",
+      "choices": [
+        "200m",
+        "300m",
+        "400m",
+        "500m"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 381,
+      "category": "GenelKultur",
+      "difficulty": 4,
+      "text": "Hangi tarih 'Lozan Antlaşması' günüdür?",
+      "choices": [
+        "24 Temmuz",
+        "29 Ekim",
+        "30 Ağustos",
+        "23 Nisan"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 382,
+      "category": "GenelKultur",
+      "difficulty": 4,
+      "text": "Kuran kaç sureden oluşur?",
+      "choices": [
+        "100",
+        "114",
+        "124",
+        "150"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 383,
+      "category": "GenelKultur",
+      "difficulty": 4,
+      "text": "Hangi ülkede 'Köy' adı taşıyan en çok yer vardır?",
+      "choices": [
+        "Türkiye",
+        "Çin",
+        "Almanya",
+        "Rusya"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 384,
+      "category": "GenelKultur",
+      "difficulty": 4,
+      "text": "İlk hava kuvvetlerini kuran ülke hangisidir?",
+      "choices": [
+        "ABD",
+        "İngiltere",
+        "Fransa",
+        "Almanya"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 385,
+      "category": "GenelKultur",
+      "difficulty": 4,
+      "text": "İslamiyet hangi yıl ortaya çıktı?",
+      "choices": [
+        "570",
+        "610",
+        "622",
+        "632"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 386,
+      "category": "GenelKultur",
+      "difficulty": 4,
+      "text": "Türkiye'nin ilk emojisi (Türk bayrağı emojisi) hangi yıl Unicode'a eklendi?",
+      "choices": [
+        "2000",
+        "2008",
+        "2014",
+        "2017"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 387,
+      "category": "GenelKultur",
+      "difficulty": 4,
+      "text": "Dünyanın en büyük teknoloji şirketi (piyasa değeri olarak, 2024)?",
+      "choices": [
+        "Apple",
+        "Microsoft",
+        "Saudi Aramco",
+        "Değişiyor"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 388,
+      "category": "GenelKultur",
+      "difficulty": 4,
+      "text": "Üç din için kutsal sayılan şehir hangisidir?",
+      "choices": [
+        "Mekke",
+        "Kudüs",
+        "Vatikan",
+        "Roma"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 389,
+      "category": "GenelKultur",
+      "difficulty": 4,
+      "text": "Hangi ülke 'demokrasinin beşiği' olarak bilinir?",
+      "choices": [
+        "İngiltere",
+        "Yunanistan",
+        "Fransa",
+        "ABD"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 390,
+      "category": "GenelKultur",
+      "difficulty": 4,
+      "text": "Avro hangi yıl ortak para birimi olarak kullanıma girdi?",
+      "choices": [
+        "1995",
+        "1999",
+        "2002",
+        "2005"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 391,
       "category": "GenelKultur",
       "difficulty": 5,
       "text": "Mona Lisa'nın orijinal adı nedir?",
-      "choices": ["La Joconde", "La Gioconda", "La Donna", "La Bella"],
+      "choices": [
+        "La Joconde",
+        "La Gioconda",
+        "La Donna",
+        "La Bella"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 392,
+      "category": "GenelKultur",
+      "difficulty": 5,
+      "text": "Hangi gezgin ilk kez Çin'e gitmiştir (Avrupalı)?",
+      "choices": [
+        "Marco Polo",
+        "Vasco da Gama",
+        "Cristopher Colombus",
+        "İbn Battuta"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 393,
+      "category": "GenelKultur",
+      "difficulty": 5,
+      "text": "Türk dilinin en eski yazılı kaynağı nedir?",
+      "choices": [
+        "Orhun Yazıtları",
+        "Kutadgu Bilig",
+        "Divanü Lügati't Türk",
+        "Atabet'ül Hakayık"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 394,
+      "category": "GenelKultur",
+      "difficulty": 5,
+      "text": "Hangi felsefeci 'Düşünüyorum öyleyse varım' demiştir?",
+      "choices": [
+        "Descartes",
+        "Sokrates",
+        "Aristoteles",
+        "Kant"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 395,
+      "category": "GenelKultur",
+      "difficulty": 5,
+      "text": "İlk anayasamız hangi tarihtir?",
+      "choices": [
+        "1839",
+        "1876",
+        "1908",
+        "1921"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 396,
+      "category": "GenelKultur",
+      "difficulty": 5,
+      "text": "Hangi ülke ilk insan haklarını yasalaştırdı?",
+      "choices": [
+        "ABD",
+        "Fransa",
+        "İngiltere",
+        "İsveç"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 397,
+      "category": "GenelKultur",
+      "difficulty": 5,
+      "text": "Roma rakamlarında 'M' kaçtır?",
+      "choices": [
+        "100",
+        "500",
+        "1000",
+        "5000"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 398,
+      "category": "GenelKultur",
+      "difficulty": 5,
+      "text": "Hangi şehir Anadolu'da 'Dünya'nın en eski yerleşim yeri' olarak bilinir?",
+      "choices": [
+        "Çatalhöyük",
+        "Hattuşaş",
+        "Göbekli Tepe",
+        "Truva"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 399,
+      "category": "GenelKultur",
+      "difficulty": 5,
+      "text": "Sümerlerin tanrılar krallarına ne ad verilirdi?",
+      "choices": [
+        "Firavun",
+        "Patesi",
+        "Şah",
+        "Sultan"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 400,
+      "category": "GenelKultur",
+      "difficulty": 5,
+      "text": "İlk yazıyı kim icat etti?",
+      "choices": [
+        "Mısırlılar",
+        "Sümerler",
+        "Babiller",
+        "Asurlar"
+      ],
       "correctAnswer": 1
     }
   ]

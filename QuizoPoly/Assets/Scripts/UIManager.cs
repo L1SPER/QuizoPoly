@@ -62,9 +62,9 @@ public class UIManager : MonoBehaviour
     public TMP_Text questionDifficultyText;
 
     [Header("QUESTION FEEDBACK RENGİ")]
-    public Color correctColor = new Color(0.2f, 0.8f, 0.2f);  // Yeşil
-    public Color wrongColor = new Color(0.9f, 0.2f, 0.2f);    // Kırmızı
-    public float feedbackDuration = 1.5f;  // Renk gösterim süresi
+    public Color correctColor = new Color(0.2f, 0.8f, 0.2f);
+    public Color wrongColor = new Color(0.9f, 0.2f, 0.2f);
+    public float feedbackDuration = 1.5f;
 
     // ============= RENT PANEL =============
     [Header("RENT PANEL")]
@@ -86,6 +86,21 @@ public class UIManager : MonoBehaviour
     public Button exitJailButton;
     public Button waitButton;
 
+    // ============= GENERIC INFO PANEL (Chance/Bonus/Tax/GoToStart/Jail için ortak) =============
+    [Header("GENERIC INFO PANEL (Chance/Bonus/Tax/GoToStart/Jail)")]
+    public GameObject chanceBonusPanel;
+    public TMP_Text chanceBonusTitleText;
+    public TMP_Text chanceBonusDescriptionText;
+    public Image chanceBonusBackgroundImage;
+    public Button chanceBonusOkButton;
+
+    [Header("Panel Renkleri")]
+    public Color bonusColor = new Color(0.2f, 0.7f, 0.3f);     // Yeşil
+    public Color chanceColor = new Color(0.9f, 0.7f, 0.1f);    // Sarı
+    public Color taxColor = new Color(0.8f, 0.2f, 0.2f);       // Kırmızı
+    public Color goToStartColor = new Color(0.3f, 0.5f, 0.9f); // Mavi
+    public Color jailColor = new Color(0.4f, 0.4f, 0.4f);      // Gri
+
     // ===== CALLBACKS =====
     private Action onBuyClicked;
     private Action onPurchasePassClicked;
@@ -98,12 +113,11 @@ public class UIManager : MonoBehaviour
     private Action onRollDicesClicked;
     private Action onPayExitClicked;
     private Action onWaitClicked;
+    private Action onChanceBonusOk;
 
-    // Süre sayacı ve feedback için
     private Coroutine questionTimerCoroutine;
     private bool questionAnswered = false;
 
-    // Original buton renkleri (feedback sonrası geri yüklemek için)
     private Color originalButtonColorA;
     private Color originalButtonColorB;
     private Color originalButtonColorC;
@@ -120,11 +134,11 @@ public class UIManager : MonoBehaviour
         if (questionPanel != null) questionPanel.SetActive(false);
         if (rentPanel != null) rentPanel.SetActive(false);
         if (exitJailPanel != null) exitJailPanel.SetActive(false);
+        if (chanceBonusPanel != null) chanceBonusPanel.SetActive(false);
     }
 
     void Start()
     {
-        // Orijinal buton renklerini kaydet (feedback sonrası geri yüklemek için)
         if (buttonA != null) originalButtonColorA = GetButtonColor(buttonA);
         if (buttonB != null) originalButtonColorB = GetButtonColor(buttonB);
         if (buttonC != null) originalButtonColorC = GetButtonColor(buttonC);
@@ -135,6 +149,7 @@ public class UIManager : MonoBehaviour
         SetupQuestionButtons();
         SetupRentButtons();
         SetupExitJailButtons();
+        SetupChanceBonusButton();
     }
 
     Color GetButtonColor(Button btn)
@@ -347,26 +362,22 @@ public class UIManager : MonoBehaviour
 
         bool correct = (answerIndex == correctAnswerIndex);
 
-        // Feedback başlat: butonları renklendir, kısa bekle, sonra kapat
         StartCoroutine(ShowAnswerFeedback(answerIndex, correct));
     }
 
     IEnumerator ShowAnswerFeedback(int clickedIndex, bool correct)
     {
-        // Tüm butonları pasif yap (oyuncu tekrar basamasın)
         buttonA.interactable = false;
         buttonB.interactable = false;
         buttonC.interactable = false;
         buttonD.interactable = false;
 
-        // Tıklanan butonun rengini ayarla
         Button clickedButton = GetButtonByIndex(clickedIndex);
         if (clickedButton != null)
         {
             SetButtonColor(clickedButton, correct ? correctColor : wrongColor);
         }
 
-        // Eğer yanlış cevap verildiyse, doğru cevabı da yeşil göster
         if (!correct)
         {
             Button correctButton = GetButtonByIndex(correctAnswerIndex);
@@ -376,10 +387,8 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        // Feedback süresince bekle
         yield return new WaitForSeconds(feedbackDuration);
 
-        // Butonları orijinal renge döndür ve aktif yap
         SetButtonColor(buttonA, originalButtonColorA);
         SetButtonColor(buttonB, originalButtonColorB);
         SetButtonColor(buttonC, originalButtonColorC);
@@ -390,7 +399,6 @@ public class UIManager : MonoBehaviour
         buttonC.interactable = true;
         buttonD.interactable = true;
 
-        // Soru paneli kapanır, InGamePanel geri açılır
         questionPanel.SetActive(false);
         if (inGamePanel != null) inGamePanel.SetActive(true);
 
@@ -404,7 +412,6 @@ public class UIManager : MonoBehaviour
         questionPanel.SetActive(true);
         questionAnswered = false;
 
-        // Butonları başlangıç durumuna döndür (önceki sorunun renkleri kalmasın)
         SetButtonColor(buttonA, originalButtonColorA);
         SetButtonColor(buttonB, originalButtonColorB);
         SetButtonColor(buttonC, originalButtonColorC);
@@ -488,20 +495,17 @@ public class UIManager : MonoBehaviour
             Debug.Log("Sure doldu! Yanlis sayiliyor.");
             questionAnswered = true;
 
-            // Süre dolduğunda doğru cevabı yeşil göster, sonra kapat
             StartCoroutine(ShowTimeoutFeedback());
         }
     }
 
     IEnumerator ShowTimeoutFeedback()
     {
-        // Butonları pasif yap
         buttonA.interactable = false;
         buttonB.interactable = false;
         buttonC.interactable = false;
         buttonD.interactable = false;
 
-        // Doğru cevabı yeşil göster
         Button correctButton = GetButtonByIndex(correctAnswerIndex);
         if (correctButton != null)
         {
@@ -510,7 +514,6 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(feedbackDuration);
 
-        // Butonları orijinal renge döndür
         SetButtonColor(buttonA, originalButtonColorA);
         SetButtonColor(buttonB, originalButtonColorB);
         SetButtonColor(buttonC, originalButtonColorC);
@@ -609,6 +612,111 @@ public class UIManager : MonoBehaviour
         onRollDicesClicked = rollDicesCallback;
         onPayExitClicked = payExitCallback;
         onWaitClicked = waitCallback;
+    }
+
+    // ============= GENERIC INFO PANEL =============
+
+    void SetupChanceBonusButton()
+    {
+        if (chanceBonusOkButton != null)
+        {
+            chanceBonusOkButton.onClick.RemoveAllListeners();
+            chanceBonusOkButton.onClick.AddListener(() => {
+                chanceBonusPanel.SetActive(false);
+                onChanceBonusOk?.Invoke();
+            });
+        }
+    }
+
+    // ===== Genel kullanım için ortak method =====
+    public void ShowGenericInfoPanel(string title, string description, Color bgColor, Action okCallback)
+    {
+        chanceBonusPanel.SetActive(true);
+
+        chanceBonusTitleText.text = title;
+        chanceBonusDescriptionText.text = description;
+
+        if (chanceBonusBackgroundImage != null)
+            chanceBonusBackgroundImage.color = bgColor;
+
+        onChanceBonusOk = okCallback;
+    }
+
+    // ===== Chance/Bonus =====
+    public void ShowChanceBonusPanel(CardType type, ChanceBonusCard card, Action okCallback)
+    {
+        string title = (type == CardType.Bonus) ? "BONUS" : "SANS";
+        Color color = (type == CardType.Bonus) ? bonusColor : chanceColor;
+        string description = GetCardDescription(card);
+
+        ShowGenericInfoPanel(title, description, color, okCallback);
+    }
+
+    // ===== Tax =====
+    public void ShowTaxPanel(int taxRate, int taxAmount, Action okCallback)
+    {
+        string description =
+            $"Vergi karesine dustun!\n\n" +
+            $"Paranin %{taxRate}'i alindi\n\n" +
+            $"-{FormatMoney(taxAmount)}";
+
+        ShowGenericInfoPanel("VERGI", description, taxColor, okCallback);
+    }
+
+    // ===== Go To Start =====
+    public void ShowGoToStartPanel(Action okCallback)
+    {
+        string description =
+            "Baslangica Don karesine dustun!\n\n" +
+            "Direkt baslangic karesine\n" +
+            "isinlaniyorsun\n\n" +
+            "(Para alinmaz)";
+
+        ShowGenericInfoPanel("BASLANGICA DON", description, goToStartColor, okCallback);
+    }
+
+    // ===== Jail (kareye direkt düşme) =====
+    public void ShowGoToJailInfoPanel(Action okCallback)
+    {
+        string description =
+            "Hapis karesine dustun!\n\n" +
+            "Dogrudan Silivri Hapishanesi'ne\n" +
+            "gidiyorsun";
+
+        ShowGenericInfoPanel("HAPSE GIDIYORSUN", description, jailColor, okCallback);
+    }
+
+    string GetCardDescription(ChanceBonusCard card)
+    {
+        switch (card.effect)
+        {
+            case CardEffect.AddMoney:
+                return $"{card.title}\n\n+{FormatMoney(card.amount)}";
+
+            case CardEffect.SubtractMoney:
+                return $"{card.title}\n\n-{FormatMoney(card.amount)}";
+
+            case CardEffect.CollectFromAllPlayers:
+                return $"{card.title}\n\nHer oyuncudan {FormatMoney(card.amount)} alirsin";
+
+            case CardEffect.GoToJail:
+                return $"{card.title}\n\nDogrudan hapse gidersin!";
+
+            case CardEffect.GoToStart:
+                return $"{card.title}\n\nBaslangic karesine git";
+
+            case CardEffect.MoveForward:
+                return $"{card.title}\n\n{card.amount} kare ileri git";
+
+            case CardEffect.MoveBackward:
+                return $"{card.title}\n\n{card.amount} kare geri git";
+
+            case CardEffect.GoToNearestVacation:
+                return $"{card.title}\n\nEn yakin tatil bolgesine isinlanirsin";
+
+            default:
+                return card.title;
+        }
     }
 
     // ============= HELPER =============
