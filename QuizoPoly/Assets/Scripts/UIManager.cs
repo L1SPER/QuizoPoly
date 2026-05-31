@@ -3,23 +3,21 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
-    // ============= IN GAME PANEL =============
-    [Header("IN GAME PANEL (Arkaplan - soru sırasında gizlenecek)")]
+    [Header("IN GAME PANEL")]
     public GameObject inGamePanel;
 
-    // ============= INFO PANEL =============
     [Header("INFO PANEL")]
     public GameObject infoPanel;
     public TMP_Text infoNameText;
     public Image infoColorImage;
     public TMP_Text infoPriceText;
 
-    // ============= PURCHASE PANEL =============
     [Header("PURCHASE PANEL")]
     public GameObject purchasePanel;
     public Image purchaseColorImage;
@@ -28,7 +26,6 @@ public class UIManager : MonoBehaviour
     public Button purchaseBuyButton;
     public Button purchasePassButton;
 
-    // ============= BUILDING PANEL =============
     [Header("BUILDING PANEL")]
     public GameObject buildingPanel;
     public Image buildingColorImage;
@@ -45,7 +42,6 @@ public class UIManager : MonoBehaviour
     public TMP_Text floor4PriceText;
     public TMP_Text hotelPriceText;
 
-    // ============= QUESTION PANEL =============
     [Header("QUESTION PANEL")]
     public GameObject questionPanel;
     public TMP_Text questionText;
@@ -66,7 +62,6 @@ public class UIManager : MonoBehaviour
     public Color wrongColor = new Color(0.9f, 0.2f, 0.2f);
     public float feedbackDuration = 1.5f;
 
-    // ============= RENT PANEL =============
     [Header("RENT PANEL")]
     public GameObject rentPanel;
     public TMP_Text rentNameText;
@@ -76,7 +71,6 @@ public class UIManager : MonoBehaviour
     public Button rentBuyButton;
     public Button payRentButton;
 
-    // ============= EXIT JAIL PANEL =============
     [Header("EXIT JAIL PANEL")]
     public GameObject exitJailPanel;
     public Image exitJailColorImage;
@@ -86,8 +80,7 @@ public class UIManager : MonoBehaviour
     public Button exitJailButton;
     public Button waitButton;
 
-    // ============= GENERIC INFO PANEL (Chance/Bonus/Tax/GoToStart/Jail için ortak) =============
-    [Header("GENERIC INFO PANEL (Chance/Bonus/Tax/GoToStart/Jail)")]
+    [Header("GENERIC INFO PANEL")]
     public GameObject chanceBonusPanel;
     public TMP_Text chanceBonusTitleText;
     public TMP_Text chanceBonusDescriptionText;
@@ -95,11 +88,29 @@ public class UIManager : MonoBehaviour
     public Button chanceBonusOkButton;
 
     [Header("Panel Renkleri")]
-    public Color bonusColor = new Color(0.2f, 0.7f, 0.3f);     // Yeşil
-    public Color chanceColor = new Color(0.9f, 0.7f, 0.1f);    // Sarı
-    public Color taxColor = new Color(0.8f, 0.2f, 0.2f);       // Kırmızı
-    public Color goToStartColor = new Color(0.3f, 0.5f, 0.9f); // Mavi
-    public Color jailColor = new Color(0.4f, 0.4f, 0.4f);      // Gri
+    public Color bonusColor = new Color(0.2f, 0.7f, 0.3f);
+    public Color chanceColor = new Color(0.9f, 0.7f, 0.1f);
+    public Color taxColor = new Color(0.8f, 0.2f, 0.2f);
+    public Color goToStartColor = new Color(0.3f, 0.5f, 0.9f);
+    public Color jailColor = new Color(0.4f, 0.4f, 0.4f);
+
+    [Header("BANKRUPTCY PANEL")]
+    public GameObject bankruptcyPanel;
+    public TMP_Text bankruptcyTitleText;
+    public TMP_Text bankruptcyDebtText;
+    public TMP_Text bankruptcySelectedTotalText;
+    public Button bankruptcySellButton;
+    public Transform bankruptcyContentParent;  // ScrollView'in Content'i
+    public GameObject propertyRowPrefab;       // PropertyRow prefab
+
+    [Header("WIN/LOSE PANELS")]
+    public GameObject winPanel;
+    public TMP_Text winnerNameText;
+    public Button winPanelOkButton;
+
+    public GameObject losePanel;
+    public TMP_Text loserNameText;
+    public Button losePanelOkButton;
 
     // ===== CALLBACKS =====
     private Action onBuyClicked;
@@ -114,6 +125,8 @@ public class UIManager : MonoBehaviour
     private Action onPayExitClicked;
     private Action onWaitClicked;
     private Action onChanceBonusOk;
+    private Action<List<Tile>> onBankruptcySell;
+    private Action onBankruptcyCancel;
 
     private Coroutine questionTimerCoroutine;
     private bool questionAnswered = false;
@@ -122,6 +135,12 @@ public class UIManager : MonoBehaviour
     private Color originalButtonColorB;
     private Color originalButtonColorC;
     private Color originalButtonColorD;
+
+    // Bankruptcy state
+    private List<Tile> bankruptcySelectedTiles = new List<Tile>();
+    private List<PropertyRowUI> bankruptcyRows = new List<PropertyRowUI>();
+    private int bankruptcyDebt = 0;
+    private int bankruptcyDebtorMoney = 0;   
 
     void Awake()
     {
@@ -135,6 +154,9 @@ public class UIManager : MonoBehaviour
         if (rentPanel != null) rentPanel.SetActive(false);
         if (exitJailPanel != null) exitJailPanel.SetActive(false);
         if (chanceBonusPanel != null) chanceBonusPanel.SetActive(false);
+        if (bankruptcyPanel != null) bankruptcyPanel.SetActive(false);
+        if (winPanel != null) winPanel.SetActive(false);
+        if (losePanel != null) losePanel.SetActive(false);
     }
 
     void Start()
@@ -150,6 +172,8 @@ public class UIManager : MonoBehaviour
         SetupRentButtons();
         SetupExitJailButtons();
         SetupChanceBonusButton();
+        SetupBankruptcyButton();
+        SetupWinLoseButtons();
     }
 
     Color GetButtonColor(Button btn)
@@ -209,13 +233,18 @@ public class UIManager : MonoBehaviour
         });
     }
 
-    public void ShowPurchasePanel(Tile tile, Action buyCallback, Action passCallback)
+    public void ShowPurchasePanel(Tile tile, int playerMoney, Action buyCallback, Action passCallback)
     {
         purchasePanel.SetActive(true);
 
         purchaseColorImage.color = tile.groupColor;
         purchaseNameText.text = tile.tileName;
         purchasePriceText.text = FormatMoney(tile.basePrice);
+
+        // Buy butonu - parası yetiyorsa aktif
+        purchaseBuyButton.interactable = playerMoney >= tile.basePrice;
+
+        Debug.Log($"[PURCHASE PANEL] Para: {playerMoney}, Fiyat: {tile.basePrice}, BuyAktif: {purchaseBuyButton.interactable}");
 
         onBuyClicked = buyCallback;
         onPurchasePassClicked = passCallback;
@@ -293,17 +322,10 @@ public class UIManager : MonoBehaviour
         bool isNextLevel = level == currentLevel + 1;
         bool hasMoney = playerMoney >= cost;
 
-        if (isSequential)
-        {
-            btn.interactable = isNextLevel && hasMoney;
-        }
-        else
-        {
-            btn.interactable = isAboveCurrent && hasMoney;
-        }
+        if (isSequential) btn.interactable = isNextLevel && hasMoney;
+        else btn.interactable = isAboveCurrent && hasMoney;
 
-        if (priceText != null)
-            priceText.text = FormatMoney(cost);
+        if (priceText != null) priceText.text = FormatMoney(cost);
     }
 
     int GetTotalCost(int level, int costPerLevel)
@@ -326,13 +348,10 @@ public class UIManager : MonoBehaviour
     {
         buttonA.onClick.RemoveAllListeners();
         buttonA.onClick.AddListener(() => OnAnswerClicked(0));
-
         buttonB.onClick.RemoveAllListeners();
         buttonB.onClick.AddListener(() => OnAnswerClicked(1));
-
         buttonC.onClick.RemoveAllListeners();
         buttonC.onClick.AddListener(() => OnAnswerClicked(2));
-
         buttonD.onClick.RemoveAllListeners();
         buttonD.onClick.AddListener(() => OnAnswerClicked(3));
     }
@@ -361,7 +380,6 @@ public class UIManager : MonoBehaviour
         }
 
         bool correct = (answerIndex == correctAnswerIndex);
-
         StartCoroutine(ShowAnswerFeedback(answerIndex, correct));
     }
 
@@ -374,17 +392,12 @@ public class UIManager : MonoBehaviour
 
         Button clickedButton = GetButtonByIndex(clickedIndex);
         if (clickedButton != null)
-        {
             SetButtonColor(clickedButton, correct ? correctColor : wrongColor);
-        }
 
         if (!correct)
         {
             Button correctButton = GetButtonByIndex(correctAnswerIndex);
-            if (correctButton != null)
-            {
-                SetButtonColor(correctButton, correctColor);
-            }
+            if (correctButton != null) SetButtonColor(correctButton, correctColor);
         }
 
         yield return new WaitForSeconds(feedbackDuration);
@@ -393,7 +406,6 @@ public class UIManager : MonoBehaviour
         SetButtonColor(buttonB, originalButtonColorB);
         SetButtonColor(buttonC, originalButtonColorC);
         SetButtonColor(buttonD, originalButtonColorD);
-
         buttonA.interactable = true;
         buttonB.interactable = true;
         buttonC.interactable = true;
@@ -423,13 +435,11 @@ public class UIManager : MonoBehaviour
 
         Question q = null;
         if (QuestionManager.Instance != null)
-        {
             q = QuestionManager.Instance.GetRandomQuestion(category, difficulty);
-        }
 
         if (q == null)
         {
-            questionText.text = $"[{category} - {GetDifficultyName(difficulty)}] Test sorusu. Dogru cevap: A";
+            questionText.text = $"[{category} - {GetDifficultyName(difficulty)}] Test sorusu";
             textA.text = "A) Dogru cevap";
             textB.text = "B) Yanlis 1";
             textC.text = "C) Yanlis 2";
@@ -448,15 +458,13 @@ public class UIManager : MonoBehaviour
 
         if (questionCategoryText != null)
             questionCategoryText.text = category.ToString().ToUpper();
-
         if (questionDifficultyText != null)
             questionDifficultyText.text = GetDifficultyName(difficulty).ToUpper();
 
         onQuestionAnswered = answerCallback;
 
         int duration = GetDurationForDifficulty(difficulty);
-        if (questionTimerCoroutine != null)
-            StopCoroutine(questionTimerCoroutine);
+        if (questionTimerCoroutine != null) StopCoroutine(questionTimerCoroutine);
         questionTimerCoroutine = StartCoroutine(QuestionTimerCoroutine(duration));
     }
 
@@ -480,21 +488,17 @@ public class UIManager : MonoBehaviour
     IEnumerator QuestionTimerCoroutine(int totalSeconds)
     {
         float remaining = totalSeconds;
-
         while (remaining > 0 && !questionAnswered)
         {
             if (questionTimerText != null)
                 questionTimerText.text = Mathf.CeilToInt(remaining).ToString();
-
             remaining -= Time.deltaTime;
             yield return null;
         }
 
         if (!questionAnswered)
         {
-            Debug.Log("Sure doldu! Yanlis sayiliyor.");
             questionAnswered = true;
-
             StartCoroutine(ShowTimeoutFeedback());
         }
     }
@@ -507,10 +511,7 @@ public class UIManager : MonoBehaviour
         buttonD.interactable = false;
 
         Button correctButton = GetButtonByIndex(correctAnswerIndex);
-        if (correctButton != null)
-        {
-            SetButtonColor(correctButton, correctColor);
-        }
+        if (correctButton != null) SetButtonColor(correctButton, correctColor);
 
         yield return new WaitForSeconds(feedbackDuration);
 
@@ -559,7 +560,7 @@ public class UIManager : MonoBehaviour
         });
     }
 
-    public void ShowRentPanel(Tile tile, int buyPrice, int rentPrice,
+    public void ShowRentPanel(Tile tile, int buyPrice, int rentPrice, int playerMoney,
         Action buyCallback, Action payRentCallback)
     {
         if (tile == null) return;
@@ -570,6 +571,9 @@ public class UIManager : MonoBehaviour
         rentColorImage.color = tile.groupColor;
         rentBuyPriceText.text = FormatMoney(buyPrice);
         rentRentPriceText.text = FormatMoney(rentPrice);
+
+        rentBuyButton.interactable = playerMoney >= buyPrice;
+        payRentButton.interactable = playerMoney >= rentPrice;
 
         onRentBuyClicked = buyCallback;
         onPayRentClicked = payRentCallback;
@@ -598,7 +602,7 @@ public class UIManager : MonoBehaviour
         });
     }
 
-    public void ShowExitJailPanel(Tile jailTile, int exitFee, int turnsLeft,
+    public void ShowExitJailPanel(Tile jailTile, int exitFee, int turnsLeft, int playerMoney,
         Action rollDicesCallback, Action payExitCallback, Action waitCallback)
     {
         exitJailPanel.SetActive(true);
@@ -608,6 +612,7 @@ public class UIManager : MonoBehaviour
         exitJailPriceText.text = FormatMoney(exitFee);
 
         waitButton.interactable = turnsLeft > 0;
+        exitJailButton.interactable = playerMoney >= exitFee;
 
         onRollDicesClicked = rollDicesCallback;
         onPayExitClicked = payExitCallback;
@@ -628,61 +633,42 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // ===== Genel kullanım için ortak method =====
     public void ShowGenericInfoPanel(string title, string description, Color bgColor, Action okCallback)
     {
         chanceBonusPanel.SetActive(true);
-
         chanceBonusTitleText.text = title;
         chanceBonusDescriptionText.text = description;
-
         if (chanceBonusBackgroundImage != null)
             chanceBonusBackgroundImage.color = bgColor;
-
         onChanceBonusOk = okCallback;
     }
 
-    // ===== Chance/Bonus =====
     public void ShowChanceBonusPanel(CardType type, ChanceBonusCard card, Action okCallback)
     {
         string title = (type == CardType.Bonus) ? "BONUS" : "SANS";
         Color color = (type == CardType.Bonus) ? bonusColor : chanceColor;
         string description = GetCardDescription(card);
-
         ShowGenericInfoPanel(title, description, color, okCallback);
     }
 
-    // ===== Tax =====
     public void ShowTaxPanel(int taxRate, int taxAmount, Action okCallback)
     {
         string description =
             $"Vergi karesine dustun!\n\n" +
             $"Paranin %{taxRate}'i alindi\n\n" +
             $"-{FormatMoney(taxAmount)}";
-
         ShowGenericInfoPanel("VERGI", description, taxColor, okCallback);
     }
 
-    // ===== Go To Start =====
     public void ShowGoToStartPanel(Action okCallback)
     {
-        string description =
-            "Baslangica Don karesine dustun!\n\n" +
-            "Direkt baslangic karesine\n" +
-            "isinlaniyorsun\n\n" +
-            "(Para alinmaz)";
-
+        string description = "Baslangica Don karesine dustun!\n\nDirekt baslangic karesine\nisinlaniyorsun\n\n(Para alinmaz)";
         ShowGenericInfoPanel("BASLANGICA DON", description, goToStartColor, okCallback);
     }
 
-    // ===== Jail (kareye direkt düşme) =====
     public void ShowGoToJailInfoPanel(Action okCallback)
     {
-        string description =
-            "Hapis karesine dustun!\n\n" +
-            "Dogrudan Silivri Hapishanesi'ne\n" +
-            "gidiyorsun";
-
+        string description = "Hapis karesine dustun!\n\nDogrudan Silivri Hapishanesi'ne\ngidiyorsun";
         ShowGenericInfoPanel("HAPSE GIDIYORSUN", description, jailColor, okCallback);
     }
 
@@ -692,32 +678,204 @@ public class UIManager : MonoBehaviour
         {
             case CardEffect.AddMoney:
                 return $"{card.title}\n\n+{FormatMoney(card.amount)}";
-
             case CardEffect.SubtractMoney:
                 return $"{card.title}\n\n-{FormatMoney(card.amount)}";
-
             case CardEffect.CollectFromAllPlayers:
                 return $"{card.title}\n\nHer oyuncudan {FormatMoney(card.amount)} alirsin";
-
             case CardEffect.GoToJail:
                 return $"{card.title}\n\nDogrudan hapse gidersin!";
-
             case CardEffect.GoToStart:
                 return $"{card.title}\n\nBaslangic karesine git";
-
             case CardEffect.MoveForward:
                 return $"{card.title}\n\n{card.amount} kare ileri git";
-
             case CardEffect.MoveBackward:
                 return $"{card.title}\n\n{card.amount} kare geri git";
-
             case CardEffect.GoToNearestVacation:
                 return $"{card.title}\n\nEn yakin tatil bolgesine isinlanirsin";
-
             default:
                 return card.title;
         }
     }
+
+    // ============= BANKRUPTCY PANEL =============
+
+    void SetupBankruptcyButton()
+    {
+        if (bankruptcySellButton != null)
+        {
+            bankruptcySellButton.onClick.RemoveAllListeners();
+            bankruptcySellButton.onClick.AddListener(OnBankruptcySellClicked);
+        }
+    }
+
+    public void ShowBankruptcyPanel(PlayerToken token, int debt, List<Tile> ownedProperties,
+        Action<List<Tile>> sellCallback)
+    {
+        bankruptcyPanel.SetActive(true);
+        bankruptcyDebt = debt;
+        bankruptcyDebtorMoney = token.money;   
+        onBankruptcySell = sellCallback;
+
+        // Title
+        if (bankruptcyTitleText != null)
+            bankruptcyTitleText.text = $"BORCUNUZ VAR - {token.playerName}";
+
+        // Debt
+        if (bankruptcyDebtText != null)
+            bankruptcyDebtText.text = $"Borc: {FormatMoney(debt)}";
+
+        // Önceki rowları temizle
+        ClearBankruptcyRows();
+        bankruptcySelectedTiles.Clear();
+
+        // Yeni rowları oluştur
+        foreach (var tile in ownedProperties)
+        {
+            GameObject rowObj = Instantiate(propertyRowPrefab, bankruptcyContentParent);
+            PropertyRowUI rowUI = rowObj.GetComponent<PropertyRowUI>();
+
+            if (rowUI != null)
+            {
+                int sellValue = CalculateTileSellValue(tile);
+                rowUI.Setup(tile, sellValue, false, OnBankruptcyToggleChanged);
+                bankruptcyRows.Add(rowUI);
+            }
+        }
+
+        UpdateBankruptcySelectedTotal();
+    }
+
+    public void HideBankruptcyPanel()
+    {
+        bankruptcyPanel.SetActive(false);
+        ClearBankruptcyRows();
+    }
+
+    void ClearBankruptcyRows()
+    {
+        foreach (var row in bankruptcyRows)
+        {
+            if (row != null && row.gameObject != null)
+                Destroy(row.gameObject);
+        }
+        bankruptcyRows.Clear();
+    }
+
+    int CalculateTileSellValue(Tile tile)
+    {
+        int landValue = tile.basePrice / 2;  // Arazi yarı fiyat
+
+        // Bina maliyeti
+        int costPerLevel = tile.basePrice / 2;
+        int currentBuildingCost = GetTotalBuildingCost(tile.buildingLevel, costPerLevel);
+        int buildingRefund = currentBuildingCost / 2;  // Binalar yarı fiyat
+
+        return landValue + buildingRefund;
+    }
+
+    int GetTotalBuildingCost(int level, int costPerLevel)
+    {
+        switch (level)
+        {
+            case 0: return 0;
+            case 1: return costPerLevel;
+            case 2: return costPerLevel * 2;
+            case 3: return costPerLevel * 3;
+            case 4: return costPerLevel * 4;
+            case 5: return costPerLevel * 6;
+            default: return 0;
+        }
+    }
+
+    void OnBankruptcyToggleChanged(Tile tile, bool isSelected)
+    {
+        if (isSelected)
+        {
+            if (!bankruptcySelectedTiles.Contains(tile))
+                bankruptcySelectedTiles.Add(tile);
+        }
+        else
+        {
+            bankruptcySelectedTiles.Remove(tile);
+        }
+
+        UpdateBankruptcySelectedTotal();
+    }
+
+    void UpdateBankruptcySelectedTotal()
+    {
+        int total = 0;
+        foreach (var tile in bankruptcySelectedTiles)
+        {
+            total += CalculateTileSellValue(tile);
+        }
+
+        int afterSale = bankruptcyDebtorMoney + total - bankruptcyDebt;
+
+        if (bankruptcySelectedTotalText != null)
+        {
+            if (afterSale >= 0)
+                bankruptcySelectedTotalText.text =
+                    $"Secili Toplam: {FormatMoney(total)}  |  Satis sonrasi: {FormatMoney(afterSale)}";
+            else
+                bankruptcySelectedTotalText.text =
+                    $"Secili Toplam: {FormatMoney(total)}  |  Eksik: {FormatMoney(-afterSale)}";
+        }
+
+        // Cash + satış toplamı borcu karşılıyorsa aktif
+        if (bankruptcySellButton != null)
+            bankruptcySellButton.interactable = (bankruptcyDebtorMoney + total) >= bankruptcyDebt;
+    }
+
+    void OnBankruptcySellClicked()
+    {
+        // Seçili tile'ları geri çağrıya gönder
+        List<Tile> toSell = new List<Tile>(bankruptcySelectedTiles);
+        bankruptcyPanel.SetActive(false);
+        ClearBankruptcyRows();
+        onBankruptcySell?.Invoke(toSell);
+    }
+
+    // ============= WIN/LOSE =============
+
+    void SetupWinLoseButtons()
+    {
+        if (winPanelOkButton != null)
+        {
+            winPanelOkButton.onClick.RemoveAllListeners();
+            winPanelOkButton.onClick.AddListener(() => {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
+            });
+        }
+
+        if (losePanelOkButton != null)
+        {
+            losePanelOkButton.onClick.RemoveAllListeners();
+            losePanelOkButton.onClick.AddListener(() => {
+                losePanel.SetActive(false);
+            });
+        }
+    }
+
+    public void ShowWinPanel(PlayerToken winner)
+    {
+        if (winPanel == null) return;
+
+        winPanel.SetActive(true);
+
+        if (winnerNameText != null)
+            winnerNameText.text = $"{winner.playerName} KAZANDI!";
+    }
+
+    public void ShowLosePanel(PlayerToken loser)
+{
+    if (losePanel == null) return;
+
+    losePanel.SetActive(true);
+
+    if (loserNameText != null)
+        loserNameText.text = $"{loser.playerName} IFLAS ETTI!";
+}
 
     // ============= HELPER =============
 

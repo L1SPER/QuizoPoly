@@ -38,17 +38,12 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int currentPlayerIndex = 0;
 
     private bool gameStarted = false;
+    private bool gameEnded = false;
 
     private static readonly Category[] AllPlayableCategories = new Category[]
     {
-        Category.Tarih,
-        Category.Cografya,
-        Category.Sanat,
-        Category.Spor,
-        Category.Bilim,
-        Category.Muzik,
-        Category.Edebiyat,
-        Category.GenelKultur
+        Category.Tarih, Category.Cografya, Category.Sanat, Category.Spor,
+        Category.Bilim, Category.Muzik, Category.Edebiyat, Category.GenelKultur
     };
 
     void Awake()
@@ -61,6 +56,7 @@ public class GameManager : MonoBehaviour
     {
         SpawnPlayerTokens();
         gameStarted = true;
+        gameEnded = false;
         currentPlayerIndex = 0;
 
         titleText.text = "QUIZOPOLY";
@@ -95,9 +91,30 @@ public class GameManager : MonoBehaviour
 
     void StartNextTurn()
     {
+        if (gameEnded) return;
+
+        // İflas etmemiş oyuncuyu bul
+        int activeCount = 0;
+        foreach (var p in playerTokens)
+            if (!p.isBankrupt) activeCount++;
+
+        if (activeCount <= 1)
+        {
+            CheckWinCondition();
+            return;
+        }
+
+        // Eğer mevcut oyuncu iflas etmişse sıradakine geç
+        int attempts = 0;
+        while (playerTokens[currentPlayerIndex].isBankrupt && attempts < playerTokens.Count)
+        {
+            currentPlayerIndex = (currentPlayerIndex + 1) % playerTokens.Count;
+            attempts++;
+        }
+
         var current = playerTokens[currentPlayerIndex];
 
-        Debug.Log($"=== START NEXT TURN === Player: {current.playerName}, isInJail: {current.isInJail}, jailTurnsLeft: {current.jailTurnsLeft}");
+        Debug.Log($"=== TURN === {current.playerName}, isInJail: {current.isInJail}, isBankrupt: {current.isBankrupt}");
 
         string colorHex = ColorUtility.ToHtmlStringRGB(current.playerColor);
         instructionText.text = $"Turn: <color=#{colorHex}>{current.playerName}</color>";
@@ -106,13 +123,11 @@ public class GameManager : MonoBehaviour
 
         if (current.isInJail)
         {
-            Debug.Log($"[JAIL] {current.playerName} HAPISTE, RollButton pasif, panel acilacak");
             rollButton.interactable = false;
             StartCoroutine(StartJailTurn(current));
         }
         else
         {
-            Debug.Log($"[OK] {current.playerName} normal tur, RollButton aktif");
             rollButton.interactable = true;
         }
     }
@@ -132,9 +147,12 @@ public class GameManager : MonoBehaviour
             var p = playerTokens[i];
             string colorHex = ColorUtility.ToHtmlStringRGB(p.playerColor);
             string moneyStr = p.money.ToString("N0", new System.Globalization.CultureInfo("tr-TR"));
-            string marker = (i == currentPlayerIndex) ? "> " : "  ";
-            string jailMarker = p.isInJail ? " [JAIL]" : "";
-            text += $"{marker}<color=#{colorHex}>{p.playerName}</color>: {moneyStr} TL{jailMarker}\n";
+            string marker = (i == currentPlayerIndex && !p.isBankrupt) ? "> " : "  ";
+            string status = "";
+            if (p.isBankrupt) status = " [IFLAS]";
+            else if (p.isInJail) status = " [JAIL]";
+
+            text += $"{marker}<color=#{colorHex}>{p.playerName}</color>: {moneyStr} TL{status}\n";
         }
 
         resultsText.text = text;
@@ -142,7 +160,7 @@ public class GameManager : MonoBehaviour
 
     void OnRollButtonClicked()
     {
-        if (!gameStarted) return;
+        if (!gameStarted || gameEnded) return;
         if (diceManager.IsRolling()) return;
 
         rollButton.interactable = false;
@@ -154,22 +172,18 @@ public class GameManager : MonoBehaviour
         var token = playerTokens[currentPlayerIndex];
 
         diceManager.RollBothDice();
-
-        while (diceManager.IsRolling())
-            yield return null;
+        while (diceManager.IsRolling()) yield return null;
 
         int diceTotal = diceManager.GetTotal();
         bool isDouble = diceManager.IsDouble();
 
-        Debug.Log($"{token.playerName} atti: {diceManager.GetDice1Value()} + {diceManager.GetDice2Value()} = {diceTotal}, cift mi: {isDouble}");
+        Debug.Log($"{token.playerName} atti: {diceTotal}, cift: {isDouble}");
 
         if (isDouble)
         {
             token.consecutiveDoubles++;
-
             if (token.consecutiveDoubles >= 3)
             {
-                Debug.Log($"{token.playerName} 3 art arda cift atti, hapse gidiyor!");
                 yield return StartCoroutine(SendToJail(token));
                 token.consecutiveDoubles = 0;
                 EndTurn();
@@ -182,17 +196,22 @@ public class GameManager : MonoBehaviour
         }
 
         MovePlayer(token, diceTotal);
-
         yield return new WaitForSeconds(1f);
 
         Tile landedTile = boardGenerator.GetTile(token.currentTileIndex);
-        Debug.Log($"{token.playerName} -> {landedTile.tileName} ({landedTile.tileType})");
+        Debug.Log($"{token.playerName} -> {landedTile.tileName}");
 
         UIManager.Instance.ShowInfoPanel(landedTile);
         yield return new WaitForSeconds(1.5f);
         UIManager.Instance.HideInfoPanel();
 
         yield return StartCoroutine(HandleTileLanding(token, landedTile));
+
+        if (token.isBankrupt || gameEnded)
+        {
+            EndTurn();
+            yield break;
+        }
 
         if (token.isInJail)
         {
@@ -202,7 +221,6 @@ public class GameManager : MonoBehaviour
 
         if (isDouble)
         {
-            Debug.Log($"{token.playerName} cift atti, tekrar zar atma hakki kazandi!");
             rollButton.interactable = true;
         }
         else
@@ -220,7 +238,6 @@ public class GameManager : MonoBehaviour
         if (newIndex < oldIndex || (newIndex == 0 && steps > 0))
         {
             token.money += gameSettings.passStartBonus;
-            Debug.Log($"{token.playerName} baslangici gecti, +{gameSettings.passStartBonus}");
         }
 
         token.currentTileIndex = newIndex;
@@ -237,17 +254,11 @@ public class GameManager : MonoBehaviour
         if (tile.tileType == TileType.Property || tile.tileType == TileType.Vacation)
         {
             if (tile.ownerId == -1)
-            {
                 yield return StartCoroutine(HandleEmptyProperty(token, tile));
-            }
             else if (tile.ownerId == token.playerId)
-            {
                 yield return StartCoroutine(HandleOwnProperty(token, tile));
-            }
             else
-            {
                 yield return StartCoroutine(HandleOpponentProperty(token, tile));
-            }
         }
         else
         {
@@ -256,30 +267,22 @@ public class GameManager : MonoBehaviour
                 case TileType.GoToStart:
                     yield return StartCoroutine(HandleGoToStart(token));
                     break;
-
                 case TileType.Jail:
-                    // Önce bilgi paneli
-                    bool jailAcknowledged = false;
-                    UIManager.Instance.ShowGoToJailInfoPanel(() => jailAcknowledged = true);
-                    while (!jailAcknowledged) yield return null;
-                    // Sonra hapise gönder
+                    bool jailAck = false;
+                    UIManager.Instance.ShowGoToJailInfoPanel(() => jailAck = true);
+                    while (!jailAck) yield return null;
                     yield return StartCoroutine(SendToJail(token));
                     break;
-
                 case TileType.Tax:
                     yield return StartCoroutine(HandleTax(token));
                     break;
-
                 case TileType.Bonus:
                     yield return StartCoroutine(HandleChanceBonusCard(token, CardType.Bonus));
                     break;
-
                 case TileType.Chance:
                     yield return StartCoroutine(HandleChanceBonusCard(token, CardType.Chance));
                     break;
-
                 default:
-                    Debug.Log($"Ozel kare (henuz islenmedi): {tile.tileType}");
                     yield return new WaitForSeconds(1f);
                     break;
             }
@@ -293,24 +296,15 @@ public class GameManager : MonoBehaviour
 
         UIManager.Instance.ShowPurchasePanel(
             tile,
+            token.money,    // ← Para parametresi eklendi
             buyCallback: () => { wantsToBuy = true; decisionMade = true; },
             passCallback: () => { wantsToBuy = false; decisionMade = true; }
         );
 
-        while (!decisionMade)
-            yield return null;
+        while (!decisionMade) yield return null;
 
-        if (!wantsToBuy)
-        {
-            Debug.Log($"{token.playerName} pas gecti: {tile.tileName}");
-            yield break;
-        }
-
-        if (token.money < tile.basePrice)
-        {
-            Debug.Log($"{token.playerName} parasi yetmiyor!");
-            yield break;
-        }
+        if (!wantsToBuy) yield break;
+        if (token.money < tile.basePrice) yield break;
 
         int difficulty;
         Category questionCategory;
@@ -329,37 +323,24 @@ public class GameManager : MonoBehaviour
         bool answeredCorrectly = false;
         bool answered = false;
 
-        UIManager.Instance.ShowQuestionPanel(
-            questionCategory,
-            difficulty,
-            answerCallback: (correct) => {
-                answeredCorrectly = correct;
-                answered = true;
-            }
-        );
+        UIManager.Instance.ShowQuestionPanel(questionCategory, difficulty,
+            answerCallback: (correct) => { answeredCorrectly = correct; answered = true; });
 
-        while (!answered)
-            yield return null;
+        while (!answered) yield return null;
 
         if (answeredCorrectly)
         {
             token.money -= tile.basePrice;
             tile.ownerId = token.playerId;
-
             UpdateTileVisual(tile, token.playerColor);
 
             if (tile.tileType == TileType.Vacation)
             {
                 token.vacationCount++;
-                Debug.Log($"{token.playerName} tatil bolgesi aldi! Toplam: {token.vacationCount}");
+                CheckVacationVictory(token);
             }
 
             UpdateMoneyDisplay();
-            Debug.Log($"{token.playerName} {tile.tileName}'yi satin aldi! (-{tile.basePrice} TL)");
-        }
-        else
-        {
-            Debug.Log($"{token.playerName} soruyu bilemedi, arazi alamadi");
         }
     }
 
@@ -367,7 +348,6 @@ public class GameManager : MonoBehaviour
     {
         if (tile.buildingLevel >= 5)
         {
-            Debug.Log($"{tile.tileName} otel seviyesinde, daha fazla bina dikilemez");
             yield return new WaitForSeconds(1f);
             yield break;
         }
@@ -376,31 +356,21 @@ public class GameManager : MonoBehaviour
         int chosenLevel = 0;
 
         UIManager.Instance.ShowBuildingPanel(
-            tile,
-            token.money,
+            tile, token.money,
             buildCallback: (level) => { chosenLevel = level; decisionMade = true; },
             passCallback: () => { chosenLevel = 0; decisionMade = true; }
         );
 
-        while (!decisionMade)
-            yield return null;
+        while (!decisionMade) yield return null;
 
-        if (chosenLevel == 0)
-        {
-            Debug.Log($"{token.playerName} bina dikmeyi pas gecti");
-            yield break;
-        }
+        if (chosenLevel == 0) yield break;
 
         int costPerLevel = tile.basePrice / 2;
         int newLevelTotal = chosenLevel == 5 ? costPerLevel * 6 : costPerLevel * chosenLevel;
         int currentLevelTotal = GetTotalCost(tile.buildingLevel, costPerLevel);
         int totalCost = newLevelTotal - currentLevelTotal;
 
-        if (token.money < totalCost)
-        {
-            Debug.Log($"{token.playerName} parasi yetmiyor!");
-            yield break;
-        }
+        if (token.money < totalCost) yield break;
 
         int difficulty;
         Category questionCategory;
@@ -419,32 +389,17 @@ public class GameManager : MonoBehaviour
         bool answeredCorrectly = false;
         bool answered = false;
 
-        UIManager.Instance.ShowQuestionPanel(
-            questionCategory,
-            difficulty,
-            answerCallback: (correct) => {
-                answeredCorrectly = correct;
-                answered = true;
-            }
-        );
+        UIManager.Instance.ShowQuestionPanel(questionCategory, difficulty,
+            answerCallback: (correct) => { answeredCorrectly = correct; answered = true; });
 
-        while (!answered)
-            yield return null;
+        while (!answered) yield return null;
 
         if (answeredCorrectly)
         {
             token.money -= totalCost;
             tile.buildingLevel = chosenLevel;
-            UpdateMoneyDisplay();
-
             UpdateTileVisual(tile, token.playerColor);
-
-            string levelName = chosenLevel == 5 ? "Otel" : $"{chosenLevel} Kat";
-            Debug.Log($"{token.playerName} {tile.tileName}'de {levelName} dikti! (-{totalCost} TL)");
-        }
-        else
-        {
-            Debug.Log($"{token.playerName} soruyu bilemedi, bina dikilemedi");
+            UpdateMoneyDisplay();
         }
     }
 
@@ -454,38 +409,37 @@ public class GameManager : MonoBehaviour
         int buyPrice = tile.basePrice * 2;
 
         PlayerToken owner = GetPlayerById(tile.ownerId);
-        if (owner == null)
+        if (owner == null) yield break;
+
+        Debug.Log($"{token.playerName} -> {tile.tileName} (kira: {rentPrice}, calma: {buyPrice}, para: {token.money})");
+
+        // Hem rent hem buy için para yetmiyorsa → BANKRUPTCY
+        if (token.money < rentPrice && token.money < buyPrice)
         {
-            Debug.LogError($"Sahip bulunamadi: {tile.ownerId}");
+            Debug.Log($"{token.playerName} icin ikisi de yetmez, bankruptcy");
+            yield return new WaitForSeconds(2f);
+            yield return StartCoroutine(HandleBankruptcy(token, rentPrice, owner));
             yield break;
         }
-
-        Debug.Log($"{token.playerName} -> {tile.tileName} (sahibi: {owner.playerName}, kira: {rentPrice}, calma: {buyPrice})");
 
         bool decisionMade = false;
         int decision = 0;
 
         UIManager.Instance.ShowRentPanel(
-            tile,
-            buyPrice,
-            rentPrice,
+            tile, buyPrice, rentPrice, token.money,
             buyCallback: () => { decision = 2; decisionMade = true; },
             payRentCallback: () => { decision = 1; decisionMade = true; }
         );
 
-        while (!decisionMade)
-            yield return null;
+        while (!decisionMade) yield return null;
 
         if (decision == 1)
         {
             yield return StartCoroutine(PayRent(token, owner, rentPrice));
-            yield break;
         }
-
-        if (decision == 2)
+        else if (decision == 2)
         {
             yield return StartCoroutine(TryToStealProperty(token, owner, tile, buyPrice));
-            yield break;
         }
     }
 
@@ -493,17 +447,13 @@ public class GameManager : MonoBehaviour
     {
         if (payer.money < rentAmount)
         {
-            Debug.Log($"{payer.playerName} parasi yetmiyor! Tum parasi gidiyor: {payer.money} TL");
-            owner.money += payer.money;
-            payer.money = 0;
-        }
-        else
-        {
-            payer.money -= rentAmount;
-            owner.money += rentAmount;
-            Debug.Log($"{payer.playerName} kira odedi: {rentAmount} TL -> {owner.playerName}");
+            // Burası teorik olarak gelmemeli ama güvenlik için
+            yield return StartCoroutine(HandleBankruptcy(payer, rentAmount, owner));
+            yield break;
         }
 
+        payer.money -= rentAmount;
+        owner.money += rentAmount;
         UpdateMoneyDisplay();
         yield return new WaitForSeconds(1f);
     }
@@ -514,84 +464,58 @@ public class GameManager : MonoBehaviour
 
         if (stealer.money < buyPrice)
         {
-            Debug.Log($"{stealer.playerName} calmaya parasi yetmiyor, kira oduyor");
             yield return StartCoroutine(PayRent(stealer, owner, rentPrice));
             yield break;
         }
 
-        int difficulty = 4;
+        int difficulty = 5;
         Category questionCategory;
 
         if (tile.tileType == TileType.Vacation)
-        {
             questionCategory = AllPlayableCategories[Random.Range(0, AllPlayableCategories.Length)];
-        }
         else
-        {
             questionCategory = tile.category;
-        }
 
         bool answeredCorrectly = false;
         bool answered = false;
 
-        UIManager.Instance.ShowQuestionPanel(
-            questionCategory,
-            difficulty,
-            answerCallback: (correct) => {
-                answeredCorrectly = correct;
-                answered = true;
-            }
-        );
+        UIManager.Instance.ShowQuestionPanel(questionCategory, difficulty,
+            answerCallback: (correct) => { answeredCorrectly = correct; answered = true; });
 
-        while (!answered)
-            yield return null;
+        while (!answered) yield return null;
 
         if (answeredCorrectly)
         {
             stealer.money -= buyPrice;
             owner.money += buyPrice;
-
             tile.ownerId = stealer.playerId;
 
             if (tile.tileType == TileType.Vacation)
             {
                 owner.vacationCount--;
                 stealer.vacationCount++;
-                Debug.Log($"Tatil bolgesi el degistirdi. {owner.playerName}: {owner.vacationCount}, {stealer.playerName}: {stealer.vacationCount}");
+                CheckVacationVictory(stealer);
             }
 
             UpdateTileVisual(tile, stealer.playerColor);
-
             UpdateMoneyDisplay();
-            Debug.Log($"{stealer.playerName} {tile.tileName}'yi caldi! ({owner.playerName}'den, -{buyPrice} TL)");
         }
         else
         {
-            Debug.Log($"{stealer.playerName} soruyu bilemedi, calamadi. Kira oduyor...");
             yield return StartCoroutine(PayRent(stealer, owner, rentPrice));
         }
     }
 
     IEnumerator HandleGoToStart(PlayerToken token)
     {
-        Debug.Log($"{token.playerName} -> Baslangica Don karesine dustu");
+        bool ack = false;
+        UIManager.Instance.ShowGoToStartPanel(() => ack = true);
+        while (!ack) yield return null;
 
-        // Panel göster
-        bool acknowledged = false;
-        UIManager.Instance.ShowGoToStartPanel(() => acknowledged = true);
-
-        while (!acknowledged)
-            yield return null;
-
-        // Başlangıca ışınla
         token.currentTileIndex = 0;
-
         Vector3 startPos = boardGenerator.GetTileWorldPosition(0);
         float offsetX = (token.playerId - (playerTokens.Count - 1) / 2f) * 0.3f;
         token.transform.position = startPos + new Vector3(offsetX, tokenHeight, 0);
-
-        Debug.Log($"{token.playerName} baslangica dondu (para alinmadi)");
-
         yield return new WaitForSeconds(0.3f);
     }
 
@@ -602,26 +526,14 @@ public class GameManager : MonoBehaviour
         int taxRate = gameSettings.taxRate;
         int taxAmount = (token.money * taxRate) / 100;
 
-        Debug.Log($"[TAX] {token.playerName} vergi karesine dustu. Para: {token.money}, Oran: %{taxRate}, Vergi: {taxAmount} TL");
+        if (taxAmount > token.money) taxAmount = token.money;
 
-        if (taxAmount > token.money)
-        {
-            taxAmount = token.money;
-        }
+        bool ack = false;
+        UIManager.Instance.ShowTaxPanel(taxRate, taxAmount, () => ack = true);
+        while (!ack) yield return null;
 
-        // Paneli göster
-        bool acknowledged = false;
-        UIManager.Instance.ShowTaxPanel(taxRate, taxAmount, () => acknowledged = true);
-
-        while (!acknowledged)
-            yield return null;
-
-        // Para kesimi
         token.money -= taxAmount;
         UpdateMoneyDisplay();
-
-        Debug.Log($"[TAX] {token.playerName} {taxAmount} TL vergi odedi. Kalan: {token.money} TL");
-
         yield return new WaitForSeconds(0.3f);
     }
 
@@ -629,33 +541,18 @@ public class GameManager : MonoBehaviour
 
     IEnumerator HandleChanceBonusCard(PlayerToken token, CardType type)
     {
-        if (ChanceBonusManager.Instance == null)
-        {
-            Debug.LogError("ChanceBonusManager.Instance NULL! Sahnede ChanceBonusManager objesi olmali.");
-            yield break;
-        }
+        if (ChanceBonusManager.Instance == null) yield break;
 
-        // Kart çek
         ChanceBonusCard card = (type == CardType.Bonus)
             ? ChanceBonusManager.Instance.DrawBonusCard()
             : ChanceBonusManager.Instance.DrawChanceCard();
 
-        if (card == null)
-        {
-            Debug.LogError("Kart cekilemedi!");
-            yield break;
-        }
+        if (card == null) yield break;
 
-        Debug.Log($"[{type}] {token.playerName} kart cekti: {card.title} ({card.effect}, {card.amount})");
+        bool ack = false;
+        UIManager.Instance.ShowChanceBonusPanel(type, card, () => ack = true);
+        while (!ack) yield return null;
 
-        // Paneli göster
-        bool acknowledged = false;
-        UIManager.Instance.ShowChanceBonusPanel(type, card, () => acknowledged = true);
-
-        while (!acknowledged)
-            yield return null;
-
-        // Etkiyi uygula
         yield return StartCoroutine(ApplyCardEffect(token, card));
     }
 
@@ -666,31 +563,33 @@ public class GameManager : MonoBehaviour
             case CardEffect.AddMoney:
                 token.money += card.amount;
                 UpdateMoneyDisplay();
-                Debug.Log($"{token.playerName} +{card.amount} TL aldi");
                 yield return new WaitForSeconds(0.5f);
                 break;
 
             case CardEffect.SubtractMoney:
-                int subAmount = Mathf.Min(card.amount, token.money);
-                token.money -= subAmount;
-                UpdateMoneyDisplay();
-                Debug.Log($"{token.playerName} -{subAmount} TL verdi");
-                yield return new WaitForSeconds(0.5f);
+                if (token.money < card.amount)
+                {
+                    yield return StartCoroutine(HandleBankruptcy(token, card.amount, null));
+                }
+                else
+                {
+                    token.money -= card.amount;
+                    UpdateMoneyDisplay();
+                    yield return new WaitForSeconds(0.5f);
+                }
                 break;
 
             case CardEffect.CollectFromAllPlayers:
                 int totalCollected = 0;
                 foreach (var other in playerTokens)
                 {
-                    if (other.playerId == token.playerId) continue;
-
+                    if (other.playerId == token.playerId || other.isBankrupt) continue;
                     int payAmount = Mathf.Min(card.amount, other.money);
                     other.money -= payAmount;
                     totalCollected += payAmount;
                 }
                 token.money += totalCollected;
                 UpdateMoneyDisplay();
-                Debug.Log($"{token.playerName} diger oyunculardan toplam {totalCollected} TL aldi");
                 yield return new WaitForSeconds(0.5f);
                 break;
 
@@ -705,7 +604,6 @@ public class GameManager : MonoBehaviour
                 token.transform.position = startPos + new Vector3(offsetX0, tokenHeight, 0);
                 token.money += gameSettings.passStartBonus;
                 UpdateMoneyDisplay();
-                Debug.Log($"{token.playerName} baslangica gitti +{gameSettings.passStartBonus} TL");
                 yield return new WaitForSeconds(1f);
                 break;
 
@@ -727,29 +625,20 @@ public class GameManager : MonoBehaviour
     {
         int totalTiles = boardGenerator.GetTileCount();
         int oldIndex = token.currentTileIndex;
-        int newIndex = ((oldIndex + steps) % totalTiles + totalTiles) % totalTiles;  // negatifte de calisir
+        int newIndex = ((oldIndex + steps) % totalTiles + totalTiles) % totalTiles;
 
-        // Başlangıçtan geçti mi? (ileri giderken)
         if (steps > 0 && newIndex < oldIndex)
-        {
             token.money += gameSettings.passStartBonus;
-            Debug.Log($"{token.playerName} baslangici gecti, +{gameSettings.passStartBonus}");
-        }
 
         token.currentTileIndex = newIndex;
-
         Vector3 tilePos = boardGenerator.GetTileWorldPosition(newIndex);
         float offsetX = (token.playerId - (playerTokens.Count - 1) / 2f) * 0.3f;
         token.transform.position = tilePos + new Vector3(offsetX, tokenHeight, 0);
 
         UpdateMoneyDisplay();
-
         yield return new WaitForSeconds(0.8f);
 
-        // Yeni kareye düştüğünde etkileşim
         Tile landedTile = boardGenerator.GetTile(newIndex);
-        Debug.Log($"{token.playerName} -> {landedTile.tileName} (Sans/Bonus hareketi)");
-
         UIManager.Instance.ShowInfoPanel(landedTile);
         yield return new WaitForSeconds(1.5f);
         UIManager.Instance.HideInfoPanel();
@@ -763,7 +652,6 @@ public class GameManager : MonoBehaviour
         int currentIdx = token.currentTileIndex;
         int nearestVacationIdx = -1;
 
-        // İleri yönde en yakın vacation tile'ı bul
         for (int offset = 1; offset < totalTiles; offset++)
         {
             int checkIdx = (currentIdx + offset) % totalTiles;
@@ -775,32 +663,20 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (nearestVacationIdx == -1)
-        {
-            Debug.LogWarning("Tatil bolgesi bulunamadi!");
-            yield break;
-        }
+        if (nearestVacationIdx == -1) yield break;
 
-        // Başlangıçtan geçtiyse para ver
         if (nearestVacationIdx < currentIdx)
-        {
             token.money += gameSettings.passStartBonus;
-            Debug.Log($"{token.playerName} baslangici gecti, +{gameSettings.passStartBonus}");
-        }
 
         token.currentTileIndex = nearestVacationIdx;
-
         Vector3 tilePos = boardGenerator.GetTileWorldPosition(nearestVacationIdx);
         float offsetX = (token.playerId - (playerTokens.Count - 1) / 2f) * 0.3f;
         token.transform.position = tilePos + new Vector3(offsetX, tokenHeight, 0);
 
         UpdateMoneyDisplay();
-
         yield return new WaitForSeconds(0.8f);
 
         Tile landedTile = boardGenerator.GetTile(nearestVacationIdx);
-        Debug.Log($"{token.playerName} -> {landedTile.tileName} (Sans karti ile)");
-
         UIManager.Instance.ShowInfoPanel(landedTile);
         yield return new WaitForSeconds(1.5f);
         UIManager.Instance.HideInfoPanel();
@@ -810,6 +686,7 @@ public class GameManager : MonoBehaviour
 
     void EndTurn()
     {
+        if (gameEnded) return;
         currentPlayerIndex = (currentPlayerIndex + 1) % playerTokens.Count;
         StartNextTurn();
     }
@@ -818,8 +695,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SendToJail(PlayerToken token)
     {
-        Debug.Log($"[JAIL] SendToJail BASLADI: {token.playerName}, gameSettings.jailDuration = {gameSettings.jailDuration}");
-
         int jailIndex = 10;
         token.currentTileIndex = jailIndex;
         token.isInJail = true;
@@ -828,14 +703,11 @@ public class GameManager : MonoBehaviour
         if (duration <= 0) duration = 3;
         token.jailTurnsLeft = duration;
 
-        Debug.Log($"[JAIL] isInJail = {token.isInJail}, jailTurnsLeft = {token.jailTurnsLeft}");
-
         Vector3 jailPos = boardGenerator.GetTileWorldPosition(jailIndex);
         float offsetX = (token.playerId - (playerTokens.Count - 1) / 2f) * 0.3f;
         token.transform.position = jailPos + new Vector3(offsetX, tokenHeight, 0);
 
         UpdateMoneyDisplay();
-
         yield return new WaitForSeconds(1f);
     }
 
@@ -844,48 +716,27 @@ public class GameManager : MonoBehaviour
         Tile jailTile = boardGenerator.GetTile(10);
         int exitFee = gameSettings.jailExitFee;
 
-        if (UIManager.Instance == null || UIManager.Instance.exitJailPanel == null)
-        {
-            Debug.LogError("UIManager veya exitJailPanel NULL!");
-            EndTurn();
-            yield break;
-        }
-
         bool decisionMade = false;
         int decision = 0;
 
         UIManager.Instance.ShowExitJailPanel(
-            jailTile,
-            exitFee,
-            token.jailTurnsLeft,
+            jailTile, exitFee, token.jailTurnsLeft, token.money,
             rollDicesCallback: () => { decision = 1; decisionMade = true; },
             payExitCallback: () => { decision = 2; decisionMade = true; },
             waitCallback: () => { decision = 3; decisionMade = true; }
         );
 
-        while (!decisionMade)
-            yield return null;
+        while (!decisionMade) yield return null;
 
-        if (decision == 1)
-        {
-            yield return StartCoroutine(TryRollOutOfJail(token));
-        }
-        else if (decision == 2)
-        {
-            yield return StartCoroutine(PayToExitJail(token, exitFee));
-        }
-        else if (decision == 3)
-        {
-            yield return StartCoroutine(WaitInJail(token));
-        }
+        if (decision == 1) yield return StartCoroutine(TryRollOutOfJail(token));
+        else if (decision == 2) yield return StartCoroutine(PayToExitJail(token, exitFee));
+        else if (decision == 3) yield return StartCoroutine(WaitInJail(token));
     }
 
     IEnumerator TryRollOutOfJail(PlayerToken token)
     {
         diceManager.RollBothDice();
-
-        while (diceManager.IsRolling())
-            yield return null;
+        while (diceManager.IsRolling()) yield return null;
 
         int diceTotal = diceManager.GetTotal();
         bool isDouble = diceManager.IsDouble();
@@ -897,7 +748,6 @@ public class GameManager : MonoBehaviour
             token.consecutiveDoubles = 0;
 
             MovePlayer(token, diceTotal);
-
             yield return new WaitForSeconds(1f);
 
             Tile landedTile = boardGenerator.GetTile(token.currentTileIndex);
@@ -910,11 +760,8 @@ public class GameManager : MonoBehaviour
         else
         {
             token.jailTurnsLeft--;
-
             if (token.jailTurnsLeft <= 0)
-            {
                 yield return StartCoroutine(ForceExitJail(token));
-            }
         }
 
         EndTurn();
@@ -922,32 +769,21 @@ public class GameManager : MonoBehaviour
 
     IEnumerator PayToExitJail(PlayerToken token, int exitFee)
     {
-        if (token.money < exitFee)
-        {
-            yield return StartCoroutine(TryRollOutOfJail(token));
-            yield break;
-        }
-
         token.money -= exitFee;
         token.isInJail = false;
         token.jailTurnsLeft = 0;
         token.consecutiveDoubles = 0;
 
         UpdateMoneyDisplay();
-
         yield return new WaitForSeconds(0.5f);
-
         yield return StartCoroutine(NormalDiceRollAfterJail(token));
     }
 
     IEnumerator WaitInJail(PlayerToken token)
     {
         token.jailTurnsLeft--;
-
         if (token.jailTurnsLeft <= 0)
-        {
             yield return StartCoroutine(ForceExitJail(token));
-        }
 
         EndTurn();
     }
@@ -958,7 +794,8 @@ public class GameManager : MonoBehaviour
 
         if (token.money < exitFee)
         {
-            token.money = Mathf.Max(0, token.money - exitFee);
+            // Zorunlu çıkışta para yetmezse iflas
+            yield return StartCoroutine(HandleBankruptcy(token, exitFee, null));
         }
         else
         {
@@ -970,27 +807,20 @@ public class GameManager : MonoBehaviour
         token.consecutiveDoubles = 0;
 
         UpdateMoneyDisplay();
-
         yield return new WaitForSeconds(0.5f);
     }
 
     IEnumerator NormalDiceRollAfterJail(PlayerToken token)
     {
         diceManager.RollBothDice();
-
-        while (diceManager.IsRolling())
-            yield return null;
+        while (diceManager.IsRolling()) yield return null;
 
         int diceTotal = diceManager.GetTotal();
         bool isDouble = diceManager.IsDouble();
 
-        if (isDouble)
-        {
-            token.consecutiveDoubles = 1;
-        }
+        if (isDouble) token.consecutiveDoubles = 1;
 
         MovePlayer(token, diceTotal);
-
         yield return new WaitForSeconds(1f);
 
         Tile landedTile = boardGenerator.GetTile(token.currentTileIndex);
@@ -1000,13 +830,196 @@ public class GameManager : MonoBehaviour
 
         yield return StartCoroutine(HandleTileLanding(token, landedTile));
 
-        if (isDouble)
+        if (isDouble) rollButton.interactable = true;
+        else EndTurn();
+    }
+
+    // ============= BANKRUPTCY =============
+
+    IEnumerator HandleBankruptcy(PlayerToken debtor, int debt, PlayerToken creditor)
+    {
+        Debug.Log($"[BANKRUPTCY] {debtor.playerName}, borc: {debt}");
+
+        // Sahip olduğu araziler
+        List<Tile> ownedProperties = GetOwnedProperties(debtor);
+
+        // Hiç arazi yoksa direkt iflas
+        if (ownedProperties.Count == 0)
         {
-            rollButton.interactable = true;
+            Debug.Log($"{debtor.playerName} arazisi yok, direkt iflas");
+            yield return StartCoroutine(DeclareBankruptcy(debtor, creditor));
+            yield break;
+        }
+
+        // Tüm arazilerin toplam değeri borcu karşılıyor mu?
+        int totalAvailable = debtor.money;
+        foreach (var t in ownedProperties)
+            totalAvailable += CalculateTileSellValue(t);
+
+        if (totalAvailable < debt)
+        {
+            Debug.Log($"{debtor.playerName} hepsini satsa bile yetmiyor, iflas");
+            // Tüm parası ve arazileri creditor'a (varsa) geçer
+            yield return StartCoroutine(DeclareBankruptcy(debtor, creditor));
+            yield break;
+        }
+
+        // Panel aç
+        bool sold = false;
+        List<Tile> soldTiles = null;
+
+        UIManager.Instance.ShowBankruptcyPanel(debtor, debt, ownedProperties,
+            sellCallback: (tiles) => { soldTiles = tiles; sold = true; });
+
+        while (!sold) yield return null;
+
+        // Seçili araziler satılır
+        int totalEarned = 0;
+        foreach (var tile in soldTiles)
+        {
+            int sellValue = CalculateTileSellValue(tile);
+            totalEarned += sellValue;
+
+            // Arazi temizlenir
+            tile.ownerId = -1;
+            tile.buildingLevel = 0;
+            UpdateTileVisual(tile, Color.white);
+
+            if (tile.tileType == TileType.Vacation)
+                debtor.vacationCount--;
+        }
+
+        debtor.money += totalEarned;
+        Debug.Log($"{debtor.playerName} {soldTiles.Count} arazi sattı, +{totalEarned} TL");
+
+        // Borç öde
+        if (creditor != null)
+        {
+            debtor.money -= debt;
+            creditor.money += debt;
         }
         else
         {
-            EndTurn();
+            debtor.money -= debt;
+            if (debtor.money < 0) debtor.money = 0;
+        }
+
+        UpdateMoneyDisplay();
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    IEnumerator DeclareBankruptcy(PlayerToken debtor, PlayerToken creditor)
+    {
+        Debug.Log($"[IFLAS] {debtor.playerName} iflas etti!");
+
+        // Tüm arazilerini serbest bırak
+        List<Tile> ownedProperties = GetOwnedProperties(debtor);
+        foreach (var tile in ownedProperties)
+        {
+            // Eğer alacaklı varsa arazileri ona ver, yoksa boşalt
+            if (creditor != null)
+            {
+                tile.ownerId = creditor.playerId;
+                UpdateTileVisual(tile, creditor.playerColor);
+
+                if (tile.tileType == TileType.Vacation)
+                {
+                    debtor.vacationCount--;
+                    creditor.vacationCount++;
+                }
+            }
+            else
+            {
+                tile.ownerId = -1;
+                tile.buildingLevel = 0;
+                UpdateTileVisual(tile, Color.white);
+
+                if (tile.tileType == TileType.Vacation)
+                    debtor.vacationCount--;
+            }
+        }
+
+        // Kalan parayı alacaklıya ver
+        if (creditor != null && debtor.money > 0)
+        {
+            creditor.money += debtor.money;
+        }
+
+        debtor.money = 0;
+        debtor.isBankrupt = true;
+        debtor.isInJail = false;
+        debtor.jailTurnsLeft = 0;
+
+        UpdateMoneyDisplay();
+
+        // Lose panel göster
+        UIManager.Instance.ShowLosePanel(debtor);
+
+        yield return new WaitForSeconds(2f);
+
+        // Vacation victory kontrolü (creditor 3 tatil mi aldı?)
+        if (creditor != null)
+            CheckVacationVictory(creditor);
+
+        // Win condition kontrolü
+        CheckWinCondition();
+    }
+
+    List<Tile> GetOwnedProperties(PlayerToken token)
+    {
+        List<Tile> owned = new List<Tile>();
+        int totalTiles = boardGenerator.GetTileCount();
+
+        for (int i = 0; i < totalTiles; i++)
+        {
+            Tile t = boardGenerator.GetTile(i);
+            if (t != null && t.ownerId == token.playerId)
+                owned.Add(t);
+        }
+        return owned;
+    }
+
+    int CalculateTileSellValue(Tile tile)
+    {
+        int landValue = tile.basePrice / 2;
+        int costPerLevel = tile.basePrice / 2;
+        int currentBuildingCost = GetTotalCost(tile.buildingLevel, costPerLevel);
+        int buildingRefund = currentBuildingCost / 2;
+        return landValue + buildingRefund;
+    }
+
+    // ============= WIN CONDITIONS =============
+
+    void CheckVacationVictory(PlayerToken token)
+    {
+        if (gameSettings.vacationVictoryEnabled && token.vacationCount >= gameSettings.vacationVictoryCount)
+        {
+            Debug.Log($"[WIN] {token.playerName} {token.vacationCount} tatil topladı, kazandı!");
+            gameEnded = true;
+            UIManager.Instance.ShowWinPanel(token);
+        }
+    }
+
+    void CheckWinCondition()
+    {
+        if (gameEnded) return;
+
+        int activeCount = 0;
+        PlayerToken lastActive = null;
+        foreach (var p in playerTokens)
+        {
+            if (!p.isBankrupt)
+            {
+                activeCount++;
+                lastActive = p;
+            }
+        }
+
+        if (activeCount <= 1 && lastActive != null)
+        {
+            Debug.Log($"[WIN] Son oyuncu: {lastActive.playerName}");
+            gameEnded = true;
+            UIManager.Instance.ShowWinPanel(lastActive);
         }
     }
 
@@ -1020,8 +1033,7 @@ public class GameManager : MonoBehaviour
             tile.currentBuilding = null;
         }
 
-        if (tile.ownerId == -1)
-            return;
+        if (tile.ownerId == -1) return;
 
         GameObject prefabToUse = GetBuildingPrefab(tile.buildingLevel);
         if (prefabToUse == null) return;
@@ -1059,23 +1071,21 @@ public class GameManager : MonoBehaviour
 
     int CalculateRent(Tile tile)
     {
-        if (tile.buildingLevel == 0)
-        {
-            return tile.basePrice / 4;
-        }
-        else
-        {
-            return (tile.basePrice / 2) * tile.buildingLevel;
-        }
+        int baseRent;
+        if (tile.buildingLevel == 0) baseRent = tile.basePrice / 4;
+        else baseRent = (tile.basePrice / 2) * tile.buildingLevel;
+
+        // Aynı renk grubunun tamamı aynı kişide → kira x2
+        if (HasColorGroupMonopoly(tile))
+            baseRent *= 2;
+
+        return baseRent;
     }
 
     PlayerToken GetPlayerById(int playerId)
     {
         foreach (var token in playerTokens)
-        {
-            if (token.playerId == playerId)
-                return token;
-        }
+            if (token.playerId == playerId) return token;
         return null;
     }
 
@@ -1091,5 +1101,23 @@ public class GameManager : MonoBehaviour
             case 5: return costPerLevel * 6;
             default: return 0;
         }
+    }
+    // Bir tile'ın renk grubundaki TÜM property/vacation tile'lar aynı kişiye aitse true
+    bool HasColorGroupMonopoly(Tile tile)
+    {
+        if (tile.ownerId < 0) return false;
+        if (tile.tileType != TileType.Property && tile.tileType != TileType.Vacation)
+            return false;
+
+        int totalTiles = boardGenerator.GetTileCount();
+        for (int i = 0; i < totalTiles; i++)
+        {
+            Tile t = boardGenerator.GetTile(i);
+            if (t == null) continue;
+            if (t.tileType != TileType.Property && t.tileType != TileType.Vacation) continue;
+            if (t.groupColor != tile.groupColor) continue;
+            if (t.ownerId != tile.ownerId) return false;
+        }
+        return true;
     }
 }

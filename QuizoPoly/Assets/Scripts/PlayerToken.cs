@@ -14,6 +14,7 @@ public class PlayerToken : MonoBehaviour
     public bool isInJail = false;
     public int jailTurnsLeft = 0;
     public int consecutiveDoubles = 0;  // ← YENİ: art arda kaç kez çift attı
+    public bool isBankrupt = false;
 
     public void Initialize(int id, PlayerSetupInfo info, int startMoney)
     {
